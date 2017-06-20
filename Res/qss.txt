@@ -1,0 +1,46 @@
+QPushButton{border-style:none;padding:10px;border-radius:5px;color:%1;background:%2;}
+QPushButton:hover{color:%1;background:%2;}
+QPushButton:pressed{color:%1;background:%2;}
+
+SetBtnQss(ui->pushButtonConnect, "#34495E", "#FFFFFF", "#4E6D8C", "#F0F0F0", "#2D3E50", "#B8C6D1");
+SetBtnQss(ui->pushButtonSend, "#1ABC9C", "#E6F8F5", "#2EE1C1", "#FFFFFF", "#16A086", "#A7EEE6");
+SetBtnQss(ui->pushButtonDisconnect, "#3498DB", "#FFFFFF", "#5DACE4", "#E5FEFF", "#2483C7", "#A0DAFB");
+SetBtnQss(ui->pushButtonFileManage, "#E74C3C", "#FFFFFF", "#EC7064", "#FFF5E7", "#DC2D1A", "#F5A996");
+
+QPushButton
+{
+	border-style:none;
+	padding:10px;
+	border-radius:5px;
+	color:#FFFFFF;
+	background:#34495E;
+}
+QPushButton:hover
+{	
+	color:#F0F0F0;
+	background:#4E6D8C;
+}
+QPushButton:pressed
+{
+	color:#B8C6D1;
+	background:#2D3E50;
+}
+
+QPushButton
+{
+	border-style:none;
+	padding:10px;
+	border-radius:5px;
+	color:#E6F8F5;
+	background:#1ABC9C;
+}
+QPushButton:hover
+{	
+	color:#FFFFFF;
+	background:#2EE1C1;
+}
+QPushButton:pressed
+{
+	color:#A7EEE6;
+	background:#16A086;
+}

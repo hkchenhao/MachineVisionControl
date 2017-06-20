@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/switch_off_48px.png</file>
+        <file>icon/switch_on_48px.png</file>
+        <file>icon/error_48px.png</file>
+        <file>icon/right_48px.png</file>
+        <file>icon/loading-32px.gif</file>
+        <file>icon/button.png</file>
+        <file>pic/background.jpg</file>
+        <file>icon/unknown_48px.png</file>
+    </qresource>
+</RCC>
