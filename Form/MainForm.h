@@ -64,6 +64,8 @@ private slots:
     // 统计分析界面slot函数
     void on_pushButton_Statistics_clicked();
 
+    void on_pushButton_Learn_clicked();
+
 signals:
     void SignalDetectControl(bool isstart);    // 检测开始与暂停信号
     void SignalNetSendPacket(DataPacketEnum datapacket_type, QByteArray databyte = QByteArray());

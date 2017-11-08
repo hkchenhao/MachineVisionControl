@@ -9,6 +9,7 @@
 class StartForm;
 class MainForm;
 class ButtonSelForm;
+class MachineLearnForm;
 class StatisticalForm;
 
 // 各个界面在QStackedWidget的索引号
@@ -17,6 +18,7 @@ typedef struct
   qint32 startform_id;
   qint32 mainform_id;
   qint32 buttonselform_id;
+  qint32 machinelearnform_id;
   qint32 statisticalform_id;
 } FormIdStruct;
 
@@ -37,6 +39,7 @@ public:
     StartForm* p_startform_;           // Form Widget指针
     MainForm* p_mainform_;                  //
     ButtonSelForm* p_buttonselform_;        //
+    MachineLearnForm* p_machinelearnform_;  //
     StatisticalForm* p_statisticalform_;    //
 private:
     // 私有化的构造函数，确保除了单例接口外，其他对象无法构造出系统管理类

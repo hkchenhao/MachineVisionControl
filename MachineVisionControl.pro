@@ -46,7 +46,8 @@ SOURCES += \
     Data/DataFactory.cpp \
     Data/DataPacket.cpp \
     Event/NotificationCenter.cpp \
-    Form/StatisticalForm.cpp
+    Form/StatisticalForm.cpp \
+    Form/MachineLearnForm.cpp
 
 HEADERS  += \
     Form/MainForm.h \
@@ -68,14 +69,16 @@ HEADERS  += \
     Data/DataPacketEnum.h \
     Event/NotificationCenter.h \
     Event/FormEventEnum.h \
-    Form/StatisticalForm.h
+    Form/StatisticalForm.h \
+    Form/MachineLearnForm.h
 
 FORMS    += \
     Form/MainForm.ui \
     Form/ButtonSelForm.ui \
     Form/StartForm.ui \
     Form/FrmInput.ui \
-    Form/StatisticalForm.ui
+    Form/StatisticalForm.ui \
+    Form/MachineLearnForm.ui
 
 RESOURCES += \
     Res/Resource.qrc

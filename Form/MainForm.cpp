@@ -5,6 +5,7 @@
 #include "Event/MainFormEvent.h"
 #include "Event/NotificationCenter.h"
 #include "Form/ButtonSelForm.h"
+#include "Form/MachineLearnForm.h"
 #include "Form/StatisticalForm.h"
 #include "Mgr/FormFrame.h"
 #include "Mgr/SystemFrame.h"
@@ -36,27 +37,27 @@ MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::MainWidget)
     }
     buf_buttoncheckresult_[0].plable_image_ = ui->image1;
     buf_buttoncheckresult_[0].plable_resulticon_ = ui->checkresult1;
-    buf_buttoncheckresult_[0].plable_totalnum = ui->TotalNumLabel1;
-    buf_buttoncheckresult_[0].plable_rightnum = ui->RightNumLabel1;
-    buf_buttoncheckresult_[0].plable_wrongnum = ui->WrongNumLabel1;
-    buf_buttoncheckresult_[0].plable_passrate = ui->PassRateLabel1;
-    buf_buttoncheckresult_[0].plable_fpsrate = ui->FpsRateLabel1;
+//    buf_buttoncheckresult_[0].plable_totalnum = ui->TotalNumLabel1;
+//    buf_buttoncheckresult_[0].plable_rightnum = ui->RightNumLabel1;
+//    buf_buttoncheckresult_[0].plable_wrongnum = ui->WrongNumLabel1;
+//    buf_buttoncheckresult_[0].plable_passrate = ui->PassRateLabel1;
+//    buf_buttoncheckresult_[0].plable_fpsrate = ui->FpsRateLabel1;
 
     buf_buttoncheckresult_[1].plable_image_ = ui->image2;
     buf_buttoncheckresult_[1].plable_resulticon_ = ui->checkresult2;
-    buf_buttoncheckresult_[1].plable_totalnum = ui->TotalNumLabel2;
-    buf_buttoncheckresult_[1].plable_rightnum = ui->RightNumLabel2;
-    buf_buttoncheckresult_[1].plable_wrongnum = ui->WrongNumLabel2;
-    buf_buttoncheckresult_[1].plable_passrate = ui->PassRateLabel2;
-    buf_buttoncheckresult_[1].plable_fpsrate = ui->FpsRateLabel2;
+//    buf_buttoncheckresult_[1].plable_totalnum = ui->TotalNumLabel2;
+//    buf_buttoncheckresult_[1].plable_rightnum = ui->RightNumLabel2;
+//    buf_buttoncheckresult_[1].plable_wrongnum = ui->WrongNumLabel2;
+//    buf_buttoncheckresult_[1].plable_passrate = ui->PassRateLabel2;
+//    buf_buttoncheckresult_[1].plable_fpsrate = ui->FpsRateLabel2;
 
     buf_buttoncheckresult_[2].plable_image_ = ui->image3;
     buf_buttoncheckresult_[2].plable_resulticon_ = ui->checkresult3;
-    buf_buttoncheckresult_[2].plable_totalnum = ui->TotalNumLabel3;
-    buf_buttoncheckresult_[2].plable_rightnum = ui->RightNumLabel3;
-    buf_buttoncheckresult_[2].plable_wrongnum = ui->WrongNumLabel3;
-    buf_buttoncheckresult_[2].plable_passrate = ui->PassRateLabel3;
-    buf_buttoncheckresult_[2].plable_fpsrate = ui->FpsRateLabel3;
+//    buf_buttoncheckresult_[2].plable_totalnum = ui->TotalNumLabel3;
+//    buf_buttoncheckresult_[2].plable_rightnum = ui->RightNumLabel3;
+//    buf_buttoncheckresult_[2].plable_wrongnum = ui->WrongNumLabel3;
+//    buf_buttoncheckresult_[2].plable_passrate = ui->PassRateLabel3;
+//    buf_buttoncheckresult_[2].plable_fpsrate = ui->FpsRateLabel3;
 
     // 检测结果TableWidget控件初始化
     /*
@@ -224,6 +225,18 @@ void MainForm::on_pushButton_AppClose_clicked()
     //QProcess::execute("sudo shutdown -h now");
 }
 
+// [slot函数]机器学习界面slot函数
+void MainForm::on_pushButton_Learn_clicked()
+{
+    if(FormFrame::GetInstance()->formstacked_id_.machinelearnform_id == -1)
+    {
+        FormFrame::GetInstance()->p_machinelearnform_ = new MachineLearnForm;
+        qint32 id = FormFrame::GetInstance()->p_formstacked_->addWidget(FormFrame::GetInstance()->p_machinelearnform_);
+        FormFrame::GetInstance()->formstacked_id_.machinelearnform_id = id;
+        FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(id);
+    }
+}
+
 // [slot函数]统计分析界面slot函数
 void MainForm::on_pushButton_Statistics_clicked()
 {
@@ -235,3 +248,8 @@ void MainForm::on_pushButton_Statistics_clicked()
         FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(id);
     }
 }
+
+//void MainForm::on_pushButton_Learn_clicked()
+//{
+
+//}

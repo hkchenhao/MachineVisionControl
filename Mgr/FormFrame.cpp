@@ -2,6 +2,7 @@
 #include "Form/StartForm.h"
 #include "Form/MainForm.h"
 #include "Form/ButtonSelForm.h"
+#include "Form/MachineLearnForm.h"
 #include "Form/StatisticalForm.h"
 
 FormFrame::FormFrame(QWidget* parent) : QWidget(parent)
@@ -10,12 +11,14 @@ FormFrame::FormFrame(QWidget* parent) : QWidget(parent)
     formstacked_id_.startform_id = -1;
     formstacked_id_.mainform_id = -1;
     formstacked_id_.buttonselform_id = -1;
+    formstacked_id_.machinelearnform_id = -1;
     formstacked_id_.statisticalform_id = -1;
     p_formstacked_ = nullptr;
     // Form指针
     p_startform_ = nullptr;
     p_mainform_ = nullptr;
     p_buttonselform_ = nullptr;
+    p_machinelearnform_ = nullptr;
     p_statisticalform_ = nullptr;
     // Widget布局
     QVBoxLayout* p_layout = new QVBoxLayout;

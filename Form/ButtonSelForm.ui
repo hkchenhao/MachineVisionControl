@@ -19,7 +19,7 @@
      <x>10</x>
      <y>10</y>
      <width>181</width>
-     <height>741</height>
+     <height>751</height>
     </rect>
    </property>
    <property name="font">
@@ -365,7 +365,7 @@ QGroupBox::title
      <x>210</x>
      <y>10</y>
      <width>531</width>
-     <height>741</height>
+     <height>751</height>
     </rect>
    </property>
    <property name="font">
@@ -399,7 +399,7 @@ QGroupBox::title
       <x>0</x>
       <y>10</y>
       <width>531</width>
-      <height>671</height>
+      <height>681</height>
      </rect>
     </property>
     <property name="font">
@@ -429,7 +429,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>690</y>
+      <y>700</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -482,7 +482,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>690</y>
+      <y>700</y>
       <width>361</width>
       <height>41</height>
      </rect>
@@ -586,7 +586,7 @@ QGroupBox::title
      <x>760</x>
      <y>10</y>
      <width>251</width>
-     <height>741</height>
+     <height>751</height>
     </rect>
    </property>
    <property name="font">
@@ -636,7 +636,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>520</y>
+      <y>530</y>
       <width>191</width>
       <height>151</height>
      </rect>
@@ -842,7 +842,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>690</y>
+      <y>700</y>
       <width>181</width>
       <height>41</height>
      </rect>

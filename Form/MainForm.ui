@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>460</y>
-     <width>1001</width>
-     <height>211</height>
+     <y>600</y>
+     <width>651</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -54,93 +54,18 @@ QGroupBox::title
    <property name="checkable">
     <bool>false</bool>
    </property>
-   <widget class="QWidget" name="layoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>30</y>
-      <width>122</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QLabel" name="TotalNumLabel1">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>总数目:10000</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="TotalNumLabel2">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>总数目:100</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="TotalNumLabel3">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>总数目:100</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>30</y>
-      <width>51</width>
-      <height>121</height>
+      <y>10</y>
+      <width>651</width>
+      <height>61</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLabel" name="CameraLabel1">
+      <widget class="QLabel" name="PassRateLabel1_4">
        <property name="font">
         <font>
          <family>Yahei Mono</family>
@@ -153,15 +78,15 @@ QGroupBox::title
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>相机1</string>
+        <string>总正品率:95.56%</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="CameraLabel2">
+      <widget class="QLabel" name="RightNumLabel1_4">
        <property name="font">
         <font>
          <family>Yahei Mono</family>
@@ -174,15 +99,15 @@ QGroupBox::title
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>相机2</string>
+        <string>总正品数:10000</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="CameraLabel3">
+      <widget class="QLabel" name="WrongNumLabel1_4">
        <property name="font">
         <font>
          <family>Yahei Mono</family>
@@ -195,310 +120,10 @@ QGroupBox::title
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>相机3</string>
+        <string>总次品数:10000</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget_3">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>30</y>
-      <width>141</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QLabel" name="RightNumLabel1">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>合格数目:10000</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="RightNumLabel2">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>合格数目:100</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="RightNumLabel3">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>合格数目:100</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget_4">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>30</y>
-      <width>141</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
-      <widget class="QLabel" name="WrongNumLabel1">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>缺陷数目:10000</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="WrongNumLabel2">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>缺陷数目:100</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="WrongNumLabel3">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>缺陷数目:100</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget_5">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>30</y>
-      <width>134</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_5">
-     <item>
-      <widget class="QLabel" name="PassRateLabel1">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>合格率:95.56%</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="PassRateLabel2">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>合格率:95.56%</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="PassRateLabel3">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>合格率:95.56%</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget_6">
-    <property name="geometry">
-     <rect>
-      <x>820</x>
-      <y>30</y>
-      <width>162</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_6">
-     <item>
-      <widget class="QLabel" name="FpsRateLabel1">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>检测帧率:20.5fps</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="FpsRateLabel2">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>检测帧率:20.5fps</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="FpsRateLabel3">
-       <property name="font">
-        <font>
-         <family>Yahei Mono</family>
-         <pointsize>14</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>检测帧率:20.5fps</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -536,7 +161,7 @@ QGroupBox::title
      <x>10</x>
      <y>70</y>
      <width>651</width>
-     <height>381</height>
+     <height>521</height>
     </rect>
    </property>
    <property name="font">
@@ -575,7 +200,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>90</y>
+      <y>80</y>
       <width>192</width>
       <height>192</height>
      </rect>
@@ -591,7 +216,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>310</y>
+      <y>280</y>
       <width>48</width>
       <height>48</height>
      </rect>
@@ -610,7 +235,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>90</y>
+      <y>80</y>
       <width>192</width>
       <height>192</height>
      </rect>
@@ -626,7 +251,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>300</x>
-      <y>310</y>
+      <y>280</y>
       <width>48</width>
       <height>48</height>
      </rect>
@@ -642,7 +267,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>40</y>
+      <y>30</y>
       <width>192</width>
       <height>40</height>
      </rect>
@@ -669,7 +294,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>40</y>
+      <y>30</y>
       <width>192</width>
       <height>40</height>
      </rect>
@@ -696,7 +321,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>40</y>
+      <y>30</y>
       <width>192</width>
       <height>40</height>
      </rect>
@@ -723,7 +348,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>90</y>
+      <y>80</y>
       <width>192</width>
       <height>192</height>
      </rect>
@@ -739,7 +364,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>310</y>
+      <y>280</y>
       <width>48</width>
       <height>48</height>
      </rect>
@@ -749,6 +374,291 @@ QGroupBox::title
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="ResultGroupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>340</y>
+      <width>191</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yahei Mono</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox 
+{
+	border:1px solid #0000EE;
+	border-radius:5px;
+	margin-top:1ex;
+}
+QGroupBox::title 
+{
+	subcontrol-origin: margin;
+	subcontrol-position: top center;
+	padding: 0 3px;
+}</string>
+    </property>
+    <property name="title">
+     <string>相机1</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>130</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>更多</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>191</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="PassRateLabel1_5">
+          <property name="font">
+           <font>
+            <family>Yahei Mono</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>正品率:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="PassRateLabel1_6">
+          <property name="font">
+           <font>
+            <family>Yahei Mono</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>正品数:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="PassRateLabel1_7">
+          <property name="font">
+           <font>
+            <family>Yahei Mono</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>次品数:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_19">
+        <item>
+         <widget class="QLabel" name="PassRateLabel1_8">
+          <property name="font">
+           <font>
+            <family>Yahei Mono</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>95.56%</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="PassRateLabel1_9">
+          <property name="font">
+           <font>
+            <family>Yahei Mono</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>100</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="PassRateLabel1_10">
+          <property name="font">
+           <font>
+            <family>Yahei Mono</family>
+            <pointsize>14</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>100</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="ResultGroupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>340</y>
+      <width>191</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yahei Mono</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox 
+{
+	border:1px solid #0000EE;
+	border-radius:5px;
+	margin-top:1ex;
+}
+QGroupBox::title 
+{
+	subcontrol-origin: margin;
+	subcontrol-position: top center;
+	padding: 0 3px;
+}</string>
+    </property>
+    <property name="title">
+     <string>相机2</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="ResultGroupBox_5">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>340</y>
+      <width>191</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yahei Mono</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox 
+{
+	border:1px solid #0000EE;
+	border-radius:5px;
+	margin-top:1ex;
+}
+QGroupBox::title 
+{
+	subcontrol-origin: margin;
+	subcontrol-position: top center;
+	padding: 0 3px;
+}</string>
+    </property>
+    <property name="title">
+     <string>相机3</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
@@ -1063,9 +973,9 @@ QPushButton:pressed
    <property name="geometry">
     <rect>
      <x>680</x>
-     <y>320</y>
+     <y>340</y>
      <width>331</width>
-     <height>131</height>
+     <height>331</height>
     </rect>
    </property>
    <property name="font">
@@ -1092,7 +1002,7 @@ QGroupBox::title
 }</string>
    </property>
    <property name="title">
-    <string>光源控制</string>
+    <string>连接状态</string>
    </property>
    <property name="flat">
     <bool>false</bool>
