@@ -19,13 +19,13 @@ MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::MainWidget)
 {
     ui->setupUi(this);
     // 初始化相机label控件指针数组
-    buf_cameralinkstatus_[0] = ui->linkstatus1;
-    buf_cameralinkstatus_[1] = ui->linkstatus2;
-    buf_cameralinkstatus_[2] = ui->linkstatus3;
-    for(qint32 i = 0; i < CAMERA_NUM; i++)
-    {
-        buf_cameralinkstatus_[i]->setText(QString("相机%1:").arg(i+1) + tr("<font color=red>%1</font>").arg("未连接"));
-    }
+    buf_cameralinkstatus_[0] = ui->Label1_15;
+    buf_cameralinkstatus_[1] = ui->Label1_16;
+//    buf_cameralinkstatus_[2] = ui->linkstatus3;
+//    for(qint32 i = 0; i < CAMERA_NUM; i++)
+//    {
+//        //buf_cameralinkstatus_[i]->setText(QString("相机%1:").arg(i+1) + tr("<font color=red>%1</font>").arg("未连接"));
+//    }
     // 纽扣检测结果结构体初始化
     for(qint32 i = 0; i < CAMERA_NUM; i++)
     {
@@ -35,29 +35,23 @@ MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::MainWidget)
         buf_buttoncheckresult_[i].pass_rate = 0.00f;
         buf_buttoncheckresult_[i].fps_rate = 0.00f;
     }
-    buf_buttoncheckresult_[0].plable_image_ = ui->image1;
-    buf_buttoncheckresult_[0].plable_resulticon_ = ui->checkresult1;
-//    buf_buttoncheckresult_[0].plable_totalnum = ui->TotalNumLabel1;
-//    buf_buttoncheckresult_[0].plable_rightnum = ui->RightNumLabel1;
-//    buf_buttoncheckresult_[0].plable_wrongnum = ui->WrongNumLabel1;
-//    buf_buttoncheckresult_[0].plable_passrate = ui->PassRateLabel1;
-//    buf_buttoncheckresult_[0].plable_fpsrate = ui->FpsRateLabel1;
+    buf_buttoncheckresult_[0].plable_image_ = ui->Label1_Image1;
+    buf_buttoncheckresult_[0].plable_resulticon_ = ui->Label1_ResIcon1;
+    buf_buttoncheckresult_[0].plable_rightnum = ui->Label1_zps1;
+    buf_buttoncheckresult_[0].plable_wrongnum = ui->Label1_cps1;
+    buf_buttoncheckresult_[0].plable_passrate = ui->Label1_zpl1;
 
-    buf_buttoncheckresult_[1].plable_image_ = ui->image2;
-    buf_buttoncheckresult_[1].plable_resulticon_ = ui->checkresult2;
-//    buf_buttoncheckresult_[1].plable_totalnum = ui->TotalNumLabel2;
-//    buf_buttoncheckresult_[1].plable_rightnum = ui->RightNumLabel2;
-//    buf_buttoncheckresult_[1].plable_wrongnum = ui->WrongNumLabel2;
-//    buf_buttoncheckresult_[1].plable_passrate = ui->PassRateLabel2;
-//    buf_buttoncheckresult_[1].plable_fpsrate = ui->FpsRateLabel2;
+    buf_buttoncheckresult_[1].plable_image_ = ui->Label1_Image2;
+    buf_buttoncheckresult_[1].plable_resulticon_ = ui->Label1_ResIcon2;
+    buf_buttoncheckresult_[1].plable_rightnum = ui->Label1_zps2;
+    buf_buttoncheckresult_[1].plable_wrongnum = ui->Label1_cps2;
+    buf_buttoncheckresult_[1].plable_passrate = ui->Label1_zpl2;
 
-    buf_buttoncheckresult_[2].plable_image_ = ui->image3;
-    buf_buttoncheckresult_[2].plable_resulticon_ = ui->checkresult3;
-//    buf_buttoncheckresult_[2].plable_totalnum = ui->TotalNumLabel3;
-//    buf_buttoncheckresult_[2].plable_rightnum = ui->RightNumLabel3;
-//    buf_buttoncheckresult_[2].plable_wrongnum = ui->WrongNumLabel3;
-//    buf_buttoncheckresult_[2].plable_passrate = ui->PassRateLabel3;
-//    buf_buttoncheckresult_[2].plable_fpsrate = ui->FpsRateLabel3;
+    buf_buttoncheckresult_[2].plable_image_ = ui->Label1_Image3;
+    buf_buttoncheckresult_[2].plable_resulticon_ = ui->Label1_ResIcon3;
+    buf_buttoncheckresult_[2].plable_rightnum = ui->Label1_zps3;
+    buf_buttoncheckresult_[2].plable_wrongnum = ui->Label1_cps3;
+    buf_buttoncheckresult_[2].plable_passrate = ui->Label1_zpl3;
 
     // 检测结果TableWidget控件初始化
     /*
@@ -72,15 +66,13 @@ MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::MainWidget)
     // 设置表头字体
     ui->ResultTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section{font:16pt 'Yahei Mono'}");
     ui->ResultTableWidget->verticalHeader()->setStyleSheet("QHeaderView::section{font:16pt 'Yahei Mono'}");
-
     ui->ResultTableWidget->setItem(0, 0, new QTableWidgetItem(QString("888")));
-
     ui->ResultTableWidget->itemAt(1, 0)->setText(QString("589"));
     ui->ResultTableWidget->itemAt(1, 1)->setText(QString::number(20));
     ui->ResultTableWidget->itemAt(2, 2)->setText(QString::number(30));
     ui->ResultTableWidget->itemAt(1, 3)->setText(QString::number(0.569f, 'f', 2));
-
-    ui->ResultTableWidget->show();*/
+    ui->ResultTableWidget->show();
+    */
 }
 
 MainForm::~MainForm()
@@ -114,32 +106,41 @@ void MainForm::customEvent(QEvent* event)
     MainFormEvent* customevent = static_cast<MainFormEvent*>(event);
     switch (customevent->eventtype_)
     {
-        // 处理相机连接状态
+        // 相机连接状态
         case MainFormEvent::EventType_CarmeraLinkStatus:
         {
             if((customevent->cameraid_ >=0 ) && (customevent->cameraid_ <= (CAMERA_NUM - 1)))
             {
-                if(!customevent->linkstatus_)
-                    buf_cameralinkstatus_[customevent->cameraid_]->setText(QString("相机%1:").arg(customevent->cameraid_+1) +\
-                                                                           QObject::tr("<font color=red>%1</font>").arg("未连接"));
+                if(customevent->linkstatus_)
+                    buf_cameralinkstatus_[customevent->cameraid_]->setText(QString("已连接"));
                 else
-                    buf_cameralinkstatus_[customevent->cameraid_]->setText(QString("相机%1:").arg(customevent->cameraid_+1) +\
-                                                                           QObject::tr("<font color=green>%1</font>").arg("已连接"));
+                    buf_cameralinkstatus_[customevent->cameraid_]->setText(QString("未连接"));
             }
             break;
         }
+        // 纽扣图像
+        case MainFormEvent::EventType_CarmeraButtonImage:
+        {
+            if((customevent->cameraid_ >=0 ) && (customevent->cameraid_ <= (CAMERA_NUM - 1)))
+            {
+                ButtonCheckResult* p_result = &buf_buttoncheckresult_[customevent->cameraid_];
+                //p_result->total_num++;
+                // 显示检测图像
+                //image.setColorTable(vcolorTable);	//设置颜色表
+                uchar* p_image = (uchar*)(customevent->checkresult_packet_.data.data() + 12);
+                QImage image(p_image, 640, 480, 640*3, QImage::Format_RGB888);
+                QImage image_scaled = image.scaled(p_result->plable_image_->width(), p_result->plable_image_->height());
+                p_result->plable_image_->setPixmap(QPixmap::fromImage(image_scaled));
+            }
+            break;
+        }
+        // 检测结果
         case MainFormEvent::EventType_CarmeraCheckResult:
         {
             if((customevent->cameraid_ >=0 ) && (customevent->cameraid_ <= (CAMERA_NUM - 1)))
             {
                 ButtonCheckResult* p_result = &buf_buttoncheckresult_[customevent->cameraid_];
-                p_result->total_num++;
-                // 显示检测图像
-                //image.setColorTable(vcolorTable);	//设置颜色表
-                uchar* p_image = (uchar*)(customevent->checkresult_packet_.data.data() + 12);
-                QImage image(p_image, 128, 128, 128*3, QImage::Format_RGB888);
-                QImage image_scaled = image.scaled(p_result->plable_image_->width(), p_result->plable_image_->height());
-                p_result->plable_image_->setPixmap(QPixmap::fromImage(image_scaled));
+                p_result->total_num++;                
                 // 显示检测结果
                 qint32 check_result = customevent->checkresult_packet_.data.at(customevent->checkresult_packet_.data.size()-1);
                 if(check_result == 0)
@@ -159,13 +160,23 @@ void MainForm::customEvent(QEvent* event)
                 {
                     p_result->plable_resulticon_->setPixmap(QPixmap(":/icon/unknown_48px.png"));
                 }
-                // 更新检测结果QTableWidget
-                p_result->plable_totalnum->setText(QString("总数目:%1").arg(p_result->total_num));
-                p_result->plable_rightnum->setText(QString("合格数目:") + tr("<font color=green>%1</font>").arg(p_result->right_num));
-                p_result->plable_wrongnum->setText(QString("缺陷数目:") + tr("<font color=red>%1</font>").arg(p_result->wrong_num));
-                p_result->plable_passrate->setText(QString("合格率:") + QString::number(p_result->pass_rate, 'f', 2) + "%");
+                // 更新每个相机检测结果
+                p_result->plable_totalnum->setText(QString::number(p_result->total_num));
+                p_result->plable_rightnum->setText(tr("<font color=green>%1</font>").arg(p_result->right_num));
+                p_result->plable_wrongnum->setText(tr("<font color=red>%1</font>").arg(p_result->wrong_num));
+                p_result->plable_passrate->setText(QString::number(p_result->pass_rate, 'f', 2) + "%");
 
             }
+            // 更新总检测结果
+            qint32 totalrightnum = 0, totalwrongnum = 0;
+            for(qint32 i = 0; i < CAMERA_NUM; i++)
+            {
+                totalrightnum += buf_buttoncheckresult_[i].right_num;
+                totalwrongnum += buf_buttoncheckresult_[i].wrong_num;
+            }
+            ui->Label2_zzps->setText(QString::number(totalrightnum));
+            ui->Label2_zcps->setText(QString::number(totalwrongnum));
+            ui->Label2_zzpl->setText(QString::number(totalrightnum / (totalrightnum + totalwrongnum), 'f', 2) + "%");
             break;
         }
         default:
@@ -207,15 +218,15 @@ void MainForm::on_WorkStopButton_clicked()
 }
 void MainForm::on_FPSAdjustSlider_valueChanged(int value)
 {
-    ui->FPSLabel2->setText(QString("%1").arg(value));
-    // 发送帧率调节的命令
-    QJsonAnalysis json("{}", false);
-    json.set("width", 128);
-    json.set("height", 128);
-    json.set("bpp", 24);
-    json.set("format", 1);
-    json.set("period", (qint32)(1000 / value));
-    emit SignalNetSendPacket(MSG_NET_ALG_TEST_CONFIGURE, json.getJsonRawByte());
+//    ui->FPSLabel2->setText(QString("%1").arg(value));
+//    // 发送帧率调节的命令
+//    QJsonAnalysis json("{}", false);
+//    json.set("width", 128);
+//    json.set("height", 128);
+//    json.set("bpp", 24);
+//    json.set("format", 1);
+//    json.set("period", (qint32)(1000 / value));
+//    emit SignalNetSendPacket(MSG_NET_ALG_TEST_CONFIGURE, json.getJsonRawByte());
 }
 
 // [slot函数]程序关闭控件
@@ -249,7 +260,10 @@ void MainForm::on_pushButton_Statistics_clicked()
     }
 }
 
-//void MainForm::on_pushButton_Learn_clicked()
-//{
 
-//}
+void MainForm::on_Button1_gd1_clicked()
+{
+    LoadDialog* ld = new LoadDialog(this);
+    ld->show();
+    //ld->setParent(this);
+}

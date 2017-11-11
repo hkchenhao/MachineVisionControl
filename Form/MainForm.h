@@ -66,6 +66,8 @@ private slots:
 
     void on_pushButton_Learn_clicked();
 
+    void on_Button1_gd1_clicked();
+
 signals:
     void SignalDetectControl(bool isstart);    // 检测开始与暂停信号
     void SignalNetSendPacket(DataPacketEnum datapacket_type, QByteArray databyte = QByteArray());

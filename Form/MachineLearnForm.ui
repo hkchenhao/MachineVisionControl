@@ -16,11 +16,17 @@
   <widget class="QPushButton" name="pushButton_Esc">
    <property name="geometry">
     <rect>
-     <x>890</x>
-     <y>720</y>
-     <width>121</width>
-     <height>41</height>
+     <x>880</x>
+     <y>710</y>
+     <width>131</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
    </property>
    <property name="font">
     <font>
@@ -37,8 +43,8 @@
     <rect>
      <x>0</x>
      <y>50</y>
-     <width>811</width>
-     <height>651</height>
+     <width>1024</width>
+     <height>641</height>
     </rect>
    </property>
    <property name="font">
@@ -57,22 +63,22 @@
     <enum>QTabWidget::West</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
-   <widget class="QWidget" name="tab_2">
+   <widget class="QWidget" name="tab_1">
     <attribute name="title">
-     <string>基本信息</string>
+     <string>基本信息设置</string>
     </attribute>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>100</y>
+       <y>60</y>
        <width>581</width>
-       <height>531</height>
+       <height>471</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout" name="gridLayout1_1">
       <property name="topMargin">
        <number>0</number>
       </property>
@@ -82,217 +88,86 @@
       <property name="verticalSpacing">
        <number>20</number>
       </property>
-      <item row="0" column="3">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>80</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="2">
-       <widget class="QComboBox" name="comboBox_7">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lable1_6">
         <property name="font">
          <font>
           <family>Yahei Mono</family>
           <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
+        <property name="styleSheet">
+         <string notr="true"/>
         </property>
-        <item>
-         <property name="text">
-          <string>树脂</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>果实</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>贝壳</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>金属</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>玉石</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="5" column="2">
-       <widget class="QComboBox" name="comboBox_8">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
+        <property name="text">
+         <string>花  色：</string>
         </property>
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-         </font>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
-        <item>
-         <property name="text">
-          <string>纯色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>拼色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>花纹</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>字符</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>图案</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="5" column="4">
-       <widget class="QComboBox" name="comboBox_14">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-         </font>
-        </property>
-        <item>
-         <property name="text">
-          <string>纯色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>拼色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>花纹</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>字符</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>图案</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="6" column="2">
-       <widget class="QComboBox" name="comboBox_12">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-         </font>
-        </property>
-        <item>
-         <property name="text">
-          <string>白色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>红色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>橙色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>黄色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>绿色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>青色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>蓝色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>紫色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>黑色</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QComboBox" name="comboBox_11">
+       <widget class="QComboBox" name="box_xks_0">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QComboBox" name="box_tmx_0">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>透明</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>半透明</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>不透明</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QComboBox" name="box_xz_0">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -355,7 +230,7 @@
        </widget>
       </item>
       <item row="4" column="2">
-       <widget class="QComboBox" name="comboBox_10">
+       <widget class="QComboBox" name="box_hs_0">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -370,80 +245,49 @@
         </property>
         <item>
          <property name="text">
-          <string>透明</string>
+          <string>纯色</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>半透明</string>
+          <string>拼色</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>不透明</string>
+          <string>花纹</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>字符</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>图案</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="3" column="4">
-       <widget class="QComboBox" name="comboBox_16">
-        <property name="minimumSize">
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer1_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
          <size>
-          <width>0</width>
-          <height>40</height>
+          <width>60</width>
+          <height>20</height>
          </size>
         </property>
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-         </font>
-        </property>
-        <item>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>4</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="4" column="4">
-       <widget class="QComboBox" name="comboBox_17">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-         </font>
-        </property>
-        <item>
-         <property name="text">
-          <string>透明</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>半透明</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>不透明</string>
-         </property>
-        </item>
-       </widget>
+       </spacer>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="lable_9">
+       <widget class="QLabel" name="lable1_3">
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -456,52 +300,31 @@
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>尺  寸：</string>
+         <string>形  状：</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QLineEdit" name="lineEdit_2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer1_1">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-         </font>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
         </property>
-       </widget>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>80</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="lable_13">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>花  色：</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QComboBox" name="comboBox_13">
+      <item row="0" column="2">
+       <widget class="QComboBox" name="box_cz_0">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -550,34 +373,8 @@
         </item>
        </widget>
       </item>
-      <item row="3" column="2">
-       <widget class="QComboBox" name="comboBox_9">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-         </font>
-        </property>
-        <item>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>4</string>
-         </property>
-        </item>
-       </widget>
-      </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="lable_11">
+       <widget class="QLabel" name="lable1_5">
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -590,15 +387,15 @@
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>线孔数：</string>
+         <string>透明性：</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="2" column="4">
-       <widget class="QComboBox" name="comboBox_15">
+      <item row="0" column="4">
+       <widget class="QComboBox" name="box_cz_1">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -617,45 +414,79 @@
           <pointsize>18</pointsize>
          </font>
         </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
         <item>
          <property name="text">
-          <string>圆形</string>
+          <string>树脂</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>心形</string>
+          <string>果实</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>三角形</string>
+          <string>贝壳</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>方形</string>
+          <string>金属</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>五角形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>梅花形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>异形</string>
+          <string>玉石</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="lable_10">
+      <item row="4" column="4">
+       <widget class="QComboBox" name="box_hs_1">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>纯色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>拼色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>花纹</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>字符</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>图案</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="lable1_7">
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -668,15 +499,36 @@
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>形  状：</string>
+         <string>主  色：</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="6" column="4">
-       <widget class="QComboBox" name="comboBox_18">
+      <item row="2" column="0">
+       <widget class="QLabel" name="lable1_4">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>线孔数：</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="4">
+       <widget class="QComboBox" name="box_zs_1">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -736,55 +588,183 @@
         </item>
        </widget>
       </item>
-      <item row="0" column="1">
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+      <item row="1" column="4">
+       <widget class="QComboBox" name="box_xz_1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
+        <property name="minimumSize">
          <size>
-          <width>60</width>
-          <height>20</height>
+          <width>0</width>
+          <height>40</height>
          </size>
         </property>
-       </spacer>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="lable_14">
         <property name="font">
          <font>
           <family>Yahei Mono</family>
           <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
          </font>
         </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>主  色：</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
+        <item>
+         <property name="text">
+          <string>圆形</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>心形</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>三角形</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>方形</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>五角形</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>梅花形</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>异形</string>
+         </property>
+        </item>
        </widget>
       </item>
-      <item row="1" column="4">
-       <widget class="QLineEdit" name="lineEdit_3">
+      <item row="2" column="4">
+       <widget class="QComboBox" name="box_xks_1">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <family>Yahei Mono</family>
           <pointsize>18</pointsize>
          </font>
         </property>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QComboBox" name="box_zs_0">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>白色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>红色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>橙色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>黄色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>绿色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>青色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>蓝色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>紫色</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>黑色</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="4">
+       <widget class="QComboBox" name="box_tmx_1">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <item>
+         <property name="text">
+          <string>透明</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>半透明</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>不透明</string>
+         </property>
+        </item>
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="lable_8">
+       <widget class="QLabel" name="lable1_1">
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -800,12 +780,69 @@
          <string>材  质：</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="lable_12">
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>530</y>
+       <width>581</width>
+       <height>69</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout1_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="line_cc">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:2px groove gray;
+border-radius:10px;
+padding:2px 4px</string>
+        </property>
+        <property name="placeholderText">
+         <string>保留一位小数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lable1_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>146</width>
+          <height>40</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -818,26 +855,63 @@
          <string notr="true"/>
         </property>
         <property name="text">
-         <string>透明性：</string>
+         <string>尺  寸：</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="lable1_8">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>（mm）</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>60</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="tab_3">
+   <widget class="QWidget" name="tab_2">
     <attribute name="title">
-     <string>尺寸测量</string>
+     <string>尺寸测量设置</string>
     </attribute>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>100</x>
        <y>20</y>
-       <width>431</width>
+       <width>501</width>
        <height>361</height>
       </rect>
      </property>
@@ -848,296 +922,20 @@
       <string/>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>400</y>
-       <width>501</width>
+       <x>40</x>
+       <y>480</y>
+       <width>921</width>
        <height>131</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="1" column="0">
-       <widget class="QLabel" name="lable_26">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>线 孔 径 d0：</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="lable_27">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>线 孔 距  e：</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit"/>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_4"/>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_5"/>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="lable_25">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>外    径  d：</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="lable_31">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>(mm)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="lable_32">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>(mm)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="lable_33">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>(mm)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>530</y>
-       <width>557</width>
-       <height>107</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="0" column="5">
-       <widget class="QLabel" name="lable_34">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>(mm)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLabel" name="lable_35">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>+</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QLineEdit" name="lineEdit_7"/>
-      </item>
-      <item row="0" column="3">
-       <widget class="QLabel" name="lable_36">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>-</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="lable_29">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>线孔径偏差 d0：</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="lable_28">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>外径偏差  d：</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLineEdit" name="lineEdit_6"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="lable_30">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>线孔距偏差  e：</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item row="1" column="5">
        <widget class="QLabel" name="lable_37">
         <property name="font">
          <font>
@@ -1158,8 +956,172 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="8">
+       <widget class="QLineEdit" name="lineEdit_7">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lable_26">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string> 线 孔 径 (d0)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lable_27">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>线 孔 距 (e)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+        <property name="cursorMoveStyle">
+         <enum>Qt::LogicalMoveStyle</enum>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
       <item row="2" column="1">
-       <widget class="QLabel" name="lable_38">
+       <widget class="QLineEdit" name="lineEdit_5">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lable_25">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>外    径 (d)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="6">
+       <widget class="QLineEdit" name="lineEdit_9">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLabel" name="lable_35">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -1179,7 +1141,129 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="7">
+       <widget class="QLabel" name="lable_36">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>-</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="3">
+       <widget class="QLabel" name="lable_43">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>偏 差</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="QLineEdit" name="lineEdit_6">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLabel" name="lable_44">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>偏 差</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <widget class="QLineEdit" name="lineEdit_8">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="lable_28">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>偏 差</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="7">
        <widget class="QLabel" name="lable_40">
         <property name="font">
          <font>
@@ -1200,8 +1284,29 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
-       <widget class="QLabel" name="lable_39">
+      <item row="2" column="5">
+       <widget class="QLabel" name="lable_38">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <widget class="QLabel" name="lable_41">
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -1221,65 +1326,120 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="5">
-       <widget class="QLabel" name="lable_41">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
+      <item row="0" column="2">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true"/>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
         </property>
-        <property name="text">
-         <string>(mm)</string>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
+       </spacer>
+      </item>
+      <item row="2" column="8">
+       <widget class="QLineEdit" name="lineEdit_11">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>30</height>
+         </size>
         </property>
        </widget>
       </item>
-      <item row="2" column="5">
-       <widget class="QLabel" name="lable_42">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
+      <item row="1" column="8">
+       <widget class="QLineEdit" name="lineEdit_10">
+        <property name="enabled">
+         <bool>true</bool>
         </property>
-        <property name="styleSheet">
-         <string notr="true"/>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="text">
-         <string>(mm)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>30</height>
+         </size>
         </property>
        </widget>
+      </item>
+      <item row="0" column="4">
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
+    <widget class="QLabel" name="lable_39">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>380</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yahei Mono</family>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>单位：mm</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="title">
+     <string>控制参数设置</string>
+    </attribute>
    </widget>
    <widget class="QWidget" name="tab_4">
     <attribute name="title">
-     <string>控制参数</string>
-    </attribute>
-   </widget>
-   <widget class="QWidget" name="tab_5">
-    <attribute name="title">
-     <string>检测方法</string>
+     <string>检测方法设置</string>
     </attribute>
     <widget class="QGroupBox" name="LightGroupBox_1">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>30</y>
+       <x>150</x>
+       <y>10</y>
        <width>531</width>
        <height>211</height>
       </rect>
@@ -1325,11 +1485,11 @@ QGroupBox::title
         <height>151</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_2">
+      <layout class="QGridLayout" name="gridLayout_2" columnstretch="2,1">
        <property name="spacing">
         <number>0</number>
        </property>
-       <item row="0" column="2">
+       <item row="0" column="1">
         <widget class="QCheckBox" name="checkBox">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1364,8 +1524,85 @@ QCheckBox::indicator {
          </property>
         </widget>
        </item>
-       <item row="1" column="2">
+       <item row="2" column="0">
+        <widget class="QLabel" name="lable_17">
+         <property name="font">
+          <font>
+           <family>Yahei Mono</family>
+           <pointsize>18</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>堵 孔</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lable_15">
+         <property name="font">
+          <font>
+           <family>Yahei Mono</family>
+           <pointsize>18</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>材 质</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
         <widget class="QCheckBox" name="checkBox_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QCheckBox {
+    spacing: 0px;
+}
+
+QCheckBox::indicator {
+    width: 25px;
+    height: 25px;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="checkBox_3">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -1420,107 +1657,14 @@ QCheckBox::indicator {
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="lable_15">
-         <property name="font">
-          <font>
-           <family>Yahei Mono</family>
-           <pointsize>18</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>材 质</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="lable_17">
-         <property name="font">
-          <font>
-           <family>Yahei Mono</family>
-           <pointsize>18</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>堵 孔</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QCheckBox" name="checkBox_3">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QCheckBox {
-    spacing: 0px;
-}
-
-QCheckBox::indicator {
-    width: 25px;
-    height: 25px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
       </layout>
      </widget>
     </widget>
     <widget class="QGroupBox" name="LightGroupBox_2">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>260</y>
+       <x>150</x>
+       <y>240</y>
        <width>531</width>
        <height>391</height>
       </rect>
@@ -1566,137 +1710,11 @@ QGroupBox::title
         <height>341</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_3">
+      <layout class="QGridLayout" name="gridLayout_3" columnstretch="2,1">
        <property name="spacing">
         <number>0</number>
        </property>
-       <item row="2" column="2">
-        <widget class="QCheckBox" name="checkBox_8">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QCheckBox {
-    spacing: 0px;
-}
-
-QCheckBox::indicator {
-    width: 25px;
-    height: 25px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QCheckBox" name="checkBox_7">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QCheckBox {
-    spacing: 0px;
-}
-
-QCheckBox::indicator {
-    width: 25px;
-    height: 25px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="2">
-        <widget class="QCheckBox" name="checkBox_6">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QCheckBox {
-    spacing: 0px;
-}
-
-QCheckBox::indicator {
-    width: 25px;
-    height: 25px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>16</width>
-           <height>16</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="lable_20">
-         <property name="font">
-          <font>
-           <family>Yahei Mono</family>
-           <pointsize>18</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>复合缺陷</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2">
+       <item row="5" column="1">
         <widget class="QCheckBox" name="checkBox_11">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1752,23 +1770,49 @@ QCheckBox::indicator {
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+       <item row="5" column="0">
+        <widget class="QLabel" name="lable_24">
+         <property name="font">
+          <font>
+           <family>Yahei Mono</family>
+           <pointsize>18</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
          </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
+         <property name="text">
+          <string>裂 纹</string>
          </property>
-        </spacer>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
        </item>
-       <item row="4" column="2">
+       <item row="4" column="0">
+        <widget class="QLabel" name="lable_23">
+         <property name="font">
+          <font>
+           <family>Yahei Mono</family>
+           <pointsize>18</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>瑕 疵</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
         <widget class="QCheckBox" name="checkBox_9">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1803,7 +1847,63 @@ QCheckBox::indicator {
          </property>
         </widget>
        </item>
-       <item row="1" column="2">
+       <item row="3" column="1">
+        <widget class="QCheckBox" name="checkBox_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QCheckBox {
+    spacing: 0px;
+}
+
+QCheckBox::indicator {
+    width: 25px;
+    height: 25px;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lable_21">
+         <property name="font">
+          <font>
+           <family>Yahei Mono</family>
+           <pointsize>18</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>不均匀</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
         <widget class="QCheckBox" name="checkBox_5">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1838,49 +1938,7 @@ QCheckBox::indicator {
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="lable_18">
-         <property name="font">
-          <font>
-           <family>Yahei Mono</family>
-           <pointsize>18</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>出漆/漏漆</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="lable_21">
-         <property name="font">
-          <font>
-           <family>Yahei Mono</family>
-           <pointsize>18</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>不均匀</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
+       <item row="0" column="1">
         <widget class="QCheckBox" name="checkBox_4">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1915,8 +1973,8 @@ QCheckBox::indicator {
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="lable_23">
+       <item row="6" column="0">
+        <widget class="QLabel" name="lable_20">
          <property name="font">
           <font>
            <family>Yahei Mono</family>
@@ -1929,7 +1987,7 @@ QCheckBox::indicator {
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>瑕 疵</string>
+          <string>复合缺陷</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -1957,8 +2015,8 @@ QCheckBox::indicator {
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="lable_24">
+       <item row="1" column="0">
+        <widget class="QLabel" name="lable_18">
          <property name="font">
           <font>
            <family>Yahei Mono</family>
@@ -1971,10 +2029,80 @@ QCheckBox::indicator {
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>裂 纹</string>
+          <string>出漆/漏漆</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QCheckBox" name="checkBox_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QCheckBox {
+    spacing: 0px;
+}
+
+QCheckBox::indicator {
+    width: 25px;
+    height: 25px;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QCheckBox" name="checkBox_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QCheckBox {
+    spacing: 0px;
+}
+
+QCheckBox::indicator {
+    width: 25px;
+    height: 25px;
+}</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>16</width>
+           <height>16</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -1982,9 +2110,14 @@ QCheckBox::indicator {
      </widget>
     </widget>
    </widget>
+   <widget class="QWidget" name="tab_5">
+    <attribute name="title">
+     <string>算法配置设置</string>
+    </attribute>
+   </widget>
    <widget class="QWidget" name="tab_6">
     <attribute name="title">
-     <string>算法配置</string>
+     <string>页</string>
     </attribute>
    </widget>
    <widget class="QWidget" name="tab_7">
@@ -1997,20 +2130,27 @@ QCheckBox::indicator {
      <string>页</string>
     </attribute>
    </widget>
-   <widget class="QWidget" name="tab_9">
-    <attribute name="title">
-     <string>页</string>
-    </attribute>
-   </widget>
   </widget>
-  <widget class="QPushButton" name="pushButton_Esc_2">
+  <widget class="QPushButton" name="pushButton_Revise">
    <property name="geometry">
     <rect>
-     <x>750</x>
-     <y>720</y>
-     <width>121</width>
-     <height>41</height>
+     <x>730</x>
+     <y>710</y>
+     <width>141</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>30</width>
+     <height>0</height>
+    </size>
    </property>
    <property name="font">
     <font>
@@ -2019,7 +2159,7 @@ QCheckBox::indicator {
     </font>
    </property>
    <property name="text">
-    <string>保存</string>
+    <string>修改</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_AppTile">
@@ -2047,6 +2187,103 @@ QCheckBox::indicator {
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton_Save">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>710</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>30</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yahei Mono</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>保存</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>710</y>
+     <width>391</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lable_29">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yahei Mono</family>
+        <pointsize>18</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>状态信息：</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="lable_32">
+      <property name="font">
+       <font>
+        <family>Yahei Mono</family>
+        <pointsize>18</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>状态信息：</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <zorder>layoutWidget</zorder>
+  <zorder>tabWidget</zorder>
+  <zorder>label_AppTile</zorder>
+  <zorder>pushButton_Revise</zorder>
+  <zorder>pushButton_Esc</zorder>
+  <zorder>pushButton_Save</zorder>
  </widget>
  <resources/>
  <connections/>

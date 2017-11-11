@@ -1,6 +1,7 @@
 #include "StatisticalForm.h"
 #include "ui_StatisticalForm.h"
 #include "Mgr/FormFrame.h"
+#include "Utils/WidgetStyle.h"
 
 StatisticalForm::StatisticalForm(QWidget *parent) : QWidget(parent), ui(new Ui::StatisticalWidget)
 {

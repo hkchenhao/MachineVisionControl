@@ -67,10 +67,8 @@ NetThread::NetThread(qintptr socketDescriptor, QObject* parent) : QObject(parent
     // 信号与槽-TcpSocket-相同线程默认Qt::DirectConnection连接
     QObject::connect(net_socket_, &QTcpSocket::readyRead, this, &NetThread::GetNetPacket);
     QObject::connect(net_socket_, &QTcpSocket::disconnected, this, &NetThread::CloseNet);
-
     // 改变线程依附性
     this->moveToThread(net_thread_);
-
     // 开启线程
     net_thread_->start();
 }
@@ -94,9 +92,9 @@ void NetThread::StartNet()
     QCoreApplication::postEvent(FormFrame::GetInstance()->p_mainform_, mainformevent);
 
     // 让相机处于正常模式
-    QByteArray packet_data(1, 0x04);
-    DataFactory datafactory(MSG_NET_NORMAL, packet_data);
-    datafactory.SendDataPacketByNet(net_socket_);
+//    QByteArray packet_data(1, 0x04);
+//    DataFactory datafactory(MSG_NET_NORMAL, packet_data);
+//    datafactory.SendDataPacketByNet(net_socket_);
 
 //    QJsonAnalysis json("{}", false);
 //    json.set("width", 128);
@@ -131,27 +129,14 @@ void NetThread::CloseNet()
 // 通过网络发送数据包
 void NetThread::SendNetPacket(DataPacketEnum datapacket_type, const QByteArray& databyte)
 {
-    if(datapacket_type == MSG_NET_GET_VIDEO)
-    {
-//        QObject::connect(net_timer_, &QTimer::timeout, this, [this, datapacket_type, databyte]()
-//        {
-//            DataFactory datafactory(datapacket_type, databyte);
-//            datafactory.SendDataPacketByNet(net_socket_);
-//        });
-//        net_timer_->start(100);
-    }
-    else
-    {
-        DataFactory datafactory(datapacket_type, databyte);
-        datafactory.SendDataPacketByNet(net_socket_);
-    }
+    DataFactory datafactory(datapacket_type, databyte);
+    datafactory.SendDataPacketByNet(net_socket_);
 }
 
 // 读取数据包
 void NetThread::GetNetPacket()
 {
     /* 变量定义 */
-    // static qint32 preread_length = 0;                       // 已经读取的数据区长度（不能用static变量，会有问题）
     qint32 needed_length = 0;                                  // 还需要读取的数据区长度
     qint32 head_pos = 0, data_pos = 0;                         // 帧头起始位置与数据起始位置
     qint32* packet_ptr = nullptr;                              // 指向数据区的指针
@@ -203,21 +188,6 @@ void NetThread::GetNetPacket()
                     netpacket_preread_length_ = 0;
                     HandleNetPacket();
                 }
-
-                /*
-                // 读取socket数据
-                net_packet_.data.append(socket_data.data() + data_pos, socket_length - data_pos);
-                // 已经读取到的数据长度
-                netpacket_preread_length_ = socket_length - data_pos;
-                // 如果读取到的长度等于数据包长度就认为该帧读取完毕
-                if (netpacket_preread_length_ == (net_packet_.length - net_packet_.offset))
-                {
-                    //SystemFrame::GetInstance()->lock.unlock();
-                    is_netpacket_done_ = true;
-                    netpacket_preread_length_ = 0;
-                    HandleNetPacket();
-                }
-                */
             }
         }
     }
@@ -252,18 +222,13 @@ void NetThread::HandleNetPacket()
 { 
     switch ((DataPacketEnum)net_packet_.minid)
     {
-        case MSG_NET_RESULT:
-        case MSG_NET_TOTAL_CNT:
-        case MSG_ALG_RESULT:
-        case MSG_ALG_INFO:
-        case MSG_NET_ALG_IMAGE:
-        case MSG_NET_ALG_RESULT:
+        case MSG_NET_SAVE_VIDEO:
         {
 //            qDebug() << net_timecal_.elapsed() << "ms";
 //            net_timecal_.restart();
-            //qDebug() << "相机" << camera_id_ + 1 << "接收到图像数目:" << temp++;
+            qDebug() << "相机" << camera_id_ + 1 << "接收到图像数目:" << temp++;
             // 向UI线程投递检测结果事件
-            MainFormEvent* mainformevent = new MainFormEvent(MainFormEvent::EventType_CarmeraCheckResult, camera_id_);
+            MainFormEvent* mainformevent = new MainFormEvent(MainFormEvent::EventType_CarmeraButtonImage, camera_id_);
             mainformevent->checkresult_packet_ = net_packet_;
             QCoreApplication::postEvent(FormFrame::GetInstance()->p_mainform_, mainformevent);
             break;

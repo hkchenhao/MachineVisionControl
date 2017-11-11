@@ -30,6 +30,11 @@ LoadDialog::LoadDialog(QWidget* parent, Qt::WindowFlags f) : QDialog(parent, f)
     p_loadingText = new QLabel("正在连接中，请稍后......", this);
     p_loadingText->setGeometry(this->height(), 0, this->width() - this->height(), this->height());  // 相对于父节点的坐标范围（左上角为原点）
     p_loadingText->setAlignment(Qt::AlignCenter);
+
+    QTimer::singleShot(3000, this, [this]()
+    {
+        this->accept();
+    });
 }
 
 void LoadDialog::customEvent(QEvent* event)

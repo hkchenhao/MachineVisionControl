@@ -13,8 +13,9 @@ public:
     enum MainFormEventType
     {
         EventType_None= 0,
-        EventType_CarmeraCheckResult,
         EventType_CarmeraLinkStatus,
+        EventType_CarmeraButtonImage,
+        EventType_CarmeraCheckResult,
         EventType_ButtonSelectedResult,
     };
     MainFormEvent(MainFormEventType eventtype = EventType_None, CameraIdentifier cameraid = CameraIdentifier_None);
