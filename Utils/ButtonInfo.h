@@ -1,14 +1,16 @@
 #ifndef BUTTONINFO_H
 #define BUTTONINFO_H
+#include <QWidget>
 #include <QCoreApplication>
 #include <QVBoxLayout>
 #include <QEvent>
-#include <QString>
-#include <QSettings>
-#include <QWidget>
 #include <QLabel>
 #include <QImage>
 #include <QPixmap>
+#include <QFileInfo>
+#include <QString>
+
+class QJsonAnalysis;
 
 class ButtonInfo : public QWidget
 {
@@ -21,7 +23,7 @@ public:
     // 获取私有成员变量
     QLabel* GetButtonImagePtr() { return p_buttonImage; }
     QLabel* GetButtonNamePtr() { return p_buttonName; }
-    QSettings* GetButtonInfoPtr() { return p_buttonInfo; }
+    QJsonAnalysis* GetButtonInfoPtr() { return p_buttonInfo; }
 signals:
     // 图像被选中时发出信号
     void SignalCmd_ButtonImageSelected(ButtonInfo* p_buttoninfo);
@@ -29,12 +31,12 @@ private:
     // 配置label属性
     void ConfigButtonInfoWidget();
 private:
-    QString* p_configFilePath;   // 配置文件所在路径
-    QString* p_configFileName;   // 配置文件名称
-    QSettings* p_buttonInfo;     // 纽扣配置ini信息
-    QLabel* p_buttonImage;       // 纽扣图像Label
-    QLabel* p_buttonName;        // 纽扣名称Label
-    QVBoxLayout* p_layout;       // 纽扣Label布局
+    QString* p_configFilePath;      // 配置文件所在路径
+    QString* p_configFileName;      // 配置文件名称
+    QJsonAnalysis* p_buttonInfo;    // 纽扣配置json信息
+    QLabel* p_buttonImage;          // 纽扣图像Label
+    QLabel* p_buttonName;           // 纽扣名称Label
+    QVBoxLayout* p_layout;          // 纽扣Label布局
 };
 
 #endif

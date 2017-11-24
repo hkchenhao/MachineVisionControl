@@ -5,7 +5,6 @@
 #include <QWidget>
 #include <QDir>
 
-// 前置声明
 namespace Ui
 {
     class ButtonSelWidget;

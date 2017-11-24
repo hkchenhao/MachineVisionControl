@@ -1,8 +1,8 @@
 #include "ButtonInfo.h"
-#include <QDebug>
+#include "Utils/QJsonAnalysis.h"
 
 // 图像的类型格式
-const QString IMAGE_TYPE(".bmp");
+const QString IMAGE_TYPE(".jpg");
 
 ButtonInfo::ButtonInfo(const QString& filepath, const QString& filename, QWidget* parent) : QWidget(parent)
 {
@@ -11,7 +11,7 @@ ButtonInfo::ButtonInfo(const QString& filepath, const QString& filename, QWidget
     p_configFilePath = new QString(filepath);
     p_configFileName = new QString(filename);
     // 读取纽扣配置参数ini文件
-    p_buttonInfo = new QSettings(*p_configFilePath + *p_configFileName, QSettings::IniFormat, this);
+    p_buttonInfo = new QJsonAnalysis(*p_configFilePath + "/" + *p_configFileName + ".ini", true);
     // 初始化p_buttonImage、p_buttonName与p_layout
     p_layout = new QVBoxLayout;
     p_buttonImage = new QLabel;
@@ -34,8 +34,14 @@ void ButtonInfo::ConfigButtonInfoWidget()
     // 配置p_buttonImage
     p_buttonImage->setFixedSize(128, 128);
     p_buttonImage->setAlignment(Qt::AlignCenter);
-    QImage button_image(*p_configFilePath + p_buttonInfo->value("ImageName/image_front").toString().toUtf8() + IMAGE_TYPE);
-    p_buttonImage->setPixmap(QPixmap::fromImage(button_image));
+    // 判断纽扣图片是否存在
+    QString imagepath(*p_configFilePath + "/" + *p_configFileName + IMAGE_TYPE);
+    QFileInfo imagefileinfo(imagepath);
+    if(imagefileinfo.isFile())
+    {
+        QImage button_image(imagepath);
+        p_buttonImage->setPixmap(QPixmap::fromImage(button_image));
+    }
     // 配置p_buttonName
     QFont font;
     font.setPointSize(14);

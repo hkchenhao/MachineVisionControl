@@ -7,7 +7,8 @@
 QT       += core gui \
             gui \
             network \
-            charts
+            charts \
+            serialbus
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,8 +26,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 INSTALLS += target
-#target.path = /home/pi
-target.path = /home/debian
+target.path = /home/pi
+#target.path = /home/debian
+#target.path = /root
 
 SOURCES += \
     Form/MainForm.cpp \
@@ -47,7 +49,8 @@ SOURCES += \
     Data/DataPacket.cpp \
     Event/NotificationCenter.cpp \
     Form/StatisticalForm.cpp \
-    Form/MachineLearnForm.cpp
+    Form/MachineLearnForm.cpp \
+    Form/InfoCheckResForm.cpp
 
 HEADERS  += \
     Form/MainForm.h \
@@ -71,7 +74,8 @@ HEADERS  += \
     Event/FormEventEnum.h \
     Form/StatisticalForm.h \
     Form/MachineLearnForm.h \
-    Utils/WidgetStyle.h
+    Utils/WidgetStyle.h \
+    Form/InfoCheckResForm.h
 
 FORMS    += \
     Form/MainForm.ui \
@@ -79,7 +83,8 @@ FORMS    += \
     Form/StartForm.ui \
     Form/FrmInput.ui \
     Form/StatisticalForm.ui \
-    Form/MachineLearnForm.ui
+    Form/MachineLearnForm.ui \
+    Form/InfoCheckResForm.ui
 
 RESOURCES += \
     Res/Resource.qrc

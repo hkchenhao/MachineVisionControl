@@ -7,6 +7,7 @@
 #include "Form/ButtonSelForm.h"
 #include "Form/MachineLearnForm.h"
 #include "Form/StatisticalForm.h"
+#include "Form/InfoCheckResForm.h"
 #include "Mgr/FormFrame.h"
 #include "Mgr/SystemFrame.h"
 #include "Net/NetServer.h"
@@ -18,9 +19,12 @@
 MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::MainWidget)
 {
     ui->setupUi(this);
+    p_infochenckresform = new InfoCheckResForm(this);
+    p_infochenckresform->setVisible(false);
+    //p_infochenckresform->show();
     // 初始化相机label控件指针数组
-    buf_cameralinkstatus_[0] = ui->Label1_15;
-    buf_cameralinkstatus_[1] = ui->Label1_16;
+//    buf_cameralinkstatus_[0] = ui->Label1_15;
+//    buf_cameralinkstatus_[1] = ui->Label1_16;
 //    buf_cameralinkstatus_[2] = ui->linkstatus3;
 //    for(qint32 i = 0; i < CAMERA_NUM; i++)
 //    {
@@ -37,42 +41,23 @@ MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::MainWidget)
     }
     buf_buttoncheckresult_[0].plable_image_ = ui->Label1_Image1;
     buf_buttoncheckresult_[0].plable_resulticon_ = ui->Label1_ResIcon1;
-    buf_buttoncheckresult_[0].plable_rightnum = ui->Label1_zps1;
-    buf_buttoncheckresult_[0].plable_wrongnum = ui->Label1_cps1;
-    buf_buttoncheckresult_[0].plable_passrate = ui->Label1_zpl1;
+//    buf_buttoncheckresult_[0].plable_rightnum = ui->Label1_zps1;
+//    buf_buttoncheckresult_[0].plable_wrongnum = ui->Label1_cps1;
+//    buf_buttoncheckresult_[0].plable_passrate = ui->Label1_zpl1;
 
     buf_buttoncheckresult_[1].plable_image_ = ui->Label1_Image2;
     buf_buttoncheckresult_[1].plable_resulticon_ = ui->Label1_ResIcon2;
-    buf_buttoncheckresult_[1].plable_rightnum = ui->Label1_zps2;
-    buf_buttoncheckresult_[1].plable_wrongnum = ui->Label1_cps2;
-    buf_buttoncheckresult_[1].plable_passrate = ui->Label1_zpl2;
+//    buf_buttoncheckresult_[1].plable_rightnum = ui->Label1_zps2;
+//    buf_buttoncheckresult_[1].plable_wrongnum = ui->Label1_cps2;
+//    buf_buttoncheckresult_[1].plable_passrate = ui->Label1_zpl2;
 
     buf_buttoncheckresult_[2].plable_image_ = ui->Label1_Image3;
     buf_buttoncheckresult_[2].plable_resulticon_ = ui->Label1_ResIcon3;
-    buf_buttoncheckresult_[2].plable_rightnum = ui->Label1_zps3;
-    buf_buttoncheckresult_[2].plable_wrongnum = ui->Label1_cps3;
-    buf_buttoncheckresult_[2].plable_passrate = ui->Label1_zpl3;
+//    buf_buttoncheckresult_[2].plable_rightnum = ui->Label1_zps3;
+//    buf_buttoncheckresult_[2].plable_wrongnum = ui->Label1_cps3;
+//    buf_buttoncheckresult_[2].plable_passrate = ui->Label1_zpl3;
 
-    // 检测结果TableWidget控件初始化
-    /*
-    ui->ResultTableWidget->setFocusPolicy(Qt::NoFocus);                                     // 初始化时失去焦点
-    ui->ResultTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);              // 禁止编辑单元格 
-    ui->ResultTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);  // 自适应宽度
-    ui->ResultTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->ResultTableWidget->horizontalHeader()->setSectionsClickable(false);                 // 设置表头不可点击（默认点击后进行排序）
-    ui->ResultTableWidget->verticalHeader()->setSectionsClickable(false);
-    ui->ResultTableWidget->horizontalHeader()->setMinimumHeight(40);                        // 表头高度设置（水平-垂直）
-    ui->ResultTableWidget->verticalHeader()->setMinimumWidth(65);
-    // 设置表头字体
-    ui->ResultTableWidget->horizontalHeader()->setStyleSheet("QHeaderView::section{font:16pt 'Yahei Mono'}");
-    ui->ResultTableWidget->verticalHeader()->setStyleSheet("QHeaderView::section{font:16pt 'Yahei Mono'}");
-    ui->ResultTableWidget->setItem(0, 0, new QTableWidgetItem(QString("888")));
-    ui->ResultTableWidget->itemAt(1, 0)->setText(QString("589"));
-    ui->ResultTableWidget->itemAt(1, 1)->setText(QString::number(20));
-    ui->ResultTableWidget->itemAt(2, 2)->setText(QString::number(30));
-    ui->ResultTableWidget->itemAt(1, 3)->setText(QString::number(0.569f, 'f', 2));
-    ui->ResultTableWidget->show();
-    */
+
 }
 
 MainForm::~MainForm()
@@ -176,7 +161,7 @@ void MainForm::customEvent(QEvent* event)
             }
             ui->Label2_zzps->setText(QString::number(totalrightnum));
             ui->Label2_zcps->setText(QString::number(totalwrongnum));
-            ui->Label2_zzpl->setText(QString::number(totalrightnum / (totalrightnum + totalwrongnum), 'f', 2) + "%");
+            //ui->Label2_zzpl->setText(QString::number(totalrightnum / (totalrightnum + totalwrongnum), 'f', 2) + "%");
             break;
         }
         default:
@@ -216,8 +201,8 @@ void MainForm::on_WorkStopButton_clicked()
     ui->WorkStartButton->setStyleSheet("");
     ui->WorkStopButton->setEnabled(false);
 }
-void MainForm::on_FPSAdjustSlider_valueChanged(int value)
-{
+//void MainForm::on_FPSAdjustSlider_valueChanged(int value)
+//{
 //    ui->FPSLabel2->setText(QString("%1").arg(value));
 //    // 发送帧率调节的命令
 //    QJsonAnalysis json("{}", false);
@@ -227,7 +212,7 @@ void MainForm::on_FPSAdjustSlider_valueChanged(int value)
 //    json.set("format", 1);
 //    json.set("period", (qint32)(1000 / value));
 //    emit SignalNetSendPacket(MSG_NET_ALG_TEST_CONFIGURE, json.getJsonRawByte());
-}
+//}
 
 // [slot函数]程序关闭控件
 void MainForm::on_pushButton_AppClose_clicked()
@@ -261,9 +246,15 @@ void MainForm::on_pushButton_Statistics_clicked()
 }
 
 
-void MainForm::on_Button1_gd1_clicked()
+void MainForm::on_Button1_slxx_clicked()
 {
-    LoadDialog* ld = new LoadDialog(this);
-    ld->show();
-    //ld->setParent(this);
+//    LoadDialog* ld = new LoadDialog(this);
+//    ld->show();
+    if(p_infochenckresform->isVisible())
+        qDebug() << "is visible\r\n";
+    else
+    {
+        p_infochenckresform->setVisible(true);
+        qDebug() << "ok\r\n";
+    }
 }

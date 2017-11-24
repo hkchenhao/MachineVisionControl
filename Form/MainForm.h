@@ -11,8 +11,9 @@
 //尽量少直接包含其他的头文件，使用前置申明加快编译速度，减少后期维护的时间
 namespace Ui
 {
-    class MainWidget;       // .ui文件生成的类
+    class MainWidget;
 }
+class InfoCheckResForm;
 
 // 纽扣检测结果结构体
 struct ButtonCheckResult
@@ -53,20 +54,13 @@ private slots:
     /********** 自定义slot函数 **********/
 
     /********** 系统控件slot函数 **********/
-    // 纽扣选择组控件slot函数
-    void on_ButtonSelectButton_clicked();
-    // 检测控制组控件slot函数
-    void on_WorkStartButton_clicked();
+    void on_ButtonSelectButton_clicked();       // 纽扣选择组控件slot函数
+    void on_WorkStartButton_clicked();          // 检测控制组控件slot函数
     void on_WorkStopButton_clicked();
-    void on_FPSAdjustSlider_valueChanged(int value);
-    // 程序关闭控件slot函数
-    void on_pushButton_AppClose_clicked();
-    // 统计分析界面slot函数
-    void on_pushButton_Statistics_clicked();
-
+    void on_pushButton_AppClose_clicked();      // 程序关闭控件slot函数
+    void on_pushButton_Statistics_clicked();    // 统计分析界面slot函数
     void on_pushButton_Learn_clicked();
-
-    void on_Button1_gd1_clicked();
+    void on_Button1_slxx_clicked();
 
 signals:
     void SignalDetectControl(bool isstart);    // 检测开始与暂停信号
@@ -80,6 +74,8 @@ private:
     QLabel* buf_cameralinkstatus_[CAMERA_NUM];
     // 相机检测结果数组
     ButtonCheckResult buf_buttoncheckresult_[CAMERA_NUM];
+
+    InfoCheckResForm* p_infochenckresform;
 };
 
 #endif

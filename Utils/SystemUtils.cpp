@@ -31,5 +31,5 @@ qint32 SystemUtils::LittleToBigEndian(qint32 src)
 // 纽扣配置文件所在路径
 QString SystemUtils::GetPathForButtonConfigFile()
 {
-    return QCoreApplication::applicationDirPath() + QString("/Configs/");
+    return QCoreApplication::applicationDirPath() + QString("/ButtonJsonConfig/");
 }
