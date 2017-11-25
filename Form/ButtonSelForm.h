@@ -1,16 +1,50 @@
 #ifndef BUTTONSELFORM_H
 #define BUTTONSELFORM_H
 #include <QCoreApplication>
-#include <QVector>
+#include <QVBoxLayout>
 #include <QWidget>
+#include <QEvent>
 #include <QDir>
+#include <QFileInfo>
+#include <QLabel>
+#include <QImage>
+#include <QPixmap>
+#include <QVector>
+#include <QString>
+#include <QMap>
 
 namespace Ui
 {
     class ButtonSelWidget;
 }
-class ButtonInfo;
+class QJsonAnalysis;
 
+/* 纽扣配置Json信息类 */
+class ButtonJsonInfo : public QWidget
+{
+    Q_OBJECT
+public:
+    ButtonJsonInfo(const QString& filepath, const QString& filename, QWidget* parent = nullptr);
+    ~ButtonJsonInfo();
+    // 事件过滤器函数
+    bool eventFilter(QObject* watched, QEvent* event);
+    // 获取私有成员变量
+    QLabel* GetButtonImagePtr() { return p_buttonImage; }
+    QLabel* GetButtonNamePtr() { return p_buttonName; }
+    QJsonAnalysis* GetButtonInfoPtr() { return p_buttonInfo; }
+signals:
+    // 图像被选中时发出信号
+    void SignalCmd_ButtonImageSelected(ButtonJsonInfo* p_buttoninfo);
+private:
+    QString* p_configFilePath;      // 配置文件所在路径
+    QString* p_configFileName;      // 配置文件名称
+    QJsonAnalysis* p_buttonInfo;    // 纽扣配置json信息
+    QLabel* p_buttonImage;          // 纽扣图像Label
+    QLabel* p_buttonName;           // 纽扣名称Label
+    QVBoxLayout* p_layout;          // 纽扣Label布局
+};
+
+/* 纽扣选择界面类 */
 class ButtonSelForm : public QWidget
 {
     Q_OBJECT
@@ -20,11 +54,9 @@ class ButtonSelForm : public QWidget
         qint32 buttonImageCurrentPageNum;              // 纽扣信息区的当前页数指针
         qint32 buttonImageLastPageCount;               // 纽扣信息区最后一页图像数量指针
     } ButtonImagePageStruct;
-
 public:
     explicit ButtonSelForm(QWidget* parent = nullptr);
     ~ButtonSelForm();
-
 private:
     // 加载所有ini配置文件信息
     void LoadAllConfigFileInfo();
@@ -34,10 +66,9 @@ private:
     void InitButtonPageInfo();
     // 根据条件刷新纽扣信息区信息
     void UpdateButtonInfoLabel(bool isshow);
-
 private slots:
     // 自定义slot函数
-    void SetButtonSelectStaus(ButtonInfo* p_buttoninfo);
+    void SetButtonSelectStaus(ButtonJsonInfo* p_buttoninfo);
     // 控件slot函数
     void on_pushButton_NextPage_clicked();
     void on_pushButton_LastPage_clicked();
@@ -45,17 +76,16 @@ private slots:
     void on_pushButton_Clear_clicked();
     void on_pushButton_Esc_clicked();
     void on_pushButton_Enter_clicked();
-
 private:
     Ui::ButtonSelWidget* ui;                                // UI界面
-    QVector<ButtonInfo*> v_pButtonOriginalInfo;             // 所有纽扣widget指针数组
-    QVector<ButtonInfo*> v_pButtonSelectedInfo;             // 筛选纽扣widget指针数组
-    QVector<ButtonInfo*>* p_currentButtonInfoVector;
+    QVector<ButtonJsonInfo*> v_pButtonOriginalInfo;         // 所有纽扣widget指针数组
+    QVector<ButtonJsonInfo*> v_pButtonSelectedInfo;         // 筛选纽扣widget指针数组
+    QVector<ButtonJsonInfo*>* p_currentButtonInfoVector;
     ButtonImagePageStruct buttonOriginalPageInfo;           // 所有纽扣widget显示页数信息
     ButtonImagePageStruct buttonSelectedPageInfo;           // 筛选纽扣widget显示页数信息
     ButtonImagePageStruct* p_currentButtonPageInfoStruct;
-    ButtonInfo* p_currentSeletedButton;                     // 当前被选取的纽扣图像指针
-    ButtonInfo* p_lastSeletedButton;                        // 上一个被选取的纽扣图像指针
+    ButtonJsonInfo* p_currentSeletedButton;                 // 当前被选取的纽扣图像指针
+    ButtonJsonInfo* p_lastSeletedButton;                    // 上一个被选取的纽扣图像指针
     QString currentSeletedButtonName;                       // 当前被选取的纽扣ID
 };
 

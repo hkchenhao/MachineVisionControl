@@ -8,17 +8,83 @@
 #include "Utils/SystemUtils.h"
 #include <QDebug>
 
+const QString IMAGE_TYPE(".jpg");       // 纽扣图像的格式类型
 const qint32 PER_ROW_COUNT = 4;         // 每页显示的行数
 const qint32 PER_COLUMN_COUNT = 3;      // 每页显示的列数
 
-extern QPair<QString, qint32> ButtonMaterialList[];
-extern QPair<QString, qint32> ButtonShapeList[];
-extern QPair<QString, qint32> ButtonHoleNumList[];
-extern QPair<QString, qint32> ButtonLightList[];
-extern QPair<QString, qint32> ButtonPatternList[];
-extern QPair<QString, qint32> ButtonColorList[];
+/********** 纽扣配置Json信息类 **********/
+ButtonJsonInfo::ButtonJsonInfo(const QString& filepath, const QString& filename, QWidget* parent) : QWidget(parent)
+{
+    // 初始化配置文件所在路径与名称
+    p_configFilePath = new QString(filepath);
+    p_configFileName = new QString(filename);
+    // 读取纽扣配置参数json文件
+    p_buttonInfo = new QJsonAnalysis(*p_configFilePath + "/" + *p_configFileName + ".ini", true);
+    // 初始化p_buttonImage、p_buttonName与p_layout
+    p_layout = new QVBoxLayout;
+    p_buttonImage = new QLabel;
+    p_buttonName = new QLabel(p_configFileName->section('.', 0, 0));
+    p_buttonImage->installEventFilter(this);
+    p_buttonName->installEventFilter(this);
+    // 配置label布局与属性
+    p_buttonImage->setFixedSize(128, 128);
+    p_buttonImage->setAlignment(Qt::AlignCenter);
+    // 判断纽扣图片是否存在
+    QString imagepath(*p_configFilePath + "/" + *p_configFileName + IMAGE_TYPE);
+    QFileInfo imagefileinfo(imagepath);
+    if(imagefileinfo.isFile())
+    {
+        QImage button_image(imagepath);
+        p_buttonImage->setPixmap(QPixmap::fromImage(button_image));
+    }
+    else
+    {
+        QImage button_image(":/pic/button_48px.png");
+        p_buttonImage->setPixmap(QPixmap::fromImage(button_image));
+    }
+    // 配置p_buttonName
+    QFont font;
+    font.setPointSize(14);
+    font.setBold(false);
+    font.setWeight(16);
+    p_buttonName->setFont(font);
+    p_buttonName->setFixedSize(128, 16);
+    p_buttonName->setAlignment(Qt::AlignCenter);
+    // 配置Label布局
+    p_layout->setSpacing(5);
+    p_layout->addWidget(p_buttonImage);
+    p_layout->addWidget(p_buttonName);
+    // label加入到父对象
+    this->setLayout(p_layout);
+}
 
-// [构造函数与析构函数]
+ButtonJsonInfo::~ButtonJsonInfo()
+{
+    if(p_configFilePath) { delete p_configFilePath; }
+    if(p_configFileName) { delete p_configFileName; }
+    if(p_buttonInfo) { delete p_buttonInfo; }
+}
+
+// [虚函数覆盖]事件过滤器函数
+bool ButtonJsonInfo::eventFilter(QObject* watched, QEvent* event)
+{
+    // 处理buttonImage-Label的鼠标单击事件
+    if(watched == p_buttonImage)
+    {
+        if(event->type() == QEvent::MouseButtonPress)
+        {
+            emit SignalCmd_ButtonImageSelected(this);
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+        return QWidget::eventFilter(watched, event);
+}
+
+/*========================================================================================*/
+/********** 纽扣选择界面类 **********/
 ButtonSelForm::ButtonSelForm(QWidget* parent) : QWidget(parent), ui(new Ui::ButtonSelWidget)
 {
     ui->setupUi(this);
@@ -29,7 +95,7 @@ ButtonSelForm::ButtonSelForm(QWidget* parent) : QWidget(parent), ui(new Ui::Butt
 ButtonSelForm::~ButtonSelForm()
 {
     delete ui;
-    foreach (ButtonInfo* p_buttoninfo, v_pButtonOriginalInfo)
+    foreach (ButtonJsonInfo* p_buttoninfo, v_pButtonOriginalInfo)
         delete p_buttoninfo;
 }
 
@@ -54,8 +120,9 @@ void ButtonSelForm::LoadAllConfigFileInfo()
     {
         QString pathname(SystemUtils::GetPathForButtonConfigFile() + dirname_list.at(i));
         QString filename(dirname_list.at(i));
-        p_currentButtonInfoVector->push_back(new ButtonInfo(pathname, filename));
-        QObject::connect(p_currentButtonInfoVector->at(i), &ButtonInfo::SignalCmd_ButtonImageSelected, this, &ButtonSelForm::SetButtonSelectStaus);
+        p_currentButtonInfoVector->push_back(new ButtonJsonInfo(pathname, filename));
+        QObject::connect(p_currentButtonInfoVector->at(i), &ButtonJsonInfo::SignalCmd_ButtonImageSelected,
+                         this, &ButtonSelForm::SetButtonSelectStaus);
     }
     // 初始化上一个以及当前被选取的纽扣图像指针
     p_lastSeletedButton = nullptr;
@@ -79,7 +146,7 @@ void ButtonSelForm::ShowButtonImage()
         QWidget* currentwidget = ui->ButtonImageGridLayout->itemAt(0)->widget();
         ui->ButtonImageGridLayout->removeWidget(currentwidget);
         // 如果currentwidget不是ButtonInfo就释放掉
-        if(qobject_cast<ButtonInfo*>(currentwidget) == 0)
+        if(qobject_cast<ButtonJsonInfo*>(currentwidget) == 0)
             delete currentwidget;
         else
             currentwidget->setParent(nullptr);
@@ -139,11 +206,29 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
     if(isshow)
     {
         ui->ButtonImage->setPixmap(*p_currentSeletedButton->GetButtonImagePtr()->pixmap());
-//        auto m = p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/shape").toString().toUtf8();
-//        QString jsonparentstr("InfoFront.");
-//        qint32 id = ButtonMaterialList[p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "materialF")];
-//        ui->LabelInfo_XZ->setIndent(id);
-          //ui->LabelInfo_XZ->setText(p_currentSeletedButton->GetButtonInfoPtr());
+        QString jsonparentstr("infoFront.");
+        QMap<QString, qint32>::iterator it;
+        it = ButtonMaterialMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "materialF"));
+        if(it != ButtonMaterialMap.end())
+            ui->LabelInfo_CZ->setText(ButtonMaterialStrCnBuf[it.value()]);
+        it = ButtonShapeMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "shapeF"));
+        if(it != ButtonShapeMap.end())
+            ui->LabelInfo_XZ->setText(ButtonShapeStrCnBuf[it.value()]);
+        it = ButtonHoleNumMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "holeNumF"));
+        if(it != ButtonHoleNumMap.end())
+            ui->LabelInfo_XKS->setText(ButtonHoleNumStrCnBuf[it.value()]);
+        it = ButtonLightMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "lightF"));
+        if(it != ButtonLightMap.end())
+            ui->LabelInfo_TMX->setText(ButtonLightStrCnBuf[it.value()]);
+        it = ButtonPatternMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "patternF"));
+        if(it != ButtonPatternMap.end())
+            ui->LabelInfo_HS->setText(ButtonPatternStrCnBuf[it.value()]);
+        it = ButtonColorMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "colorF"));
+        if(it != ButtonColorMap.end())
+            ui->LabelInfo_ZS->setText(ButtonColorStrCnBuf[it.value()]);
+
+        ui->LabelInfo_CC->setText(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "sizeF"));
+
 //        ui->LabelInfo_XZ->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/shape").toString().toUtf8());
 //        ui->LabelInfo_XKS->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/hole").toString().toUtf8());
 //        ui->LabelInfo_YS->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/color").toString().toUtf8());
@@ -154,18 +239,18 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
     }
     else
     {
+        ui->LabelInfo_CZ->setText("无");
         ui->LabelInfo_XZ->setText("无");
         ui->LabelInfo_XKS->setText("0");
-        ui->LabelInfo_YS->setText("无");
-        ui->LabelInfo_ZF->setText("无");
-        ui->LabelInfo_HW->setText("无");
         ui->LabelInfo_TMX->setText("无");
-        ui->LabelInfo_CZ->setText("无");
+        ui->LabelInfo_HS->setText("无");
+        ui->LabelInfo_ZS->setText("无");
+        ui->LabelInfo_CC->setText("0.0");
     }
 }
 
 // [slot函数]选中某个图片后触发
-void ButtonSelForm::SetButtonSelectStaus(ButtonInfo* p_buttoninfo)
+void ButtonSelForm::SetButtonSelectStaus(ButtonJsonInfo* p_buttoninfo)
 {
     // 添加选中边框
     p_currentSeletedButton = p_buttoninfo;
@@ -241,14 +326,14 @@ void ButtonSelForm::on_pushButton_Find_clicked()
     p_currentButtonInfoVector->resize(0);
     p_currentButtonPageInfoStruct = &buttonSelectedPageInfo;
     // 首先根据纽扣ID号查询
-    QString button_id = ui->lineEdit_ButtonID->text();
-    foreach (ButtonInfo* p_buttoninfo, v_pButtonOriginalInfo)
-    {
+//    QString button_id = ui->lineEdit_ButtonID->text();
+//    foreach (ButtonJsonInfo* p_buttoninfo, v_pButtonOriginalInfo)
+//    {
 //        if(p_buttoninfo->GetButtonInfoPtr()->value("BaseInfoFront/id").toString().contains(button_id, Qt::CaseInsensitive))
 //        {
 //            p_currentButtonInfoVector->push_back(p_buttoninfo);
 //        }
-    }
+//    }
     // 显示查询结果
     InitButtonPageInfo();
     ShowButtonImage();

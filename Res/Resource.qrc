@@ -9,5 +9,6 @@
         <file>pic/background.jpg</file>
         <file>icon/unknown_48px.png</file>
         <file>pic/buttonsize.png</file>
+        <file>pic/button_48px.png</file>
     </qresource>
 </RCC>

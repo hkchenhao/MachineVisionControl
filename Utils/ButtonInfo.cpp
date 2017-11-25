@@ -1,78 +1,21 @@
 #include "ButtonInfo.h"
-#include "Utils/QJsonAnalysis.h"
 
-// 图像的类型格式
-const QString IMAGE_TYPE(".jpg");
-
-ButtonInfo::ButtonInfo(const QString& filepath, const QString& filename, QWidget* parent) : QWidget(parent)
-{
-    // 注意 ini文件要以UTF8-BOM编码方式保存
-    // 初始化配置文件所在路径与名称
-    p_configFilePath = new QString(filepath);
-    p_configFileName = new QString(filename);
-    // 读取纽扣配置参数ini文件
-    p_buttonInfo = new QJsonAnalysis(*p_configFilePath + "/" + *p_configFileName + ".ini", true);
-    // 初始化p_buttonImage、p_buttonName与p_layout
-    p_layout = new QVBoxLayout;
-    p_buttonImage = new QLabel;
-    p_buttonName = new QLabel(p_configFileName->section('.', 0, 0));
-    p_buttonImage->installEventFilter(this);
-    p_buttonName->installEventFilter(this);
-    // 配置label布局与属性
-    ConfigButtonInfoWidget();
-}
-
-ButtonInfo::~ButtonInfo()
-{
-    if(p_configFilePath) { delete p_configFilePath; }
-    if(p_configFileName) { delete p_configFileName; }
-}
-
-// 配置label属性
-void ButtonInfo::ConfigButtonInfoWidget()
-{
-    // 配置p_buttonImage
-    p_buttonImage->setFixedSize(128, 128);
-    p_buttonImage->setAlignment(Qt::AlignCenter);
-    // 判断纽扣图片是否存在
-    QString imagepath(*p_configFilePath + "/" + *p_configFileName + IMAGE_TYPE);
-    QFileInfo imagefileinfo(imagepath);
-    if(imagefileinfo.isFile())
-    {
-        QImage button_image(imagepath);
-        p_buttonImage->setPixmap(QPixmap::fromImage(button_image));
-    }
-    // 配置p_buttonName
-    QFont font;
-    font.setPointSize(14);
-    font.setBold(false);
-    font.setWeight(16);
-    p_buttonName->setFont(font);
-    p_buttonName->setFixedSize(128, 16);
-    p_buttonName->setAlignment(Qt::AlignCenter);
-    // 配置Label布局
-    p_layout->setSpacing(5);
-    p_layout->addWidget(p_buttonImage);
-    p_layout->addWidget(p_buttonName);
-    this->setLayout(p_layout);  // label加入到父对象
-}
-
-// [虚函数覆盖]事件过滤器函数
-bool ButtonInfo::eventFilter(QObject* watched, QEvent* event)
-{
-    // 处理buttonImage-Label的鼠标单击事件
-    if(watched == p_buttonImage)
-    {
-        if(event->type() == QEvent::MouseButtonPress)
-        {
-            emit SignalCmd_ButtonImageSelected(this);
-            return true;
-        }
-        else
-            return false;
-    }
-    else
-    {
-        return QWidget::eventFilter(watched, event);
-    }
-}
+// 基本信息选择列表（材质-形状-线孔数-透明性-花色-主色）
+QString ButtonMaterialStrEnBuf[] = {"resin", "fruit", "shell", "metal", "jade"};
+QString ButtonMaterialStrCnBuf[] = {"树脂", "果实", "贝壳", "金属", "玉石"};
+QString ButtonShapeStrEnBuf[] = {"circle", "heart", "triangle", "square", "pentagon", "quincunx", "other"};
+QString ButtonShapeStrCnBuf[] = {"圆形", "心形", "三角形", "方形", "五角形", "梅花形", "异形"};
+QString ButtonHoleNumStrEnBuf[] = {"2", "4"};
+QString ButtonHoleNumStrCnBuf[] = {"2", "4"};
+QString ButtonLightStrEnBuf[] = {"transparent", "semiTransparent", "none"};
+QString ButtonLightStrCnBuf[] = {"透明", "半透明", "不透明"};
+QString ButtonPatternStrEnBuf[] = {"solidColor", "multiColor", "texture", "character", "picture"};
+QString ButtonPatternStrCnBuf[] = {"纯色", "拼色", "花纹", "字符", "图案"};
+QString ButtonColorStrEnBuf[] = {"white", "red", "orange", "yellow", "green", "cyan", "blue", "purple", "black"};
+QString ButtonColorStrCnBuf[] = {"白色", "红色", "橙色", "黄色", "绿色", "青色", "蓝色", "紫色", "黑色"};
+QMap<QString, qint32> ButtonMaterialMap = {{"resin",0}, {"fruit",1}, {"shell",2}, {"metal",3}, {"jade",4}};
+QMap<QString, qint32> ButtonShapeMap = {{"circle",0}, {"heart",1}, {"triangle",2}, {"square",3}, {"pentagon",4}, {"quincunx",5}, {"other",6}};
+QMap<QString, qint32> ButtonHoleNumMap = {{"2",0}, {"4",1}};
+QMap<QString, qint32> ButtonLightMap = {{"transparent",0}, {"semiTransparent",1}, {"none",2}};
+QMap<QString, qint32> ButtonPatternMap = {{"solidColor",0}, {"multiColor",1}, {"texture",2}, {"character",3}, {"picture",4}};
+QMap<QString, qint32> ButtonColorMap = {{"white",0}, {"red",1}, {"orange",2}, {"yellow",3}, {"green",4}, {"cyan",5}, {"blue",6}, {"purple",7}, {"black",8}};

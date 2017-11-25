@@ -1,16 +1,9 @@
 #include "MachineLearnForm.h"
 #include "ui_MachineLearnForm.h"
 #include "Mgr/FormFrame.h"
+#include "Utils/ButtonInfo.h"
 #include "Utils/WidgetStyle.h"
 #include "Utils/QJsonAnalysis.h"
-
-// 基本信息选择列表（材质-形状-线孔数-透明性-花色-主色）
-QPair<QString, qint32> ButtonMaterialList[] = {{"resin",0}, {"fruit",1}, {"shell",2}, {"metal",3}, {"jade",4}};
-QPair<QString, qint32> ButtonShapeList[] = {{"circle",0}, {"heart",1}, {"triangle",2}, {"square",3}, {"pentagon",4}, {"quincunx",5}, {"other",6}};
-QPair<QString, qint32> ButtonHoleNumList[] = {{"2",0}, {"4",1}};
-QPair<QString, qint32> ButtonLightList[] = {{"transparent",0}, {"semiTransparent",1}, {"none",2}};
-QPair<QString, qint32> ButtonPatternList[] = {{"solidColor",0}, {"multiColor",1}, {"texture",2}, {"character",3}, {"picture",4}};
-QPair<QString, qint32> ButtonColorList[] = {{"white",0}, {"red",1}, {"orange",2}, {"yellow",3}, {"green",4}, {"cyan",5}, {"blue",6}, {"purple",7}, {"black",8}};
 
 MachineLearnForm::MachineLearnForm(QWidget *parent) : QWidget(parent), ui(new Ui::MachineLearnWidget)
 {
@@ -33,23 +26,23 @@ void MachineLearnForm::on_pushButton_Save_clicked()
     // JSON时间信息
     infojson.set("time", QDate::currentDate().toString("yyyy-MM-dd"));
     // JSON纽扣正面基本信息
-    jsonparentstr = "InfoFront.";
-    infojson.set(jsonparentstr+"materialF", ButtonMaterialList[ui->box_cz_0->currentIndex()].first);
+    jsonparentstr = "infoFront.";
+    infojson.set(jsonparentstr+"materialF", ButtonMaterialStrEnBuf[ui->box_cz_0->currentIndex()]);
     infojson.set(jsonparentstr+"sizeF", ui->line_cc->text());
-    infojson.set(jsonparentstr+"shapeF", ButtonShapeList[ui->box_xz_0->currentIndex()].first);
-    infojson.set(jsonparentstr+"holeNumF", ButtonHoleNumList[ui->box_xks_0->currentIndex()].first);
-    infojson.set(jsonparentstr+"lightF", ButtonLightList[ui->box_tmx_0->currentIndex()].first);
-    infojson.set(jsonparentstr+"patternF", ButtonPatternList[ui->box_hs_0->currentIndex()].first);
-    infojson.set(jsonparentstr+"colorF", ButtonColorList[ui->box_zs_0->currentIndex()].first);
+    infojson.set(jsonparentstr+"shapeF", ButtonShapeStrEnBuf[ui->box_xz_0->currentIndex()]);
+    infojson.set(jsonparentstr+"holeNumF", ButtonHoleNumStrEnBuf[ui->box_xks_0->currentIndex()]);
+    infojson.set(jsonparentstr+"lightF", ButtonLightStrEnBuf[ui->box_tmx_0->currentIndex()]);
+    infojson.set(jsonparentstr+"patternF", ButtonPatternStrEnBuf[ui->box_hs_0->currentIndex()]);
+    infojson.set(jsonparentstr+"colorF", ButtonColorStrEnBuf[ui->box_zs_0->currentIndex()]);
     // JSON纽扣反面基本信息
-    jsonparentstr = "InfoBack.";
-    infojson.set(jsonparentstr+"materialB", ButtonMaterialList[ui->box_cz_1->currentIndex()].first);
+    jsonparentstr = "infoBack.";
+    infojson.set(jsonparentstr+"materialB", ButtonMaterialStrEnBuf[ui->box_cz_1->currentIndex()]);
     infojson.set(jsonparentstr+"sizeB", ui->line_cc->text());
-    infojson.set(jsonparentstr+"shapeB", ButtonShapeList[ui->box_xz_1->currentIndex()].first);
-    infojson.set(jsonparentstr+"holeNumB", ButtonHoleNumList[ui->box_xks_1->currentIndex()].first);
-    infojson.set(jsonparentstr+"lightB", ButtonLightList[ui->box_tmx_1->currentIndex()].first);
-    infojson.set(jsonparentstr+"patternB", ButtonPatternList[ui->box_hs_1->currentIndex()].first);
-    infojson.set(jsonparentstr+"colorB", ButtonColorList[ui->box_zs_1->currentIndex()].first);
+    infojson.set(jsonparentstr+"shapeB", ButtonShapeStrEnBuf[ui->box_xz_1->currentIndex()]);
+    infojson.set(jsonparentstr+"holeNumB", ButtonHoleNumStrEnBuf[ui->box_xks_1->currentIndex()]);
+    infojson.set(jsonparentstr+"lightB", ButtonLightStrEnBuf[ui->box_tmx_1->currentIndex()]);
+    infojson.set(jsonparentstr+"patternB", ButtonPatternStrEnBuf[ui->box_hs_1->currentIndex()]);
+    infojson.set(jsonparentstr+"colorB", ButtonColorStrEnBuf[ui->box_zs_1->currentIndex()]);
 
     infojson.save("info.json");
     ui->box_cz_0->setCurrentIndex(1);
