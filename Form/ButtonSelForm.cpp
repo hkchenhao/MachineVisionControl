@@ -9,8 +9,8 @@
 #include <QDebug>
 
 const QString IMAGE_TYPE(".jpg");       // 纽扣图像的格式类型
-const qint32 PER_ROW_COUNT = 4;         // 每页显示的行数
-const qint32 PER_COLUMN_COUNT = 3;      // 每页显示的列数
+const qint32 PER_ROW_COUNT = 5;         // 每页显示的行数
+const qint32 PER_COLUMN_COUNT = 4;      // 每页显示的列数
 
 /********** 纽扣配置Json信息类 **********/
 ButtonJsonInfo::ButtonJsonInfo(const QString& filepath, const QString& filename, QWidget* parent) : QWidget(parent)
@@ -27,28 +27,30 @@ ButtonJsonInfo::ButtonJsonInfo(const QString& filepath, const QString& filename,
     p_buttonImage->installEventFilter(this);
     p_buttonName->installEventFilter(this);
     // 配置label布局与属性
-    p_buttonImage->setFixedSize(128, 128);
+    p_buttonImage->setFixedSize(96, 96);
     p_buttonImage->setAlignment(Qt::AlignCenter);
     // 判断纽扣图片是否存在
     QString imagepath(*p_configFilePath + "/" + *p_configFileName + IMAGE_TYPE);
     QFileInfo imagefileinfo(imagepath);
     if(imagefileinfo.isFile())
     {
-        QImage button_image(imagepath);
-        p_buttonImage->setPixmap(QPixmap::fromImage(button_image));
+        QImage buttonimage(imagepath);
+        QImage buttonimagescaled = buttonimage.scaled(p_buttonImage->width(), p_buttonImage->height());
+        p_buttonImage->setPixmap(QPixmap::fromImage(buttonimagescaled));
     }
     else
     {
-        QImage button_image(":/pic/button_48px.png");
-        p_buttonImage->setPixmap(QPixmap::fromImage(button_image));
+        QImage buttonimage(":/pic/button_128px.png");
+        QImage buttonimagescaled = buttonimage.scaled(p_buttonImage->width(), p_buttonImage->height());
+        p_buttonImage->setPixmap(QPixmap::fromImage(buttonimagescaled));
     }
     // 配置p_buttonName
     QFont font;
-    font.setPointSize(14);
+    font.setPointSize(12);
     font.setBold(false);
     font.setWeight(16);
     p_buttonName->setFont(font);
-    p_buttonName->setFixedSize(128, 16);
+    p_buttonName->setFixedSize(96, 16);
     p_buttonName->setAlignment(Qt::AlignCenter);
     // 配置Label布局
     p_layout->setSpacing(5);
@@ -88,6 +90,7 @@ bool ButtonJsonInfo::eventFilter(QObject* watched, QEvent* event)
 ButtonSelForm::ButtonSelForm(QWidget* parent) : QWidget(parent), ui(new Ui::ButtonSelWidget)
 {
     ui->setupUi(this);
+    InitFormWidget();
     LoadAllConfigFileInfo();
     ShowButtonImage();
 }
@@ -97,6 +100,32 @@ ButtonSelForm::~ButtonSelForm()
     delete ui;
     foreach (ButtonJsonInfo* p_buttoninfo, v_pButtonOriginalInfo)
         delete p_buttoninfo;
+}
+
+// [成员函数]初始化界面widget
+void ButtonSelForm::InitFormWidget()
+{
+    QStringList buttominfo_cz("无");
+    for(QString& str : ButtonMaterialStrCnBuf) { buttominfo_cz.append(str); }
+    ui->comboBox_CZ->addItems(buttominfo_cz);
+    QStringList buttominfo_xz("无");
+    for(QString& str : ButtonShapeStrCnBuf) { buttominfo_xz.append(str); }
+    ui->comboBox_XZ->addItems(buttominfo_xz);
+    QStringList buttominfo_cc("无");
+    for(QString& str : ButtonSizeBuf) { buttominfo_cc.append(str); }
+    ui->comboBox_CC->addItems(buttominfo_cc);
+    QStringList buttominfo_xks("无");
+    for(QString& str : ButtonHoleNumStrCnBuf) { buttominfo_xks.append(str); }
+    ui->comboBox_XKS->addItems(buttominfo_xks);
+    QStringList buttominfo_tmx("无");
+    for(QString& str : ButtonLightStrCnBuf) { buttominfo_tmx.append(str); }
+    ui->comboBox_TMX->addItems(buttominfo_tmx);
+    QStringList buttominfo_hs("无");
+    for(QString& str : ButtonPatternStrCnBuf) { buttominfo_hs.append(str); }
+    ui->comboBox_HS->addItems(buttominfo_hs);
+    QStringList buttominfo_zs("无");
+    for(QString& str : ButtonColorStrCnBuf) { buttominfo_zs.append(str); }
+    ui->comboBox_ZS->addItems(buttominfo_zs);
 }
 
 // [成员函数]加载所有ini配置文件信息
@@ -110,16 +139,16 @@ void ButtonSelForm::LoadAllConfigFileInfo()
     //v_pButtonOriginalInfo.resize(inifilecount);
 
     QDir path(SystemUtils::GetPathForButtonConfigFile());
-    QStringList dirname_list = path.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name);
-    qint32 dircount = dirname_list.size();
+    QStringList buttonnamelist(path.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::Name));
+    qint32 dircount = buttonnamelist.size();
 
     // 生成全部纽扣信息widget指针vector
     p_currentButtonInfoVector = &v_pButtonOriginalInfo;
     p_currentButtonPageInfoStruct = &buttonOriginalPageInfo;
     for(qint32 i = 0; i < dircount; i++)
     {
-        QString pathname(SystemUtils::GetPathForButtonConfigFile() + dirname_list.at(i));
-        QString filename(dirname_list.at(i));
+        QString pathname(SystemUtils::GetPathForButtonConfigFile() + buttonnamelist.at(i));
+        QString filename(buttonnamelist.at(i));
         p_currentButtonInfoVector->push_back(new ButtonJsonInfo(pathname, filename));
         QObject::connect(p_currentButtonInfoVector->at(i), &ButtonJsonInfo::SignalCmd_ButtonImageSelected,
                          this, &ButtonSelForm::SetButtonSelectStaus);
@@ -205,9 +234,14 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
 {
     if(isshow)
     {
-        ui->ButtonImage->setPixmap(*p_currentSeletedButton->GetButtonImagePtr()->pixmap());
-        QString jsonparentstr("infoFront.");
+        QString jsonparentstr;
         QMap<QString, qint32>::iterator it;
+        // 纽扣图片/编号/时间信息
+        ui->ButtonImage->setPixmap(*p_currentSeletedButton->GetButtonImagePtr()->pixmap());
+        ui->LabelInfo_BH->setText(p_currentSeletedButton->GetButtonInfoPtr()->getString("name"));
+        ui->LabelInfo_SJ->setText(p_currentSeletedButton->GetButtonInfoPtr()->getString("time"));
+        // 纽扣基本信息
+        jsonparentstr = QString("infoFront.");
         it = ButtonMaterialMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "materialF"));
         if(it != ButtonMaterialMap.end())
             ui->LabelInfo_CZ->setText(ButtonMaterialStrCnBuf[it.value()]);
@@ -226,19 +260,33 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
         it = ButtonColorMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "colorF"));
         if(it != ButtonColorMap.end())
             ui->LabelInfo_ZS->setText(ButtonColorStrCnBuf[it.value()]);
-
         ui->LabelInfo_CC->setText(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "sizeF"));
+        // 纽扣尺寸信息
+        jsonparentstr = QString("taskSize.");
+        double buttonsize, buttonsizeup, buttonsizedown;
+        QString buttonsizestr;
+        buttonsize = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "outDia");
+        buttonsizeup = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "outDiaDevUp");
+        buttonsizedown = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "outDiaDevDown");
+        buttonsizestr = QString("%1[%2,%3]").arg(QString::number(buttonsize,'f',1)).arg(buttonsizeup).arg(buttonsizedown);
+        ui->LabelInfo_WJ->setText(buttonsizestr);
+        buttonsize = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "holeDia");
+        buttonsizeup = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "holeDiaDevUp");
+        buttonsizedown = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "holeDiaDevDown");
+        buttonsizestr = QString("%1[%2,%3]").arg(QString::number(buttonsize,'f',1)).arg(buttonsizeup).arg(buttonsizedown);
+        ui->LabelInfo_XKJ->setText(buttonsizestr);
+        buttonsize = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "holeDist");
+        buttonsizeup = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "holeDistDevUp");
+        buttonsizedown = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "holeDistDevDown");
+        buttonsizestr = QString("%1[%2,%3]").arg(QString::number(buttonsize,'f',1)).arg(buttonsizeup).arg(buttonsizedown);
+        ui->LabelInfo_XKJL->setText(buttonsizestr);
 
-//        ui->LabelInfo_XZ->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/shape").toString().toUtf8());
-//        ui->LabelInfo_XKS->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/hole").toString().toUtf8());
-//        ui->LabelInfo_YS->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/color").toString().toUtf8());
-//        ui->LabelInfo_ZF->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/char").toString().toUtf8());
-//        ui->LabelInfo_HW->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/pattern").toString().toUtf8());
-//        ui->LabelInfo_TMX->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/transmittance").toString().toUtf8());
-//        ui->LabelInfo_CZ->setText(p_currentSeletedButton->GetButtonInfoPtr()->value("BaseInfoFront/material").toString().toUtf8());
     }
     else
     {
+        ui->LabelInfo_BH->setText("无");
+        ui->LabelInfo_SJ->setText("无");
+
         ui->LabelInfo_CZ->setText("无");
         ui->LabelInfo_XZ->setText("无");
         ui->LabelInfo_XKS->setText("0");
@@ -246,6 +294,10 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
         ui->LabelInfo_HS->setText("无");
         ui->LabelInfo_ZS->setText("无");
         ui->LabelInfo_CC->setText("0.0");
+
+        ui->LabelInfo_WJ->setText("0.0[0.0,0.0]");
+        ui->LabelInfo_XKJ->setText("0.0[0.0,0.0]");
+        ui->LabelInfo_XKJL->setText("0.0[0.0,0.0]");
     }
 }
 
@@ -326,14 +378,12 @@ void ButtonSelForm::on_pushButton_Find_clicked()
     p_currentButtonInfoVector->resize(0);
     p_currentButtonPageInfoStruct = &buttonSelectedPageInfo;
     // 首先根据纽扣ID号查询
-//    QString button_id = ui->lineEdit_ButtonID->text();
-//    foreach (ButtonJsonInfo* p_buttoninfo, v_pButtonOriginalInfo)
-//    {
-//        if(p_buttoninfo->GetButtonInfoPtr()->value("BaseInfoFront/id").toString().contains(button_id, Qt::CaseInsensitive))
-//        {
-//            p_currentButtonInfoVector->push_back(p_buttoninfo);
-//        }
-//    }
+    QString buttonid = ui->lineEdit_ButtonID->text();
+    foreach (ButtonJsonInfo* p_buttoninfo, v_pButtonOriginalInfo)
+    {
+        if(p_buttoninfo->GetButtonInfoPtr()->getString("name").contains(buttonid, Qt::CaseInsensitive))
+            p_currentButtonInfoVector->push_back(p_buttoninfo);
+    }
     // 显示查询结果
     InitButtonPageInfo();
     ShowButtonImage();

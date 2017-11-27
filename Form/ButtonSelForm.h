@@ -58,14 +58,11 @@ public:
     explicit ButtonSelForm(QWidget* parent = nullptr);
     ~ButtonSelForm();
 private:
-    // 加载所有ini配置文件信息
-    void LoadAllConfigFileInfo();
-    // 显示纽扣图像
-    void ShowButtonImage();
-    // 计算纽扣页面变量
-    void InitButtonPageInfo();
-    // 根据条件刷新纽扣信息区信息
-    void UpdateButtonInfoLabel(bool isshow);
+    void InitFormWidget();
+    void LoadAllConfigFileInfo();               // 加载所有ini配置文件信息
+    void ShowButtonImage();                     // 显示纽扣图像
+    void InitButtonPageInfo();                  // 计算纽扣页面变量
+    void UpdateButtonInfoLabel(bool isshow);    // 根据条件刷新纽扣信息区信息
 private slots:
     // 自定义slot函数
     void SetButtonSelectStaus(ButtonJsonInfo* p_buttoninfo);
@@ -78,6 +75,7 @@ private slots:
     void on_pushButton_Enter_clicked();
 private:
     Ui::ButtonSelWidget* ui;                                // UI界面
+    //QStringList* p_buttonAllNameStringList;                 // 所有纽扣的命名
     QVector<ButtonJsonInfo*> v_pButtonOriginalInfo;         // 所有纽扣widget指针数组
     QVector<ButtonJsonInfo*> v_pButtonSelectedInfo;         // 筛选纽扣widget指针数组
     QVector<ButtonJsonInfo*>* p_currentButtonInfoVector;
