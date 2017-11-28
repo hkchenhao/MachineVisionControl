@@ -50,7 +50,8 @@ SOURCES += \
     Event/NotificationCenter.cpp \
     Form/StatisticalForm.cpp \
     Form/MachineLearnForm.cpp \
-    Form/InfoCheckResForm.cpp
+    Form/InfoCheckResForm.cpp \
+    Utils/UserMsgBox.cpp
 
 HEADERS  += \
     Form/MainForm.h \
@@ -75,7 +76,8 @@ HEADERS  += \
     Form/StatisticalForm.h \
     Form/MachineLearnForm.h \
     Utils/WidgetStyle.h \
-    Form/InfoCheckResForm.h
+    Form/InfoCheckResForm.h \
+    Utils/UserMsgBox.h
 
 FORMS    += \
     Form/MainForm.ui \

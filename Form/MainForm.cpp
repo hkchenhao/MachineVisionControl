@@ -15,6 +15,7 @@
 #include "Utils/LoadDialog.h"
 #include "Utils/QJsonAnalysis.h"
 #include "Utils/SystemUtils.h"
+#include "Utils/UserMsgBox.h"
 
 MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::MainWidget)
 {
@@ -216,8 +217,10 @@ void MainForm::on_WorkStopButton_clicked()
 
 // [slot函数]程序关闭控件
 void MainForm::on_pushButton_AppClose_clicked()
-{
-    qApp->quit();
+{ 
+    UserTextMsgBox* msg = new UserTextMsgBox("相机1收到纽扣配置信息文件", 100, this);
+    msg->show();
+    //qApp->quit();
     //QProcess::execute("sudo shutdown -h now");
 }
 

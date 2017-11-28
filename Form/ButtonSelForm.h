@@ -4,6 +4,7 @@
 #include <QVBoxLayout>
 #include <QWidget>
 #include <QEvent>
+#include <QMessageBox>
 #include <QDir>
 #include <QFileInfo>
 #include <QLabel>
@@ -12,6 +13,7 @@
 #include <QVector>
 #include <QString>
 #include <QMap>
+#include "Data/DataPacketEnum.h"
 
 namespace Ui
 {
@@ -34,7 +36,8 @@ public:
     QJsonAnalysis* GetButtonInfoPtr() { return p_buttonInfo; }
 signals:
     // 图像被选中时发出信号
-    void SignalCmd_ButtonImageSelected(ButtonJsonInfo* p_buttoninfo);
+    void Signal_ButtonImageSelected(ButtonJsonInfo* p_buttoninfo);
+    void Signal_ButtonInfoNetPacketSend(DataPacketEnum datapacket_type, QByteArray databyte);
 private:
     QString* p_configFilePath;      // 配置文件所在路径
     QString* p_configFileName;      // 配置文件名称

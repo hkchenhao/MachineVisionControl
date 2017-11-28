@@ -6,6 +6,7 @@
 #include "Utils/ButtonInfo.h"
 #include "Utils/QJsonAnalysis.h"
 #include "Utils/SystemUtils.h"
+#include "Utils/UserMsgBox.h"
 #include <QDebug>
 
 const QString IMAGE_TYPE(".jpg");       // 纽扣图像的格式类型
@@ -75,7 +76,7 @@ bool ButtonJsonInfo::eventFilter(QObject* watched, QEvent* event)
     {
         if(event->type() == QEvent::MouseButtonPress)
         {
-            emit SignalCmd_ButtonImageSelected(this);
+            emit Signal_ButtonImageSelected(this);
             return true;
         }
         else
@@ -150,7 +151,7 @@ void ButtonSelForm::LoadAllConfigFileInfo()
         QString pathname(SystemUtils::GetPathForButtonConfigFile() + buttonnamelist.at(i));
         QString filename(buttonnamelist.at(i));
         p_currentButtonInfoVector->push_back(new ButtonJsonInfo(pathname, filename));
-        QObject::connect(p_currentButtonInfoVector->at(i), &ButtonJsonInfo::SignalCmd_ButtonImageSelected,
+        QObject::connect(p_currentButtonInfoVector->at(i), &ButtonJsonInfo::Signal_ButtonImageSelected,
                          this, &ButtonSelForm::SetButtonSelectStaus);
     }
     // 初始化上一个以及当前被选取的纽扣图像指针
@@ -237,7 +238,7 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
         QString jsonparentstr;
         QMap<QString, qint32>::iterator it;
         // 纽扣图片/编号/时间信息
-        ui->ButtonImage->setPixmap(*p_currentSeletedButton->GetButtonImagePtr()->pixmap());
+        ui->ButtonImage->setPixmap(p_currentSeletedButton->GetButtonImagePtr()->pixmap()->scaled(128, 128));
         ui->LabelInfo_BH->setText(p_currentSeletedButton->GetButtonInfoPtr()->getString("name"));
         ui->LabelInfo_SJ->setText(p_currentSeletedButton->GetButtonInfoPtr()->getString("time"));
         // 纽扣基本信息
@@ -286,7 +287,6 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
     {
         ui->LabelInfo_BH->setText("无");
         ui->LabelInfo_SJ->setText("无");
-
         ui->LabelInfo_CZ->setText("无");
         ui->LabelInfo_XZ->setText("无");
         ui->LabelInfo_XKS->setText("0");
@@ -294,7 +294,6 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
         ui->LabelInfo_HS->setText("无");
         ui->LabelInfo_ZS->setText("无");
         ui->LabelInfo_CC->setText("0.0");
-
         ui->LabelInfo_WJ->setText("0.0[0.0,0.0]");
         ui->LabelInfo_XKJ->setText("0.0[0.0,0.0]");
         ui->LabelInfo_XKJL->setText("0.0[0.0,0.0]");
@@ -357,17 +356,29 @@ void ButtonSelForm::on_pushButton_Esc_clicked()
 // [控件slot函数]纽扣确定选择按键
 void ButtonSelForm::on_pushButton_Enter_clicked()
 {
-    // 向MainForm投递一个事件（被选纽扣的ID编号）
-    MainFormEvent* mainformevent = new MainFormEvent(MainFormEvent::EventType_ButtonSelectedResult);
-    mainformevent->button_id_ = currentSeletedButtonName;
-    // 注意一定要加入mainform的头文件，否则post出错
-    QCoreApplication::postEvent(FormFrame::GetInstance()->p_mainform_, mainformevent);
-    // 清除当前Form
-    FormFrame::GetInstance()->p_formstacked_->removeWidget(FormFrame::GetInstance()->p_buttonselform_);
-    delete FormFrame::GetInstance()->p_buttonselform_;
-    FormFrame::GetInstance()->p_buttonselform_ = nullptr;
-    FormFrame::GetInstance()->formstacked_id_.buttonselform_id = -1;
-    FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(FormFrame::GetInstance()->formstacked_id_.mainform_id);
+    if(p_currentSeletedButton == nullptr)
+    {
+        UserTextMsgBox* msgbox = new UserTextMsgBox("请先选择纽扣", 500, 110, this);
+        msgbox->show();
+        return;
+    }
+    QMessageBox* pmsgbox = new QMessageBox(QMessageBox::Question, "", "是否确定加载纽扣配置信息？",
+                                           QMessageBox::Yes | QMessageBox::No, this);
+    int reply = pmsgbox->exec();
+    if(reply == QMessageBox::Yes)
+    {
+         // 向MainForm投递一个事件（被选纽扣的ID编号）
+         MainFormEvent* mainformevent = new MainFormEvent(MainFormEvent::EventType_ButtonSelectedResult);
+         mainformevent->button_id_ = currentSeletedButtonName;
+         // 注意一定要加入mainform的头文件，否则post出错
+         QCoreApplication::postEvent(FormFrame::GetInstance()->p_mainform_, mainformevent);
+         // 清除当前Form
+         FormFrame::GetInstance()->p_formstacked_->removeWidget(FormFrame::GetInstance()->p_buttonselform_);
+         delete FormFrame::GetInstance()->p_buttonselform_;
+         FormFrame::GetInstance()->p_buttonselform_ = nullptr;
+         FormFrame::GetInstance()->formstacked_id_.buttonselform_id = -1;
+         FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(FormFrame::GetInstance()->formstacked_id_.mainform_id);
+    }
 }
 
 // [控件slot函数]纽扣检索按键
@@ -397,7 +408,19 @@ void ButtonSelForm::on_pushButton_Clear_clicked()
     p_currentButtonPageInfoStruct = &buttonOriginalPageInfo;
     p_currentButtonPageInfoStruct->buttonImageCurrentPageNum = 1;
     // 复位检索条件
+    ui->checkBox_buttonid->setCheckState(Qt::Unchecked);
     ui->lineEdit_ButtonID->setText("");
+    ui->checkBox_buttontime->setCheckState(Qt::Unchecked);
+    ui->dateEdit_starttime->setDate(QDate(2017, 1, 1));
+    ui->dateEdit_endtime->setDate(QDate(2017, 1, 1));
+    ui->checkBox_buttoninfo->setCheckState(Qt::Unchecked);
+    ui->comboBox_CZ->setCurrentIndex(0);
+    ui->comboBox_XZ->setCurrentIndex(0);
+    ui->comboBox_CC->setCurrentIndex(0);
+    ui->comboBox_XKS->setCurrentIndex(0);
+    ui->comboBox_TMX->setCurrentIndex(0);
+    ui->comboBox_HS->setCurrentIndex(0);
+    ui->comboBox_ZS->setCurrentIndex(0);
     // 复位已经选中的图片
     if(p_currentSeletedButton)
     {

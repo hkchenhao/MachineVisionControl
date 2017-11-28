@@ -10,5 +10,6 @@
         <file>icon/unknown_48px.png</file>
         <file>pic/buttonsize.png</file>
         <file>pic/button_128px.png</file>
+        <file>icon/page_next_48px.png</file>
     </qresource>
 </RCC>

@@ -791,9 +791,9 @@ QGroupBox::title
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>133</x>
       <y>700</y>
-      <width>410</width>
+      <width>401</width>
       <height>41</height>
      </rect>
     </property>
@@ -802,27 +802,28 @@ QGroupBox::title
       <family>Yahei Mono</family>
      </font>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0,0,0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0,0,0,0">
      <property name="spacing">
-      <number>2</number>
+      <number>3</number>
      </property>
      <item>
       <widget class="QPushButton" name="pushButton_LastPage">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
        <property name="minimumSize">
         <size>
-         <width>0</width>
+         <width>60</width>
          <height>0</height>
         </size>
        </property>
        <property name="font">
         <font>
          <family>Yahei Mono</family>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -842,14 +843,21 @@ QGroupBox::title
      <item>
       <widget class="QPushButton" name="pushButton_NextPage">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <family>Yahei Mono</family>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -858,16 +866,39 @@ QGroupBox::title
       </widget>
      </item>
      <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <widget class="QPushButton" name="pushButton_Enter_2">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <family>Yahei Mono</family>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -878,14 +909,21 @@ QGroupBox::title
      <item>
       <widget class="QPushButton" name="pushButton_Enter">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <family>Yahei Mono</family>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -896,14 +934,21 @@ QGroupBox::title
      <item>
       <widget class="QPushButton" name="pushButton_Esc">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <family>Yahei Mono</family>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -1289,6 +1334,7 @@ QGroupBox::title
        <property name="font">
         <font>
          <family>Yahei Mono</family>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -1307,6 +1353,7 @@ QGroupBox::title
        <property name="font">
         <font>
          <family>Yahei Mono</family>
+         <pointsize>12</pointsize>
         </font>
        </property>
        <property name="text">
@@ -1322,7 +1369,7 @@ QGroupBox::title
       <x>10</x>
       <y>40</y>
       <width>211</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -1401,7 +1448,7 @@ QGroupBox::title
       <x>10</x>
       <y>150</y>
       <width>211</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -1420,7 +1467,7 @@ QGroupBox::title
       <x>10</x>
       <y>310</y>
       <width>211</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
