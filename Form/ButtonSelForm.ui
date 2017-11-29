@@ -882,7 +882,7 @@ QGroupBox::title
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_Enter_2">
+      <widget class="QPushButton" name="pushButton_Edit">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>

@@ -2,6 +2,7 @@
 #include "ui_ButtonSelForm.h"
 #include "Event/MainFormEvent.h"
 #include "Form/MainForm.h"
+#include "Form/MachineLearnForm.h"
 #include "Mgr/FormFrame.h"
 #include "Utils/ButtonInfo.h"
 #include "Utils/QJsonAnalysis.h"
@@ -127,6 +128,9 @@ void ButtonSelForm::InitFormWidget()
     QStringList buttominfo_zs("无");
     for(QString& str : ButtonColorStrCnBuf) { buttominfo_zs.append(str); }
     ui->comboBox_ZS->addItems(buttominfo_zs);
+    emit ui->checkBox_buttonid->clicked(false);
+    emit ui->checkBox_buttontime->clicked(false);
+    emit ui->checkBox_buttoninfo->clicked(false);
 }
 
 // [成员函数]加载所有ini配置文件信息
@@ -381,21 +385,78 @@ void ButtonSelForm::on_pushButton_Enter_clicked()
     }
 }
 
+// [控件slot函数]纽扣编辑按键
+void ButtonSelForm::on_pushButton_Edit_clicked()
+{
+    if(p_currentSeletedButton == nullptr)
+    {
+        UserTextMsgBox* msgbox = new UserTextMsgBox("请先选择纽扣", 500, 110, this);
+        msgbox->show();
+        return;
+    }
+
+    if(FormFrame::GetInstance()->formstacked_id_.machinelearnform_id == -1)
+    {
+        FormFrame::GetInstance()->p_machinelearnform_ = new MachineLearnForm(nullptr, true, p_currentSeletedButton->GetButtonInfoPtr());
+        qint32 id = FormFrame::GetInstance()->p_formstacked_->addWidget(FormFrame::GetInstance()->p_machinelearnform_);
+        FormFrame::GetInstance()->formstacked_id_.machinelearnform_id = id;
+        FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(id);
+    }
+}
+
 // [控件slot函数]纽扣检索按键
 void ButtonSelForm::on_pushButton_Find_clicked()
 {
+    if((ui->checkBox_buttonid->checkState() == Qt::Unchecked) &&
+       (ui->checkBox_buttontime->checkState() == Qt::Unchecked) &&
+       (ui->checkBox_buttoninfo->checkState() == Qt::Unchecked))
+    {
+        UserTextMsgBox* msgbox = new UserTextMsgBox("请先选择检索条件", 500, 110, this);
+        msgbox->show();
+        return;
+    }
     // 指针指向筛选纽扣图像缓存区
+    QList<ButtonJsonInfo*> buttonfindlist;
+    foreach(ButtonJsonInfo* pbuttoninfo, v_pButtonOriginalInfo)
+        buttonfindlist.append(pbuttoninfo);
     p_currentButtonInfoVector = &v_pButtonSelectedInfo;
     p_currentButtonInfoVector->resize(0);
     p_currentButtonPageInfoStruct = &buttonSelectedPageInfo;
-    // 首先根据纽扣ID号查询
-    QString buttonid = ui->lineEdit_ButtonID->text();
-    foreach (ButtonJsonInfo* p_buttoninfo, v_pButtonOriginalInfo)
+    // 根据纽扣ID号查询
+    if(ui->checkBox_buttonid->checkState() == Qt::Checked)
     {
-        if(p_buttoninfo->GetButtonInfoPtr()->getString("name").contains(buttonid, Qt::CaseInsensitive))
-            p_currentButtonInfoVector->push_back(p_buttoninfo);
+        QString buttonid = ui->lineEdit_ButtonID->text();
+        for(auto it = buttonfindlist.begin(); it != buttonfindlist.end();)
+        {
+            if((*it)->GetButtonInfoPtr()->getString("name").contains(buttonid, Qt::CaseInsensitive))
+               ++it;
+            else
+                it = buttonfindlist.erase(it);
+        }
+    }
+    // 根据纽扣时间查询
+    if(ui->checkBox_buttontime->checkState() == Qt::Checked)
+    {
+        QString buttontimestart = ui->dateEdit_starttime->date().toString(Qt::ISODate);
+        QString buttontimeend = ui->dateEdit_endtime->date().toString(Qt::ISODate);
+        QString buttontime;
+        for(auto it = buttonfindlist.begin(); it != buttonfindlist.end();)
+        {
+            buttontime = (*it)->GetButtonInfoPtr()->getString("time");
+            if((buttontime >= buttontimestart) && (buttontime <= buttontimeend))
+                ++it;
+            else
+                it = buttonfindlist.erase(it);
+        }
+    }
+    // 根据纽扣信息查询
+    if(ui->checkBox_buttoninfo->checkState() == Qt::Checked)
+    {
+
     }
     // 显示查询结果
+    foreach(ButtonJsonInfo* pbuttoninfo, buttonfindlist)
+        p_currentButtonInfoVector->push_back(pbuttoninfo);
     InitButtonPageInfo();
     ShowButtonImage();
 }
@@ -411,8 +472,8 @@ void ButtonSelForm::on_pushButton_Clear_clicked()
     ui->checkBox_buttonid->setCheckState(Qt::Unchecked);
     ui->lineEdit_ButtonID->setText("");
     ui->checkBox_buttontime->setCheckState(Qt::Unchecked);
-    ui->dateEdit_starttime->setDate(QDate(2017, 1, 1));
-    ui->dateEdit_endtime->setDate(QDate(2017, 1, 1));
+    ui->dateEdit_starttime->setDate(QDate(2017, 9, 1));
+    ui->dateEdit_endtime->setDate(QDate(2017, 9, 1));
     ui->checkBox_buttoninfo->setCheckState(Qt::Unchecked);
     ui->comboBox_CZ->setCurrentIndex(0);
     ui->comboBox_XZ->setCurrentIndex(0);
@@ -421,8 +482,11 @@ void ButtonSelForm::on_pushButton_Clear_clicked()
     ui->comboBox_TMX->setCurrentIndex(0);
     ui->comboBox_HS->setCurrentIndex(0);
     ui->comboBox_ZS->setCurrentIndex(0);
+    emit ui->checkBox_buttonid->clicked(false);
+    emit ui->checkBox_buttontime->clicked(false);
+    emit ui->checkBox_buttoninfo->clicked(false);
     // 复位已经选中的图片
-    if(p_currentSeletedButton)
+    if(p_currentSeletedButton != nullptr)
     {
         p_currentSeletedButton->GetButtonImagePtr()->setStyleSheet("");
         UpdateButtonInfoLabel(false);
@@ -433,4 +497,50 @@ void ButtonSelForm::on_pushButton_Clear_clicked()
     ShowButtonImage();
 }
 
+// [控件slot函数]搜索条件复选框状态改变
+void ButtonSelForm::on_checkBox_buttonid_clicked()
+{
+    if(ui->checkBox_buttonid->checkState() == Qt::Checked)
+        ui->lineEdit_ButtonID->setEnabled(true);
+    else
+        ui->lineEdit_ButtonID->setEnabled(false);
 
+}
+
+void ButtonSelForm::on_checkBox_buttontime_clicked()
+{
+    if(ui->checkBox_buttontime->checkState() == Qt::Checked)
+    {
+        ui->dateEdit_starttime->setEnabled(true);
+        ui->dateEdit_endtime->setEnabled(true);
+    }
+    else
+    {
+        ui->dateEdit_starttime->setEnabled(false);
+        ui->dateEdit_endtime->setEnabled(false);
+    }
+}
+
+void ButtonSelForm::on_checkBox_buttoninfo_clicked()
+{
+    if(ui->checkBox_buttoninfo->checkState() == Qt::Checked)
+    {
+        ui->comboBox_CZ->setEnabled(true);
+        ui->comboBox_XZ->setEnabled(true);
+        ui->comboBox_CC->setEnabled(true);
+        ui->comboBox_XKS->setEnabled(true);
+        ui->comboBox_TMX->setEnabled(true);
+        ui->comboBox_HS->setEnabled(true);
+        ui->comboBox_ZS->setEnabled(true);
+    }
+    else
+    {
+        ui->comboBox_CZ->setEnabled(false);
+        ui->comboBox_XZ->setEnabled(false);
+        ui->comboBox_CC->setEnabled(false);
+        ui->comboBox_XKS->setEnabled(false);
+        ui->comboBox_TMX->setEnabled(false);
+        ui->comboBox_HS->setEnabled(false);
+        ui->comboBox_ZS->setEnabled(false);
+    }
+}

@@ -12,6 +12,7 @@
 #include <QPixmap>
 #include <QVector>
 #include <QString>
+#include <QList>
 #include <QMap>
 #include "Data/DataPacketEnum.h"
 
@@ -76,6 +77,11 @@ private slots:
     void on_pushButton_Clear_clicked();
     void on_pushButton_Esc_clicked();
     void on_pushButton_Enter_clicked();
+    void on_pushButton_Edit_clicked();
+    void on_checkBox_buttonid_clicked();
+    void on_checkBox_buttontime_clicked();
+    void on_checkBox_buttoninfo_clicked();
+
 private:
     Ui::ButtonSelWidget* ui;                                // UI界面
     //QStringList* p_buttonAllNameStringList;                 // 所有纽扣的命名

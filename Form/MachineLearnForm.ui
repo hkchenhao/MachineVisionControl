@@ -63,7 +63,7 @@
     <enum>QTabWidget::West</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_1">
     <attribute name="title">
@@ -2131,37 +2131,6 @@ QCheckBox::indicator {
     </attribute>
    </widget>
   </widget>
-  <widget class="QPushButton" name="pushButton_Revise">
-   <property name="geometry">
-    <rect>
-     <x>730</x>
-     <y>710</y>
-     <width>141</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>30</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Yahei Mono</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>修改</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_AppTile">
    <property name="geometry">
     <rect>
@@ -2190,7 +2159,7 @@ QCheckBox::indicator {
   <widget class="QPushButton" name="pushButton_Save">
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>730</x>
      <y>710</y>
      <width>141</width>
      <height>51</height>
@@ -2278,12 +2247,43 @@ QCheckBox::indicator {
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="pushButton_Revise">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>710</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>30</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yahei Mono</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>修改</string>
+   </property>
+  </widget>
   <zorder>layoutWidget</zorder>
   <zorder>tabWidget</zorder>
   <zorder>label_AppTile</zorder>
-  <zorder>pushButton_Revise</zorder>
   <zorder>pushButton_Esc</zorder>
   <zorder>pushButton_Save</zorder>
+  <zorder>pushButton_Revise</zorder>
  </widget>
  <resources/>
  <connections/>
