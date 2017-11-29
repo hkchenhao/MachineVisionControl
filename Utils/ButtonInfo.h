@@ -25,12 +25,21 @@ extern QVector<QString> ButtonPatternStrEnBuf;
 extern QVector<QString> ButtonPatternStrCnBuf;
 extern QVector<QString> ButtonColorStrEnBuf;
 extern QVector<QString> ButtonColorStrCnBuf;
-extern QVector<QString> ButtonSizeBuf;
-extern QMap<QString, qint32> ButtonMaterialMap;
-extern QMap<QString, qint32> ButtonShapeMap;
-extern QMap<QString, qint32> ButtonHoleNumMap;
-extern QMap<QString, qint32> ButtonLightMap;
-extern QMap<QString, qint32> ButtonPatternMap;
-extern QMap<QString, qint32> ButtonColorMap;
+
+extern QVector<QString> ButtonSizeStrBuf;
+extern QVector<double> ButtonSizeBuf;
+
+extern QMap<QString, qint32> ButtonMaterialEnMap;
+extern QMap<QString, qint32> ButtonMaterialCnMap;
+extern QMap<QString, qint32> ButtonShapeEnMap;
+extern QMap<QString, qint32> ButtonShapeCnMap;
+extern QMap<QString, qint32> ButtonHoleNumEnMap;
+extern QMap<QString, qint32> ButtonHoleNumCnMap;
+extern QMap<QString, qint32> ButtonLightEnMap;
+extern QMap<QString, qint32> ButtonLightCnMap;
+extern QMap<QString, qint32> ButtonPatternEnMap;
+extern QMap<QString, qint32> ButtonPatternCnMap;
+extern QMap<QString, qint32> ButtonColorEnMap;
+extern QMap<QString, qint32> ButtonColorCnMap;
 
 #endif

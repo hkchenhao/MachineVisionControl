@@ -33,7 +33,6 @@ target.path = /home/pi
 SOURCES += \
     Form/MainForm.cpp \
     main.cpp \
-    Utils/LoadDialog.cpp \
     Event/MainFormEvent.cpp \
     Form/ButtonSelForm.cpp \
     Utils/ButtonInfo.cpp \
@@ -55,7 +54,6 @@ SOURCES += \
 
 HEADERS  += \
     Form/MainForm.h \
-    Utils/LoadDialog.h \
     Event/MainFormEvent.h \
     Form/ButtonSelForm.h \
     Utils/ButtonInfo.h \

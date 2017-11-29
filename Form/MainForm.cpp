@@ -218,7 +218,9 @@ void MainForm::on_WorkStopButton_clicked()
 // [slot函数]程序关闭控件
 void MainForm::on_pushButton_AppClose_clicked()
 { 
-    UserTextMsgBox* msg = new UserTextMsgBox("相机1收到纽扣配置信息文件", 100, this);
+//    UserTextMsgBox* msg = new UserTextMsgBox("相机1收到纽扣配置信息文件", 100, this);
+//    msg->show();
+    UserLoadingMsgBox* msg = new UserLoadingMsgBox("纽扣搜索中，请稍后......", 100, this);
     msg->show();
     //qApp->quit();
     //QProcess::execute("sudo shutdown -h now");

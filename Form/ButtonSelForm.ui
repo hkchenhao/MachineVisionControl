@@ -1539,7 +1539,7 @@ QGroupBox::title
        <property name="date">
         <date>
          <year>2017</year>
-         <month>1</month>
+         <month>9</month>
          <day>1</day>
         </date>
        </property>
@@ -1588,7 +1588,7 @@ QGroupBox::title
        <property name="date">
         <date>
          <year>2017</year>
-         <month>1</month>
+         <month>9</month>
          <day>1</day>
         </date>
        </property>
