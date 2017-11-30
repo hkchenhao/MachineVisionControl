@@ -115,6 +115,66 @@ void MachineLearnForm::InitFormWidget()
                 }
             }
         }
+        // 纽扣尺寸信息
+        jsonparentstr = QString("taskSize");
+        if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
+        {
+            double buttonsize, buttonsizeup, buttonsizedown;
+            buttonsize = p_buttonJsonInfo->getDouble(jsonparentstr + "." + "outDia");
+            buttonsizeup = p_buttonJsonInfo->getDouble(jsonparentstr + "." + "outDiaDevUp");
+            buttonsizedown = p_buttonJsonInfo->getDouble(jsonparentstr + "." + "outDiaDevDown");
+            ui->lineEdit2_wj->setText(QString("%1").arg(QString::number(buttonsize,'f',1)));
+            ui->lineEdit2_wjpc_up->setText(QString("%1").arg(QString::number(buttonsizeup,'f',1)));
+            ui->lineEdit2_wjpc_down->setText(QString("%1").arg(QString::number(buttonsizedown,'f',1)));
+            buttonsize = p_buttonJsonInfo->getDouble(jsonparentstr + "." + "holeDia");
+            buttonsizeup = p_buttonJsonInfo->getDouble(jsonparentstr + "." + "holeDiaDevUp");
+            buttonsizedown = p_buttonJsonInfo->getDouble(jsonparentstr + "." + "holeDiaDevDown");
+            ui->lineEdit2_xkj->setText(QString("%1").arg(QString::number(buttonsize,'f',1)));
+            ui->lineEdit2_xkjpc_up->setText(QString("%1").arg(QString::number(buttonsizeup,'f',1)));
+            ui->lineEdit2_xkjpc_down->setText(QString("%1").arg(QString::number(buttonsizedown,'f',1)));
+            buttonsize = p_buttonJsonInfo->getDouble(jsonparentstr + "." + "holeDist");
+            buttonsizeup = p_buttonJsonInfo->getDouble(jsonparentstr + "." + "holeDistDevUp");
+            buttonsizedown = p_buttonJsonInfo->getDouble(jsonparentstr + "." + "holeDistDevDown");
+            ui->lineEdit2_xkjl->setText(QString("%1").arg(QString::number(buttonsize,'f',1)));
+            ui->lineEdit2_xkjlpc_up->setText(QString("%1").arg(QString::number(buttonsizeup,'f',1)));
+            ui->lineEdit2_xkjlpc_down->setText(QString("%1").arg(QString::number(buttonsizedown,'f',1)));
+        }
+    }
+}
+
+// [成员函数]根据界面widget保存json信息
+void MachineLearnForm::SaveButtonJsonInfo(QJsonAnalysis* pjsoninfo)
+{
+    QString jsonparentstr;
+    // JSON时间信息
+    pjsoninfo->set("time", QDate::currentDate().toString("yyyy-MM-dd"));
+    // JSON纽扣正面基本信息
+    jsonparentstr = "infoFront.";
+    pjsoninfo->set(jsonparentstr+"materialF", ButtonMaterialStrEnBuf[ui->box_cz_0->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"sizeF", ui->line_cc->text());
+    pjsoninfo->set(jsonparentstr+"shapeF", ButtonShapeStrEnBuf[ui->box_xz_0->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"holeNumF", ButtonHoleNumStrEnBuf[ui->box_xks_0->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"lightF", ButtonLightStrEnBuf[ui->box_tmx_0->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"patternF", ButtonPatternStrEnBuf[ui->box_hs_0->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"colorF", ButtonColorStrEnBuf[ui->box_zs_0->currentIndex()]);
+    // JSON纽扣反面基本信息
+    jsonparentstr = "infoBack.";
+    pjsoninfo->set(jsonparentstr+"materialB", ButtonMaterialStrEnBuf[ui->box_cz_1->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"sizeB", ui->line_cc->text());
+    pjsoninfo->set(jsonparentstr+"shapeB", ButtonShapeStrEnBuf[ui->box_xz_1->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"holeNumB", ButtonHoleNumStrEnBuf[ui->box_xks_1->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"lightB", ButtonLightStrEnBuf[ui->box_tmx_1->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"patternB", ButtonPatternStrEnBuf[ui->box_hs_1->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"colorB", ButtonColorStrEnBuf[ui->box_zs_1->currentIndex()]);
+
+    if(isEdit_ == false)
+    {
+
+    }
+    else
+    {
+
+        p_buttonJsonInfo->save(*p_buttonJsonPath);
     }
 }
 
@@ -123,38 +183,25 @@ void MachineLearnForm::on_pushButton_Save_clicked()
 {
     if(isEdit_ == false)
     {
+        QMessageBox* pmsgbox = new QMessageBox(QMessageBox::Question, "", "是否确定保存纽扣配置信息？",
+                                               QMessageBox::Yes | QMessageBox::No, this);
+        if(pmsgbox->exec() == QMessageBox::No)  { return; }
         // 创建JSON文件
-        QString jsonparentstr;
         QJsonAnalysis infojson("{}", false);
-        // JSON时间信息
-        infojson.set("time", QDate::currentDate().toString("yyyy-MM-dd"));
-        // JSON纽扣正面基本信息
-        jsonparentstr = "infoFront.";
-        infojson.set(jsonparentstr+"materialF", ButtonMaterialStrEnBuf[ui->box_cz_0->currentIndex()]);
-        infojson.set(jsonparentstr+"sizeF", ui->line_cc->text());
-        infojson.set(jsonparentstr+"shapeF", ButtonShapeStrEnBuf[ui->box_xz_0->currentIndex()]);
-        infojson.set(jsonparentstr+"holeNumF", ButtonHoleNumStrEnBuf[ui->box_xks_0->currentIndex()]);
-        infojson.set(jsonparentstr+"lightF", ButtonLightStrEnBuf[ui->box_tmx_0->currentIndex()]);
-        infojson.set(jsonparentstr+"patternF", ButtonPatternStrEnBuf[ui->box_hs_0->currentIndex()]);
-        infojson.set(jsonparentstr+"colorF", ButtonColorStrEnBuf[ui->box_zs_0->currentIndex()]);
-        // JSON纽扣反面基本信息
-        jsonparentstr = "infoBack.";
-        infojson.set(jsonparentstr+"materialB", ButtonMaterialStrEnBuf[ui->box_cz_1->currentIndex()]);
-        infojson.set(jsonparentstr+"sizeB", ui->line_cc->text());
-        infojson.set(jsonparentstr+"shapeB", ButtonShapeStrEnBuf[ui->box_xz_1->currentIndex()]);
-        infojson.set(jsonparentstr+"holeNumB", ButtonHoleNumStrEnBuf[ui->box_xks_1->currentIndex()]);
-        infojson.set(jsonparentstr+"lightB", ButtonLightStrEnBuf[ui->box_tmx_1->currentIndex()]);
-        infojson.set(jsonparentstr+"patternB", ButtonPatternStrEnBuf[ui->box_hs_1->currentIndex()]);
-        infojson.set(jsonparentstr+"colorB", ButtonColorStrEnBuf[ui->box_zs_1->currentIndex()]);
-
+        SaveButtonJsonInfo(&infojson);
         infojson.save("info.json");
+        UserTextMsgBox* msgbox = new UserTextMsgBox("纽扣信息保存成功！", 500, 110, this);
+        msgbox->show();
     }
     else
     {
-        QString jsonparentstr;
-        jsonparentstr = "infoFront.";
-        p_buttonJsonInfo->set(jsonparentstr+"materialF", ButtonMaterialStrEnBuf[ui->box_cz_0->currentIndex()]);
-        p_buttonJsonInfo->save(*p_buttonJsonPath);
+        QMessageBox* pmsgbox = new QMessageBox(QMessageBox::Question, "", "是否确定修改纽扣配置信息？",
+                                               QMessageBox::Yes | QMessageBox::No, this);
+        if(pmsgbox->exec() == QMessageBox::No)  { return; }
+        // 修改json文件配置信息
+        SaveButtonJsonInfo(p_buttonJsonInfo);
+        UserTextMsgBox* msgbox = new UserTextMsgBox("纽扣信息修改成功！", 500, 110, this);
+        msgbox->show();
     }
 }
 

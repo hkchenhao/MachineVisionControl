@@ -1,6 +1,7 @@
 #ifndef MACHINELEARNFORM_H
 #define MACHINELEARNFORM_H
 #include <QWidget>
+#include <QMessageBox>
 #include <QDate>
 #include <QDebug>
 #include <QVector>
@@ -34,6 +35,7 @@ private slots:
 
 private:
     void InitFormWidget();
+    void SaveButtonJsonInfo(QJsonAnalysis* pjsoninfo);
     Ui::MachineLearnWidget* ui;
     bool isEdit_;
     QString* p_buttonJsonPath;
