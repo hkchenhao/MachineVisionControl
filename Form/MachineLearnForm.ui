@@ -63,7 +63,7 @@
     <enum>QTabWidget::West</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_1">
     <attribute name="title">
@@ -123,16 +123,6 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>4</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="3" column="2">
@@ -149,21 +139,6 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>透明</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>半透明</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>不透明</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="1" column="2">
@@ -192,41 +167,6 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>圆形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>心形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>三角形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>方形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>五角形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>梅花形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>异形</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="4" column="2">
@@ -243,31 +183,6 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>纯色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>拼色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>花纹</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>字符</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>图案</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="0" column="1">
@@ -346,31 +261,6 @@
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
-        <item>
-         <property name="text">
-          <string>树脂</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>果实</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>贝壳</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>金属</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>玉石</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="3" column="0">
@@ -396,6 +286,9 @@
       </item>
       <item row="0" column="4">
        <widget class="QComboBox" name="box_cz_1">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -417,31 +310,6 @@
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
         </property>
-        <item>
-         <property name="text">
-          <string>树脂</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>果实</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>贝壳</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>金属</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>玉石</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="4" column="4">
@@ -458,31 +326,6 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>纯色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>拼色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>花纹</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>字符</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>图案</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="5" column="0">
@@ -541,55 +384,13 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>白色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>红色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>橙色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>黄色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>绿色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>青色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>蓝色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>紫色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>黑色</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="1" column="4">
        <widget class="QComboBox" name="box_xz_1">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -608,45 +409,13 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>圆形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>心形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>三角形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>方形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>五角形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>梅花形</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>异形</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="2" column="4">
        <widget class="QComboBox" name="box_xks_1">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -659,16 +428,6 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>4</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="5" column="2">
@@ -685,55 +444,13 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>白色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>红色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>橙色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>黄色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>绿色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>青色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>蓝色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>紫色</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>黑色</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="3" column="4">
        <widget class="QComboBox" name="box_tmx_1">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -746,21 +463,6 @@
           <pointsize>18</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>透明</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>半透明</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>不透明</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="0" column="0">
@@ -909,8 +611,8 @@ padding:2px 4px</string>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>20</y>
+       <x>150</x>
+       <y>30</y>
        <width>501</width>
        <height>361</height>
       </rect>
@@ -927,7 +629,7 @@ padding:2px 4px</string>
       <rect>
        <x>40</x>
        <y>480</y>
-       <width>921</width>
+       <width>681</width>
        <height>131</height>
       </rect>
      </property>
@@ -935,8 +637,49 @@ padding:2px 4px</string>
       <property name="spacing">
        <number>0</number>
       </property>
-      <item row="1" column="5">
-       <widget class="QLabel" name="lable_37">
+      <item row="0" column="7">
+       <widget class="QLineEdit" name="lineEdit_6">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>20</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="6">
+       <widget class="QLabel" name="lable_35">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -956,19 +699,216 @@ padding:2px 4px</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="8">
-       <widget class="QLineEdit" name="lineEdit_7">
+      <item row="1" column="7">
+       <widget class="QLineEdit" name="lineEdit_8">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>1</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>50</width>
           <height>30</height>
          </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLabel" name="lable_44">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>偏 差</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7">
+       <widget class="QLineEdit" name="lineEdit_9">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="8">
+       <widget class="QLabel" name="lable_40">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>-</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="9">
+       <widget class="QLineEdit" name="lineEdit_11">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="6">
+       <widget class="QLabel" name="lable_38">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="9">
+       <widget class="QLineEdit" name="lineEdit_10">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="8">
+       <widget class="QLabel" name="lable_41">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>-</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="lable_28">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>偏 差</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -1014,66 +954,6 @@ padding:2px 4px</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="inputMask">
-         <string/>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-        <property name="cursorMoveStyle">
-         <enum>Qt::LogicalMoveStyle</enum>
-        </property>
-        <property name="clearButtonEnabled">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_4">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_5">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
        <widget class="QLabel" name="lable_25">
         <property name="font">
@@ -1095,74 +975,7 @@ padding:2px 4px</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="6">
-       <widget class="QLineEdit" name="lineEdit_9">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>1</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>30</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="5">
-       <widget class="QLabel" name="lable_35">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>+</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="7">
-       <widget class="QLabel" name="lable_36">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>-</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
+      <item row="1" column="4">
        <widget class="QLabel" name="lable_43">
         <property name="font">
          <font>
@@ -1183,109 +996,8 @@ padding:2px 4px</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="6">
-       <widget class="QLineEdit" name="lineEdit_6">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="QLabel" name="lable_44">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>偏 差</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="6">
-       <widget class="QLineEdit" name="lineEdit_8">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>1</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>30</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QLabel" name="lable_28">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>偏 差</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="7">
-       <widget class="QLabel" name="lable_40">
-        <property name="font">
-         <font>
-          <family>Yahei Mono</family>
-          <pointsize>18</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>-</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="5">
-       <widget class="QLabel" name="lable_38">
+       <widget class="QLabel" name="lable_37">
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -1305,8 +1017,8 @@ padding:2px 4px</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="7">
-       <widget class="QLabel" name="lable_41">
+      <item row="0" column="8">
+       <widget class="QLabel" name="lable_36">
         <property name="font">
          <font>
           <family>Yahei Mono</family>
@@ -1326,84 +1038,95 @@ padding:2px 4px</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="2" column="8">
-       <widget class="QLineEdit" name="lineEdit_11">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_5">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>1</horstretch>
+          <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>30</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="8">
-       <widget class="QLineEdit" name="lineEdit_10">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>1</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>30</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <spacer name="horizontalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>20</height>
+          <height>30</height>
          </size>
         </property>
-       </spacer>
+       </widget>
+      </item>
+      <item row="0" column="9">
+       <widget class="QLineEdit" name="lineEdit_7">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="lable_42">
+        <property name="font">
+         <font>
+          <family>Yahei Mono</family>
+          <pointsize>18</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string>(mm)</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+        <property name="cursorMoveStyle">
+         <enum>Qt::LogicalMoveStyle</enum>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
     <widget class="QLabel" name="lable_39">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>380</y>
-       <width>131</width>
+       <x>240</x>
+       <y>390</y>
+       <width>321</width>
        <height>31</height>
       </rect>
      </property>
@@ -1419,7 +1142,7 @@ padding:2px 4px</string>
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>单位：mm</string>
+      <string>单位：毫米（mm）</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

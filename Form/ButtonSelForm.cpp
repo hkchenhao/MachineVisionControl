@@ -15,13 +15,14 @@ const qint32 PER_ROW_COUNT = 5;         // 每页显示的行数
 const qint32 PER_COLUMN_COUNT = 4;      // 每页显示的列数
 
 /********** 纽扣配置Json信息类 **********/
-ButtonJsonInfo::ButtonJsonInfo(const QString& filepath, const QString& filename, QWidget* parent) : QWidget(parent)
+ButtonInfoLabel::ButtonInfoLabel(const QString& filepath, const QString& filename, QWidget* parent) : QWidget(parent)
 {
     // 初始化配置文件所在路径与名称
     p_configFilePath = new QString(filepath);
     p_configFileName = new QString(filename);
+    p_configFileAllPath = new QString(*p_configFilePath + "/" + *p_configFileName + ".ini");
     // 读取纽扣配置参数json文件
-    p_buttonInfo = new QJsonAnalysis(*p_configFilePath + "/" + *p_configFileName + ".ini", true);
+    p_buttonJsonInfo = new QJsonAnalysis(*p_configFileAllPath, true);
     // 初始化p_buttonImage、p_buttonName与p_layout
     p_layout = new QVBoxLayout;
     p_buttonImage = new QLabel;
@@ -62,15 +63,16 @@ ButtonJsonInfo::ButtonJsonInfo(const QString& filepath, const QString& filename,
     this->setLayout(p_layout);
 }
 
-ButtonJsonInfo::~ButtonJsonInfo()
+ButtonInfoLabel::~ButtonInfoLabel()
 {
-    if(p_configFilePath) { delete p_configFilePath; }
-    if(p_configFileName) { delete p_configFileName; }
-    if(p_buttonInfo) { delete p_buttonInfo; }
+    if(p_configFilePath) { delete p_configFilePath; p_configFilePath = nullptr;}
+    if(p_configFileName) { delete p_configFileName; p_configFileName = nullptr;}
+    if(p_configFileAllPath) { delete p_configFileAllPath; p_configFileAllPath = nullptr;}
+    if(p_buttonJsonInfo) { delete p_buttonJsonInfo; p_buttonJsonInfo = nullptr;}
 }
 
 // [虚函数覆盖]事件过滤器函数
-bool ButtonJsonInfo::eventFilter(QObject* watched, QEvent* event)
+bool ButtonInfoLabel::eventFilter(QObject* watched, QEvent* event)
 {
     // 处理buttonImage-Label的鼠标单击事件
     if(watched == p_buttonImage)
@@ -100,7 +102,7 @@ ButtonSelForm::ButtonSelForm(QWidget* parent) : QWidget(parent), ui(new Ui::Butt
 ButtonSelForm::~ButtonSelForm()
 {
     delete ui;
-    foreach (ButtonJsonInfo* p_buttoninfo, v_pButtonOriginalInfo)
+    foreach (ButtonInfoLabel* p_buttoninfo, v_pButtonOriginalInfo)
         delete p_buttoninfo;
 }
 
@@ -154,8 +156,8 @@ void ButtonSelForm::LoadAllConfigFileInfo()
     {
         QString pathname(SystemUtils::GetPathForButtonConfigFile() + buttonnamelist.at(i));
         QString filename(buttonnamelist.at(i));
-        p_currentButtonInfoVector->push_back(new ButtonJsonInfo(pathname, filename));
-        QObject::connect(p_currentButtonInfoVector->at(i), &ButtonJsonInfo::Signal_ButtonImageSelected,
+        p_currentButtonInfoVector->push_back(new ButtonInfoLabel(pathname, filename));
+        QObject::connect(p_currentButtonInfoVector->at(i), &ButtonInfoLabel::Signal_ButtonImageSelected,
                          this, &ButtonSelForm::SetButtonSelectStaus);
     }
     // 初始化上一个以及当前被选取的纽扣图像指针
@@ -180,7 +182,7 @@ void ButtonSelForm::ShowButtonImage()
         QWidget* currentwidget = ui->ButtonImageGridLayout->itemAt(0)->widget();
         ui->ButtonImageGridLayout->removeWidget(currentwidget);
         // 如果currentwidget不是ButtonInfo就释放掉
-        if(qobject_cast<ButtonJsonInfo*>(currentwidget) == 0)
+        if(qobject_cast<ButtonInfoLabel*>(currentwidget) == 0)
             delete currentwidget;
         else
             currentwidget->setParent(nullptr);
@@ -235,48 +237,54 @@ void ButtonSelForm::InitButtonPageInfo()
 }
 
 // [成员函数]根据条件刷新纽扣信息区信息
-void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
+void ButtonSelForm::UpdateButtonInfoLabel(bool iseditagain, bool isshow)
 {
+    if(iseditagain)
+    {
+        if(p_currentSeletedButton->GetButtonJsonPtr())
+            delete p_currentSeletedButton->GetButtonJsonPtr();
+        p_currentSeletedButton->SetButtonJsonPtr(new QJsonAnalysis(*p_currentSeletedButton->GetButtonJsonPathPtr(), true));
+    }
     if(isshow)
     {
         QString jsonparentstr;
         QMap<QString, qint32>::iterator it;
         // 纽扣图片/编号/时间信息
         ui->ButtonImage->setPixmap(p_currentSeletedButton->GetButtonImagePtr()->pixmap()->scaled(128, 128));
-        ui->LabelInfo_BH->setText(p_currentSeletedButton->GetButtonInfoPtr()->getString("name"));
-        ui->LabelInfo_SJ->setText(p_currentSeletedButton->GetButtonInfoPtr()->getString("time"));
+        ui->LabelInfo_BH->setText(p_currentSeletedButton->GetButtonJsonPtr()->getString("name"));
+        ui->LabelInfo_SJ->setText(p_currentSeletedButton->GetButtonJsonPtr()->getString("time"));
         // 纽扣基本信息
         jsonparentstr = QString("infoFront");
         QString patternstr, colorsr;
-        if(!p_currentSeletedButton->GetButtonInfoPtr()->getJsonObject(jsonparentstr).isEmpty())
+        if(!p_currentSeletedButton->GetButtonJsonPtr()->getJsonObject(jsonparentstr).isEmpty())
         {
-            ui->LabelInfo_CC->setText(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "." + "sizeF"));
-            it = ButtonMaterialEnMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "." + "materialF"));
+            ui->LabelInfo_CC->setText(p_currentSeletedButton->GetButtonJsonPtr()->getString(jsonparentstr + "." + "sizeF"));
+            it = ButtonMaterialEnMap.find(p_currentSeletedButton->GetButtonJsonPtr()->getString(jsonparentstr + "." + "materialF"));
             if(it != ButtonMaterialEnMap.end())
                 ui->LabelInfo_CZ->setText(ButtonMaterialStrCnBuf[it.value()]);
-            it = ButtonShapeEnMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "." + "shapeF"));
+            it = ButtonShapeEnMap.find(p_currentSeletedButton->GetButtonJsonPtr()->getString(jsonparentstr + "." + "shapeF"));
             if(it != ButtonShapeEnMap.end())
                 ui->LabelInfo_XZ->setText(ButtonShapeStrCnBuf[it.value()]);
-            it = ButtonHoleNumEnMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "." + "holeNumF"));
+            it = ButtonHoleNumEnMap.find(p_currentSeletedButton->GetButtonJsonPtr()->getString(jsonparentstr + "." + "holeNumF"));
             if(it != ButtonHoleNumEnMap.end())
                 ui->LabelInfo_XKS->setText(ButtonHoleNumStrCnBuf[it.value()]);
-            it = ButtonLightEnMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "." + "lightF"));
+            it = ButtonLightEnMap.find(p_currentSeletedButton->GetButtonJsonPtr()->getString(jsonparentstr + "." + "lightF"));
             if(it != ButtonLightEnMap.end())
                 ui->LabelInfo_TMX->setText(ButtonLightStrCnBuf[it.value()]);
-            it = ButtonPatternEnMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "." + "patternF"));
+            it = ButtonPatternEnMap.find(p_currentSeletedButton->GetButtonJsonPtr()->getString(jsonparentstr + "." + "patternF"));
             if(it != ButtonPatternEnMap.end())
                 patternstr = ButtonPatternStrCnBuf[it.value()];
-            it = ButtonColorEnMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "." + "colorF"));
+            it = ButtonColorEnMap.find(p_currentSeletedButton->GetButtonJsonPtr()->getString(jsonparentstr + "." + "colorF"));
             if(it != ButtonColorEnMap.end())
                 colorsr = ButtonColorStrCnBuf[it.value()];
             // 反面花色与主色信息
             jsonparentstr = QString("infoBack");
-            if(!p_currentSeletedButton->GetButtonInfoPtr()->getJsonObject(jsonparentstr).isEmpty())
+            if(!p_currentSeletedButton->GetButtonJsonPtr()->getJsonObject(jsonparentstr).isEmpty())
             {
-                it = ButtonPatternEnMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "." + "patternB"));
+                it = ButtonPatternEnMap.find(p_currentSeletedButton->GetButtonJsonPtr()->getString(jsonparentstr + "." + "patternB"));
                 if(it != ButtonPatternEnMap.end())
                     patternstr += " / " + ButtonPatternStrCnBuf[it.value()];
-                it = ButtonColorEnMap.find(p_currentSeletedButton->GetButtonInfoPtr()->getString(jsonparentstr + "." + "colorB"));
+                it = ButtonColorEnMap.find(p_currentSeletedButton->GetButtonJsonPtr()->getString(jsonparentstr + "." + "colorB"));
                 if(it != ButtonColorEnMap.end())
                     colorsr += " / " + ButtonColorStrCnBuf[it.value()];
             }
@@ -296,23 +304,23 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
         }
         // 纽扣尺寸信息
         jsonparentstr = QString("taskSize");
-        if(!p_currentSeletedButton->GetButtonInfoPtr()->getJsonObject(jsonparentstr).isEmpty())
+        if(!p_currentSeletedButton->GetButtonJsonPtr()->getJsonObject(jsonparentstr).isEmpty())
         {
             double buttonsize, buttonsizeup, buttonsizedown;
             QString buttonsizestr;
-            buttonsize = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "." + "outDia");
-            buttonsizeup = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "." + "outDiaDevUp");
-            buttonsizedown = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "." + "outDiaDevDown");
+            buttonsize = p_currentSeletedButton->GetButtonJsonPtr()->getDouble(jsonparentstr + "." + "outDia");
+            buttonsizeup = p_currentSeletedButton->GetButtonJsonPtr()->getDouble(jsonparentstr + "." + "outDiaDevUp");
+            buttonsizedown = p_currentSeletedButton->GetButtonJsonPtr()->getDouble(jsonparentstr + "." + "outDiaDevDown");
             buttonsizestr = QString("%1[%2,%3]").arg(QString::number(buttonsize,'f',1)).arg(buttonsizeup).arg(buttonsizedown);
             ui->LabelInfo_WJ->setText(buttonsizestr);
-            buttonsize = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "." + "holeDia");
-            buttonsizeup = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "." + "holeDiaDevUp");
-            buttonsizedown = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "." + "holeDiaDevDown");
+            buttonsize = p_currentSeletedButton->GetButtonJsonPtr()->getDouble(jsonparentstr + "." + "holeDia");
+            buttonsizeup = p_currentSeletedButton->GetButtonJsonPtr()->getDouble(jsonparentstr + "." + "holeDiaDevUp");
+            buttonsizedown = p_currentSeletedButton->GetButtonJsonPtr()->getDouble(jsonparentstr + "." + "holeDiaDevDown");
             buttonsizestr = QString("%1[%2,%3]").arg(QString::number(buttonsize,'f',1)).arg(buttonsizeup).arg(buttonsizedown);
             ui->LabelInfo_XKJ->setText(buttonsizestr);
-            buttonsize = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "." + "holeDist");
-            buttonsizeup = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "." + "holeDistDevUp");
-            buttonsizedown = p_currentSeletedButton->GetButtonInfoPtr()->getDouble(jsonparentstr + "." + "holeDistDevDown");
+            buttonsize = p_currentSeletedButton->GetButtonJsonPtr()->getDouble(jsonparentstr + "." + "holeDist");
+            buttonsizeup = p_currentSeletedButton->GetButtonJsonPtr()->getDouble(jsonparentstr + "." + "holeDistDevUp");
+            buttonsizedown = p_currentSeletedButton->GetButtonJsonPtr()->getDouble(jsonparentstr + "." + "holeDistDevDown");
             buttonsizestr = QString("%1[%2,%3]").arg(QString::number(buttonsize,'f',1)).arg(buttonsizeup).arg(buttonsizedown);
             ui->LabelInfo_XKJL->setText(buttonsizestr);
         }
@@ -341,7 +349,7 @@ void ButtonSelForm::UpdateButtonInfoLabel(bool isshow)
 }
 
 // [slot函数]选中某个图片后触发
-void ButtonSelForm::SetButtonSelectStaus(ButtonJsonInfo* p_buttoninfo)
+void ButtonSelForm::SetButtonSelectStaus(ButtonInfoLabel* p_buttoninfo)
 {
     // 添加选中边框
     p_currentSeletedButton = p_buttoninfo;
@@ -355,7 +363,7 @@ void ButtonSelForm::SetButtonSelectStaus(ButtonJsonInfo* p_buttoninfo)
         p_lastSeletedButton = p_currentSeletedButton;
     }
     // 更新信息区信息
-    UpdateButtonInfoLabel(true);
+    UpdateButtonInfoLabel(false, true);
 }
 
 // [控件slot函数]纽扣图像上一页按键
@@ -433,10 +441,14 @@ void ButtonSelForm::on_pushButton_Edit_clicked()
 
     if(FormFrame::GetInstance()->formstacked_id_.machinelearnform_id == -1)
     {
-        FormFrame::GetInstance()->p_machinelearnform_ = new MachineLearnForm(nullptr, true, p_currentSeletedButton->GetButtonInfoPtr());
+        FormFrame::GetInstance()->p_machinelearnform_ = new MachineLearnForm(nullptr, true,
+                                                                             p_currentSeletedButton->GetButtonJsonPathPtr(),
+                                                                             p_currentSeletedButton->GetButtonJsonPtr());
         qint32 id = FormFrame::GetInstance()->p_formstacked_->addWidget(FormFrame::GetInstance()->p_machinelearnform_);
         FormFrame::GetInstance()->formstacked_id_.machinelearnform_id = id;
         FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(id);
+        QObject::connect(FormFrame::GetInstance()->p_machinelearnform_, &MachineLearnForm::SignalUpdateButtonSelectForm,
+                         this, [this](){UpdateButtonInfoLabel(true, true);});
     }
 }
 
@@ -456,8 +468,8 @@ void ButtonSelForm::on_pushButton_Find_clicked()
     pmsgbox->show();
 
     // 指针指向筛选纽扣图像缓存区
-    QList<ButtonJsonInfo*> buttonfindlist;
-    foreach(ButtonJsonInfo* pbuttoninfo, v_pButtonOriginalInfo)
+    QList<ButtonInfoLabel*> buttonfindlist;
+    foreach(ButtonInfoLabel* pbuttoninfo, v_pButtonOriginalInfo)
         buttonfindlist.append(pbuttoninfo);
     p_currentButtonInfoVector = &v_pButtonSelectedInfo;
     p_currentButtonInfoVector->resize(0);
@@ -469,7 +481,7 @@ void ButtonSelForm::on_pushButton_Find_clicked()
         QString buttonid = ui->lineEdit_ButtonID->text();
         for(auto it = buttonfindlist.begin(); it != buttonfindlist.end();)
         {
-            if((*it)->GetButtonInfoPtr()->getString("name").contains(buttonid, Qt::CaseInsensitive))
+            if((*it)->GetButtonJsonPtr()->getString("name").contains(buttonid, Qt::CaseInsensitive))
                ++it;
             else
                 it = buttonfindlist.erase(it);
@@ -483,7 +495,7 @@ void ButtonSelForm::on_pushButton_Find_clicked()
         QString buttontime;
         for(auto it = buttonfindlist.begin(); it != buttonfindlist.end();)
         {
-            buttontime = (*it)->GetButtonInfoPtr()->getString("time");
+            buttontime = (*it)->GetButtonJsonPtr()->getString("time");
             if((buttontime >= buttontimestart) && (buttontime <= buttontimeend))
                 ++it;
             else
@@ -498,7 +510,7 @@ void ButtonSelForm::on_pushButton_Find_clicked()
             QString buttoncz(ButtonMaterialStrEnBuf[ui->comboBox_CZ->currentIndex() - 1]);
             for(auto it = buttonfindlist.begin(); it != buttonfindlist.end();)
             {
-                if((*it)->GetButtonInfoPtr()->getString("infoFront.materialF") == buttoncz)
+                if((*it)->GetButtonJsonPtr()->getString("infoFront.materialF") == buttoncz)
                    ++it;
                 else
                     it = buttonfindlist.erase(it);
@@ -509,7 +521,7 @@ void ButtonSelForm::on_pushButton_Find_clicked()
             QString buttonxz(ButtonShapeStrEnBuf[ui->comboBox_XZ->currentIndex() - 1]);
             for(auto it = buttonfindlist.begin(); it != buttonfindlist.end();)
             {
-                if((*it)->GetButtonInfoPtr()->getString("infoFront.shapeF") == buttonxz)
+                if((*it)->GetButtonJsonPtr()->getString("infoFront.shapeF") == buttonxz)
                    ++it;
                 else
                     it = buttonfindlist.erase(it);
@@ -521,8 +533,30 @@ void ButtonSelForm::on_pushButton_Find_clicked()
             double sizedown = ButtonSizeBuf[ui->comboBox_CC->currentIndex() - 1];
             for(auto it = buttonfindlist.begin(); it != buttonfindlist.end();)
             {
-                double size = (*it)->GetButtonInfoPtr()->getDouble("infoFront.sizeF");
+                double size = (*it)->GetButtonJsonPtr()->getDouble("infoFront.sizeF");
                 if(size >= sizedown && size < sizeup)
+                   ++it;
+                else
+                    it = buttonfindlist.erase(it);
+            }
+        }   
+        if(ui->comboBox_XKS->currentIndex() != 0)
+        {
+            QString buttonxks(ButtonHoleNumStrEnBuf[ui->comboBox_XKS->currentIndex() - 1]);
+            for(auto it = buttonfindlist.begin(); it != buttonfindlist.end();)
+            {
+                if((*it)->GetButtonJsonPtr()->getString("infoFront.holeNumF") == buttonxks)
+                   ++it;
+                else
+                    it = buttonfindlist.erase(it);
+            }
+        }
+        if(ui->comboBox_TMX->currentIndex() != 0)
+        {
+            QString buttontmx(ButtonShapeStrEnBuf[ui->comboBox_TMX->currentIndex() - 1]);
+            for(auto it = buttonfindlist.begin(); it != buttonfindlist.end();)
+            {
+                if((*it)->GetButtonJsonPtr()->getString("infoFront.lightF") == buttontmx)
                    ++it;
                 else
                     it = buttonfindlist.erase(it);
@@ -530,7 +564,7 @@ void ButtonSelForm::on_pushButton_Find_clicked()
         }
     }
     // 显示查询结果
-    foreach(ButtonJsonInfo* pbuttoninfo, buttonfindlist)
+    foreach(ButtonInfoLabel* pbuttoninfo, buttonfindlist)
         p_currentButtonInfoVector->push_back(pbuttoninfo);
     InitButtonPageInfo();
     ShowButtonImage();
@@ -566,7 +600,7 @@ void ButtonSelForm::on_pushButton_Clear_clicked()
     if(p_currentSeletedButton != nullptr)
     {
         p_currentSeletedButton->GetButtonImagePtr()->setStyleSheet("");
-        UpdateButtonInfoLabel(false);
+        UpdateButtonInfoLabel(false, false);
         currentSeletedButtonName.clear();
         p_currentSeletedButton = nullptr;
     }

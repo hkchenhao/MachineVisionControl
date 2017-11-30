@@ -12,7 +12,6 @@
 #include "Mgr/SystemFrame.h"
 #include "Net/NetServer.h"
 #include "Net/NetThread.h"
-#include "Utils/LoadDialog.h"
 #include "Utils/QJsonAnalysis.h"
 #include "Utils/SystemUtils.h"
 #include "Utils/UserMsgBox.h"
