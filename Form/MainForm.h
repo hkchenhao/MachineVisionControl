@@ -14,6 +14,8 @@ namespace Ui
     class MainWidget;
 }
 class InfoCheckResForm;
+class InfoSizeForm;
+class QJsonAnalysis;
 
 // 纽扣检测结果结构体
 struct ButtonCheckResult
@@ -60,22 +62,29 @@ private slots:
     void on_pushButton_AppClose_clicked();      // 程序关闭控件slot函数
     void on_pushButton_Statistics_clicked();    // 统计分析界面slot函数
     void on_pushButton_Learn_clicked();
-    void on_Button1_slxx_clicked();
+    void on_Button_ccxx_clicked();
+    void on_Button_slxx_clicked();
+
+    void on_Button_clicked();
 
 signals:
     void SignalDetectControl(bool isstart);    // 检测开始与暂停信号
     void SignalNetSendPacket(DataPacketEnum datapacket_type, QByteArray databyte = QByteArray());
+    void SignalNetSendJson(const QByteArray& databyte = QByteArray());
     void SignalNetClose();
 
 private:
     Ui::MainWidget* ui;
     QVector<QRgb> vcolorTable; //生成灰度颜色表
+    // 纽扣json文件
+    QString buttonname;
+    QJsonAnalysis* p_buttonjson;
     // 相机label控件指针数组
     QLabel* buf_cameralinkstatus_[CAMERA_NUM];
     // 相机检测结果数组
     ButtonCheckResult buf_buttoncheckresult_[CAMERA_NUM];
-
     InfoCheckResForm* p_infochenckresform;
+    InfoSizeForm* p_infosizeform;
 };
 
 #endif

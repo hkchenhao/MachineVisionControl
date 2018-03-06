@@ -1,20 +1,22 @@
-#ifndef INFOCHECKRESFORM_H
-#define INFOCHECKRESFORM_H
+#ifndef INFOSIZEFORM_H
+#define INFOSIZEFORM_H
 #include <QWidget>
 #include <QMouseEvent>
+#include "Utils/QJsonAnalysis.h"
 
 namespace Ui
 {
-    class InfoCheckResWidget;
+    class InfoSizeWidget;
 }
 
-class InfoCheckResForm : public QWidget
+class InfoSizeForm : public QWidget
 {
     Q_OBJECT
 public:
-    explicit InfoCheckResForm(QWidget* parent = nullptr);
-    ~InfoCheckResForm();
-    Ui::InfoCheckResWidget* GetWidgetPtr() { return ui; }
+    explicit InfoSizeForm(QWidget* parent = nullptr);
+    ~InfoSizeForm();
+    Ui::InfoSizeWidget* GetWidgetPtr() { return ui; }
+    void Show(QJsonAnalysis* p_buttonjson);
     void Update(qint32 buf[]);
 
 signals:
@@ -30,7 +32,7 @@ protected:
     virtual void mouseReleaseEvent(QMouseEvent *event);
 
 private:
-    Ui::InfoCheckResWidget* ui;
+    Ui::InfoSizeWidget* ui;
     bool ismoveing;
     QPoint moveposition;
 };

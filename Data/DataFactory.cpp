@@ -19,6 +19,9 @@ DataFactory::DataFactory(DataPacketEnum datapacket_type, const QByteArray& datab
         case MSG_NET_ALG_TEST_CONFIGURE:
             p_datapacket_ = new DataPacketSetImageFormat(databyte);
             break;
+
+        case MSG_NET_SEND_JSON:
+            p_datapacket_ = new DataPacketSendJson(databyte);
         default:
             break;
     }

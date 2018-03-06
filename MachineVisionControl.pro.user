@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.3.1, 2017-11-30T17:06:33. -->
+<!-- Written by QtCreator 4.3.1, 2018-03-06T11:10:06. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -835,8 +835,8 @@
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedFiles">
        <value type="QString">/home/chenhao/WorkSpaces/build-MachineVisionControl-beaglebone-Debug/MachineVisionControl</value>
        <value type="QString">/home/chenhao/WorkSpaces/build-MachineVisionControl-beaglebone-Release/MachineVisionControl</value>
-       <value type="QString">/home/chenhao/WorkSpaces/build-MachineVisionControl-beaglebone-Release/MachineVisionControl</value>
        <value type="QString">/home/chenhao/WorkSpaces/build-MachineVisionControl-beaglebone-Debug/MachineVisionControl</value>
+       <value type="QString">/home/chenhao/WorkSpaces/build-MachineVisionControl-beaglebone-Release/MachineVisionControl</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedHosts">
        <value type="QString">192.168.1.121</value>
@@ -845,8 +845,8 @@
        <value type="QString">192.168.1.121</value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedRemotePaths">
-       <value type="QString">/root</value>
        <value type="QString">/home/debian</value>
+       <value type="QString">/root</value>
        <value type="QString">/root</value>
        <value type="QString">/home/debian</value>
       </valuelist>
@@ -857,10 +857,10 @@
        <value type="QString"></value>
       </valuelist>
       <valuelist type="QVariantList" key="ProjectExplorer.RunConfiguration.LastDeployedTimes">
+       <value type="QDateTime">2017-11-10T20:35:43</value>
+       <value type="QDateTime">2017-11-13T12:44:26</value>
        <value type="QDateTime">2017-11-13T12:56:57</value>
        <value type="QDateTime">2017-11-11T15:17:59</value>
-       <value type="QDateTime">2017-11-13T12:44:26</value>
-       <value type="QDateTime">2017-11-10T20:35:43</value>
       </valuelist>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.IgnoreMissingFiles">false</value>
       <value type="bool" key="RemoteLinux.GenericDirectUploadStep.Incremental">true</value>

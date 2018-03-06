@@ -2,6 +2,9 @@
 #include "ui_StatisticalForm.h"
 #include "Mgr/FormFrame.h"
 #include "Utils/WidgetStyle.h"
+#include "Utils/SystemConstants.h"
+
+ButtonStatisticalInfo CameraStatisticalInfo[CAMERA_NUM];
 
 StatisticalForm::StatisticalForm(QWidget *parent) : QWidget(parent), ui(new Ui::StatisticalWidget)
 {

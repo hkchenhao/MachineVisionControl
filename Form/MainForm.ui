@@ -144,7 +144,7 @@ QGroupBox::title
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>8000</string>
+        <string>0</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -181,7 +181,7 @@ QGroupBox::title
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>16000</string>
+        <string>0</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -202,7 +202,7 @@ QGroupBox::title
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>8000</string>
+        <string>0</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -227,7 +227,7 @@ QGroupBox::title
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>860</x>
@@ -238,7 +238,7 @@ QGroupBox::title
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="Button1_ccxx">
+      <widget class="QPushButton" name="Button_ccxx">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -263,7 +263,7 @@ QGroupBox::title
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="Button1_slxx">
+      <widget class="QPushButton" name="Button_slxx">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -288,7 +288,7 @@ QGroupBox::title
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="Button1_qtsz">
+      <widget class="QPushButton" name="Button_qtsz">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -391,7 +391,7 @@ QGroupBox::title
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 255, 127);</string>
+     <string notr="true">image: url(:/pic/button_128px.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -426,7 +426,7 @@ QGroupBox::title
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 255, 127);</string>
+     <string notr="true">image: url(:/pic/button_128px.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -539,7 +539,7 @@ QGroupBox::title
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(0, 255, 127);</string>
+     <string notr="true">image: url(:/pic/button_128px.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -555,7 +555,7 @@ QGroupBox::title
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(:/icon/right_48px.png);</string>
+     <string notr="true">image: url(:/icon/right_48px.png);</string>
     </property>
     <property name="text">
      <string/>
@@ -568,7 +568,7 @@ QGroupBox::title
      <x>680</x>
      <y>70</y>
      <width>331</width>
-     <height>121</height>
+     <height>111</height>
     </rect>
    </property>
    <property name="font">
@@ -607,7 +607,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>40</y>
+      <y>30</y>
       <width>111</width>
       <height>61</height>
      </rect>
@@ -638,7 +638,7 @@ QGroupBox::title
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>40</y>
+      <y>30</y>
       <width>111</width>
       <height>61</height>
      </rect>
@@ -667,9 +667,9 @@ background-color: rgb(239, 41, 41);
    <property name="geometry">
     <rect>
      <x>680</x>
-     <y>210</y>
+     <y>190</y>
      <width>331</width>
-     <height>111</height>
+     <height>101</height>
     </rect>
    </property>
    <property name="font">
@@ -784,7 +784,7 @@ QGroupBox::title
      </font>
     </property>
     <property name="text">
-     <string>S120231-001</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -795,9 +795,9 @@ QGroupBox::title
    <property name="geometry">
     <rect>
      <x>680</x>
-     <y>340</y>
+     <y>300</y>
      <width>331</width>
-     <height>141</height>
+     <height>181</height>
     </rect>
    </property>
    <property name="font">
@@ -832,6 +832,40 @@ QGroupBox::title
    <property name="checkable">
     <bool>false</bool>
    </property>
+   <widget class="QPushButton" name="Button">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>20</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yahei Mono</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">

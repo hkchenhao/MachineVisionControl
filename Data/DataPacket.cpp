@@ -101,3 +101,12 @@ DataPacketSetImageFormat::DataPacketSetImageFormat(const QByteArray& databyte)
     //data.append(1, 0x04);
     CreateDataPacketByteArray();
 }
+
+// 发送json文件
+DataPacketSendJson::DataPacketSendJson(const QByteArray& databyte)
+{
+    length = 28 + databyte.size();
+    minid = MSG_NET_SEND_JSON;
+    data.append(databyte);
+    CreateDataPacketByteArray();
+}

@@ -21,9 +21,9 @@ int main(int argc, char *argv[])
     qRegisterMetaType<DataPacketReceived>("DataPacketReceived");
     qRegisterMetaType<DataPacketReceived>("DataPacketReceived&");
 
-    QString error;
-    QCanBusDevice *device = QCanBus::instance()->createDevice(QStringLiteral("socketcan"), QStringLiteral("can1"));
-    qDebug() << device->connectDevice();
+//    QString error;
+//    QCanBusDevice *device = QCanBus::instance()->createDevice(QStringLiteral("socketcan"), QStringLiteral("can1"));
+//    qDebug() << device->connectDevice();
 //    QList<QCanBusDeviceInfo> m =  QCanBus::instance()->availableDevices("socketcan", &error);
 //    qDebug() << m.length();
 //    for(auto i : m)

@@ -16,6 +16,7 @@ enum DataPacketEnum
     MSG_NET_ALG_TEST_CONFIGURE = 35,
 
     MSG_NET_SAVE_VIDEO = 22,    // 获取纽扣图像 DSP->ARM
+    MSG_NET_SEND_JSON = 194,
     MSG_IS_SEND_IMAGE = 195,    // 是否发送图像 ARM->DSP
     MSG_NET_TOTAL_CNT = 196,    // 返回检测个数 DSP->ARM
     MSG_ALG_RESULT = 197,       // 返回判别结果 DSP->ARM

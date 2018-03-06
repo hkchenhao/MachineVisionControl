@@ -59,6 +59,8 @@ NetThread::NetThread(qintptr socketDescriptor, QObject* parent) : QObject(parent
 
     // 信号与槽-UI-不同线程默认Qt::QueuedConnection连接
     QObject::connect(FormFrame::GetInstance()->p_mainform_, &MainForm::SignalNetSendPacket, this, &NetThread::SendNetPacket);
+    QObject::connect(FormFrame::GetInstance()->p_mainform_, &MainForm::SignalNetSendJson, this, &NetThread::SendNetJsonPacket);
+
     QObject::connect(FormFrame::GetInstance()->p_mainform_, &MainForm::SignalNetClose, this, &NetThread::CloseNet);
     QObject::connect(FormFrame::GetInstance()->p_mainform_, &MainForm::SignalNetClose, this, [this](){ net_socket_->close(); });
     // 信号与槽-Thread-不同线程默认Qt::QueuedConnection连接
@@ -131,6 +133,13 @@ void NetThread::SendNetPacket(DataPacketEnum datapacket_type, const QByteArray& 
 {
     DataFactory datafactory(datapacket_type, databyte);
     datafactory.SendDataPacketByNet(net_socket_);
+}
+
+void NetThread::SendNetJsonPacket(const QByteArray& databyte)
+{
+    DataFactory datafactory(MSG_NET_SEND_JSON, databyte);
+    datafactory.SendDataPacketByNet(net_socket_);
+    //net_socket_->write(databyte);
 }
 
 // 读取数据包
@@ -222,7 +231,11 @@ void NetThread::HandleNetPacket()
 { 
     switch ((DataPacketEnum)net_packet_.minid)
     {
-        case MSG_NET_SAVE_VIDEO:
+        case MSG_NET_SEND_JSON:
+        {
+            qDebug() << "相机" << camera_id_ + 1 << "json" << net_packet_.data;
+        }
+        case MSG_NET_ALG_IMAGE:
         {
 //            qDebug() << net_timecal_.elapsed() << "ms";
 //            net_timecal_.restart();
@@ -233,7 +246,24 @@ void NetThread::HandleNetPacket()
             QCoreApplication::postEvent(FormFrame::GetInstance()->p_mainform_, mainformevent);
             break;
         }
-
+        // 1号相机检测结果
+        case MSG_NET_ALG_RESULT:
+        {
+            // 向UI线程投递检测结果事件
+            MainFormEvent* mainformevent = new MainFormEvent(MainFormEvent::EventType_CarmeraCheckResult, camera_id_);
+            mainformevent->checkresult_packet_ = net_packet_;
+            QCoreApplication::postEvent(FormFrame::GetInstance()->p_mainform_, mainformevent);
+            break;
+        }
+        // 2 3号相机检测结果
+        case MSG_NET_TOTAL_CNT:
+        {
+            // 向UI线程投递检测结果事件
+            MainFormEvent* mainformevent = new MainFormEvent(MainFormEvent::EventType_CarmeraCheckResult, camera_id_);
+            mainformevent->checkresult_packet_ = net_packet_;
+            QCoreApplication::postEvent(FormFrame::GetInstance()->p_mainform_, mainformevent);
+            break;
+        }
         default:
             break;
     }

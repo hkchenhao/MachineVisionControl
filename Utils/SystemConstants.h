@@ -7,7 +7,7 @@
 
 #define CAMERA1_IP "115.156.211.1"
 #define CAMERA2_IP "115.156.211.2"
-#define CAMERA3_IP "115.156.211.3"
+#define CAMERA3_IP "115.156.211.4"
 
 
 // 相机编号（enum值必须是0 1 2）

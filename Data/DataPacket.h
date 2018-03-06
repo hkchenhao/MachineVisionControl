@@ -63,4 +63,11 @@ public:
     DataPacketSetImageFormat(const QByteArray& databyte);
 };
 
+// 发送json文件
+class DataPacketSendJson : public DataPacketBase
+{
+public:
+    DataPacketSendJson(const QByteArray& databyte);
+};
+
 #endif

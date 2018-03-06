@@ -26,6 +26,7 @@ private slots:
     void CloseNet();
     // 发送网络数据包
     void SendNetPacket(DataPacketEnum datapacket_type, const QByteArray& databyte);
+    void SendNetJsonPacket(const QByteArray& databyte);
     // 获取网络数据包
     void GetNetPacket();
     // 处理网络数据包
