@@ -35,3 +35,8 @@ void StatisticalForm::on_pushButton_Esc_clicked()
     FormFrame::GetInstance()->formstacked_id_.statisticalform_id = -1;
     FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(FormFrame::GetInstance()->formstacked_id_.mainform_id);
 }
+
+void StatisticalForm::on_pushButton_SavePic_clicked()
+{
+
+}

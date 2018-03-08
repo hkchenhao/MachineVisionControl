@@ -5,8 +5,9 @@
 #include "Utils/WidgetStyle.h"
 #include "Utils/QJsonAnalysis.h"
 #include "Utils/UserMsgBox.h"
+#include "Utils/SystemConstants.h"
 
-MachineLearnForm::MachineLearnForm(QWidget* parent, bool isedit, QString* pjsonpath, QJsonAnalysis* pbuttonjsoninfo) :
+MachineLearnForm::MachineLearnForm(QWidget* parent, bool isedit, QString* pjsonpath, QJsonAnalysis* pbuttonjsoninfo, QString* jsonname) :
                                    QWidget(parent), ui(new Ui::MachineLearnWidget)
 {
     ui->setupUi(this);
@@ -17,6 +18,8 @@ MachineLearnForm::MachineLearnForm(QWidget* parent, bool isedit, QString* pjsonp
         p_buttonJsonPath = new QString(*pjsonpath);
     else
         p_buttonJsonPath = nullptr;
+    if(jsonname)
+        buttonJsonName = *jsonname;
     InitFormWidget();
 }
 
@@ -57,7 +60,7 @@ void MachineLearnForm::InitFormWidget()
     // 如果是纽扣编辑界面
     if(isEdit_ == true)
     {
-        ui->pushButton_Revise->setEnabled(false);
+        ui->pushButton_Save->setEnabled(false);
         QString jsonparentstr;
         QMap<QString, qint32>::iterator it;
         // 纽扣基本信息
@@ -114,6 +117,12 @@ void MachineLearnForm::InitFormWidget()
                     ui->box_zs_1->setCurrentIndex(it.value());
                 }
             }
+            // 图片信息
+            QString path((*p_buttonJsonPath).replace(p_buttonJsonPath->length()-3, 3, "jpg"));
+            QImage buttonimage(path);
+            QImage buttonimagescaled = buttonimage.scaled(ui->ButtonImage_zm->width(), ui->ButtonImage_zm->height());
+            ui->ButtonImage_zm->setPixmap(QPixmap::fromImage(buttonimagescaled));
+            ui->lable_pzwj->setText(buttonJsonName);
         }
         // 纽扣尺寸信息
         jsonparentstr = QString("taskSize");

@@ -20,7 +20,7 @@ class MachineLearnForm : public QWidget
     Q_OBJECT
 public:
     explicit MachineLearnForm(QWidget* parent = nullptr, bool isedit = false,
-                              QString* pjsonpath = nullptr, QJsonAnalysis* pbuttonjsoninfo = nullptr);
+                              QString* pjsonpath = nullptr, QJsonAnalysis* pbuttonjsoninfo = nullptr, QString* jsonname = nullptr);
     ~MachineLearnForm();
 signals:
     void SignalUpdateButtonSelectForm();
@@ -38,6 +38,7 @@ private:
     void SaveButtonJsonInfo(QJsonAnalysis* pjsoninfo);
     Ui::MachineLearnWidget* ui;
     bool isEdit_;
+    QString buttonJsonName;
     QString* p_buttonJsonPath;
     QJsonAnalysis* p_buttonJsonInfo;
 };

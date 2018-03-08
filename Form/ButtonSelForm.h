@@ -37,6 +37,7 @@ public:
     QJsonAnalysis* GetButtonJsonPtr() { return p_buttonJsonInfo; }
     void SetButtonJsonPtr(QJsonAnalysis* pjson) {p_buttonJsonInfo = pjson; }
     QString* GetButtonJsonPathPtr() { return p_configFileAllPath; }
+    QString* GetButtonJsonNamePtr() { return p_configFileName; }
 signals:
     // 图像被选中时发出信号
     void Signal_ButtonImageSelected(ButtonInfoLabel* p_buttoninfo);

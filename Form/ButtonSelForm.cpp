@@ -443,7 +443,8 @@ void ButtonSelForm::on_pushButton_Edit_clicked()
     {
         FormFrame::GetInstance()->p_machinelearnform_ = new MachineLearnForm(nullptr, true,
                                                                              p_currentSeletedButton->GetButtonJsonPathPtr(),
-                                                                             p_currentSeletedButton->GetButtonJsonPtr());
+                                                                             p_currentSeletedButton->GetButtonJsonPtr(),
+                                                                             p_currentSeletedButton->GetButtonJsonNamePtr());
         qint32 id = FormFrame::GetInstance()->p_formstacked_->addWidget(FormFrame::GetInstance()->p_machinelearnform_);
         FormFrame::GetInstance()->formstacked_id_.machinelearnform_id = id;
         FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(id);

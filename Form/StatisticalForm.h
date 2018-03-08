@@ -41,6 +41,7 @@ public:
     ~StatisticalForm();
 private slots:
     void on_pushButton_Esc_clicked();
+    void on_pushButton_SavePic_clicked();
 
 private:
     Ui::StatisticalWidget *ui;
