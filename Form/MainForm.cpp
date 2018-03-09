@@ -9,6 +9,9 @@
 #include "Form/StatisticalForm.h"
 #include "Form/InfoCheckResForm.h"
 #include "Form/InfoSizeForm.h"
+#include "Form/SystemSetForm.h"
+#include "Form/FileManagerForm.h"
+#include "Form/HelpForm.h"
 #include "Mgr/FormFrame.h"
 #include "Mgr/SystemFrame.h"
 #include "Net/NetServer.h"
@@ -324,6 +327,40 @@ void MainForm::on_pushButton_Statistics_clicked()
     }
 }
 
+// [slot函数]系统设置界面slot函数
+void MainForm::on_pushButton_Settings_clicked()
+{
+    if(FormFrame::GetInstance()->formstacked_id_.systemsetform_id == -1)
+    {
+        FormFrame::GetInstance()->p_systemsetform_ = new SystemSetForm;
+        qint32 id = FormFrame::GetInstance()->p_formstacked_->addWidget(FormFrame::GetInstance()->p_systemsetform_);
+        FormFrame::GetInstance()->formstacked_id_.systemsetform_id = id;
+        FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(id);
+    }
+}
+
+void MainForm::on_pushButton_Manage_clicked()
+{
+    if(FormFrame::GetInstance()->formstacked_id_.filemanagerform_id == -1)
+    {
+        FormFrame::GetInstance()->p_filemanagerform_ = new FileManagerForm;
+        qint32 id = FormFrame::GetInstance()->p_formstacked_->addWidget(FormFrame::GetInstance()->p_filemanagerform_);
+        FormFrame::GetInstance()->formstacked_id_.filemanagerform_id = id;
+        FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(id);
+    }
+}
+
+void MainForm::on_pushButton_Help_clicked()
+{
+    if(FormFrame::GetInstance()->formstacked_id_.helpform_id == -1)
+    {
+        FormFrame::GetInstance()->p_helpform_ = new HelpForm;
+        qint32 id = FormFrame::GetInstance()->p_formstacked_->addWidget(FormFrame::GetInstance()->p_helpform_);
+        FormFrame::GetInstance()->formstacked_id_.helpform_id = id;
+        FormFrame::GetInstance()->p_formstacked_->setCurrentIndex(id);
+    }
+}
+
 void MainForm::on_Button_ccxx_clicked()
 {
     if(!p_infosizeform->isVisible())
@@ -351,5 +388,8 @@ void MainForm::on_Button_clicked()
         SystemFrame::GetInstance()->p_netserver_->StartNetServer();
     }
 }
+
+
+
 
 

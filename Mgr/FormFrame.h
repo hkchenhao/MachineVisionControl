@@ -11,6 +11,9 @@ class MainForm;
 class ButtonSelForm;
 class MachineLearnForm;
 class StatisticalForm;
+class SystemSetForm;
+class FileManagerForm;
+class HelpForm;
 
 // 各个界面在QStackedWidget的索引号
 typedef struct
@@ -20,6 +23,9 @@ typedef struct
   qint32 buttonselform_id;
   qint32 machinelearnform_id;
   qint32 statisticalform_id;
+  qint32 systemsetform_id;
+  qint32 filemanagerform_id;
+  qint32 helpform_id;
 } FormIdStruct;
 
 class FormFrame : public QWidget
@@ -37,10 +43,13 @@ public:
     FormIdStruct formstacked_id_;      // Form窗口ID编号
     QStackedWidget* p_formstacked_;    // Form窗口管理器
     StartForm* p_startform_;           // Form Widget指针
-    MainForm* p_mainform_;                  //
-    ButtonSelForm* p_buttonselform_;        //
-    MachineLearnForm* p_machinelearnform_;  //
-    StatisticalForm* p_statisticalform_;    //
+    MainForm* p_mainform_;
+    ButtonSelForm* p_buttonselform_;
+    MachineLearnForm* p_machinelearnform_;
+    StatisticalForm* p_statisticalform_;
+    SystemSetForm* p_systemsetform_;
+    FileManagerForm* p_filemanagerform_;
+    HelpForm* p_helpform_;
 private:
     // 私有化的构造函数，确保除了单例接口外，其他对象无法构造出系统管理类
     explicit FormFrame(QWidget* parent = nullptr);

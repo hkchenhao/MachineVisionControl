@@ -51,7 +51,10 @@ SOURCES += \
     Form/MachineLearnForm.cpp \
     Form/InfoCheckResForm.cpp \
     Utils/UserMsgBox.cpp \
-    Form/InfoSizeForm.cpp
+    Form/InfoSizeForm.cpp \
+    Form/SystemSetForm.cpp \
+    Form/FileManagerForm.cpp \
+    Form/HelpForm.cpp
 
 HEADERS  += \
     Form/MainForm.h \
@@ -77,7 +80,10 @@ HEADERS  += \
     Utils/WidgetStyle.h \
     Form/InfoCheckResForm.h \
     Utils/UserMsgBox.h \
-    Form/InfoSizeForm.h
+    Form/InfoSizeForm.h \
+    Form/SystemSetForm.h \
+    Form/FileManagerForm.h \
+    Form/HelpForm.h
 
 FORMS    += \
     Form/MainForm.ui \
@@ -87,7 +93,10 @@ FORMS    += \
     Form/StatisticalForm.ui \
     Form/MachineLearnForm.ui \
     Form/InfoCheckResForm.ui \
-    Form/InfoSizeForm.ui
+    Form/InfoSizeForm.ui \
+    Form/SystemSetForm.ui \
+    Form/FileManagerForm.ui \
+    Form/HelpForm.ui
 
 RESOURCES += \
     Res/Resource.qrc

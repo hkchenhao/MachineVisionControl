@@ -13,6 +13,9 @@ FormFrame::FormFrame(QWidget* parent) : QWidget(parent)
     formstacked_id_.buttonselform_id = -1;
     formstacked_id_.machinelearnform_id = -1;
     formstacked_id_.statisticalform_id = -1;
+    formstacked_id_.systemsetform_id = -1;
+    formstacked_id_.filemanagerform_id = -1;
+    formstacked_id_.helpform_id = -1;
     p_formstacked_ = nullptr;
     // Form指针
     p_startform_ = nullptr;
@@ -20,6 +23,9 @@ FormFrame::FormFrame(QWidget* parent) : QWidget(parent)
     p_buttonselform_ = nullptr;
     p_machinelearnform_ = nullptr;
     p_statisticalform_ = nullptr;
+    p_systemsetform_ = nullptr;
+    p_filemanagerform_ = nullptr;
+    p_helpform_ = nullptr;
     // Widget布局
     QVBoxLayout* p_layout = new QVBoxLayout;
     p_layout->setContentsMargins(0, 0, 0, 0);

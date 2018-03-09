@@ -62,6 +62,10 @@ private slots:
     void on_pushButton_AppClose_clicked();      // 程序关闭控件slot函数
     void on_pushButton_Statistics_clicked();    // 统计分析界面slot函数
     void on_pushButton_Learn_clicked();
+    void on_pushButton_Settings_clicked();
+    void on_pushButton_Manage_clicked();
+    void on_pushButton_Help_clicked();
+
     void on_Button_ccxx_clicked();
     void on_Button_slxx_clicked();
 
