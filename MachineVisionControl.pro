@@ -8,7 +8,8 @@ QT       += core gui \
             gui \
             network \
             charts \
-            serialbus
+            serialbus \
+            serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -54,7 +55,8 @@ SOURCES += \
     Form/InfoSizeForm.cpp \
     Form/SystemSetForm.cpp \
     Form/FileManagerForm.cpp \
-    Form/HelpForm.cpp
+    Form/HelpForm.cpp \
+    Net/CanBusMgr.cpp
 
 HEADERS  += \
     Form/MainForm.h \
@@ -83,7 +85,8 @@ HEADERS  += \
     Form/InfoSizeForm.h \
     Form/SystemSetForm.h \
     Form/FileManagerForm.h \
-    Form/HelpForm.h
+    Form/HelpForm.h \
+    Net/CanBusMgr.h
 
 FORMS    += \
     Form/MainForm.ui \

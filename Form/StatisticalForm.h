@@ -2,6 +2,7 @@
 #define STATISTICALFORM_H
 #include <QWidget>
 #include <QtCharts>
+#include <QString>
 #include "Utils/QJsonAnalysis.h"
 QT_CHARTS_USE_NAMESPACE
 
@@ -42,9 +43,16 @@ public:
 private slots:
     void on_pushButton_Esc_clicked();
     void on_pushButton_SavePic_clicked();
-
+    void on_checkBox_dqsj1_clicked(bool checked);
+    void on_checkBox_lssj1_clicked(bool checked);
 private:
-    Ui::StatisticalWidget *ui;
+    void ShowCountChartInfo(quint32 type);
+    void ShowDefectChartInfo(quint32 type);
+private:
+    Ui::StatisticalWidget* ui;
+    QJsonAnalysis* p_buttonres;
+    QString buttonname_;
+    QChart* chartview_;
 };
 
 #endif

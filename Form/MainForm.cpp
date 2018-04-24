@@ -16,9 +16,16 @@
 #include "Mgr/SystemFrame.h"
 #include "Net/NetServer.h"
 #include "Net/NetThread.h"
+#include "Net/CanBusMgr.h"
 #include "Utils/QJsonAnalysis.h"
 #include "Utils/SystemUtils.h"
 #include "Utils/UserMsgBox.h"
+
+#define TESTCOUNT 100
+qint32 i = 0, j = 0, k = 0;
+QTime net_timecal_[CAMERA_NUM];
+qint32 fps_buf_[CAMERA_NUM] = {0};
+double fpsave[CAMERA_NUM] = {0};
 
 // 相机统计信息
 extern ButtonStatisticalInfo CameraStatisticalInfo[CAMERA_NUM];
@@ -35,6 +42,10 @@ MainForm::MainForm(QWidget *parent) : QWidget(parent), ui(new Ui::MainWidget)
     p_infochenckresform->setVisible(false);
     p_infosizeform->setVisible(false);
     //p_infochenckresform->show();
+    // 初始化CAN总线
+//    CanBusMgr::GetInstance();
+//    CanBusMgr::GetInstance()->SetCanID(561);
+//    CanBusMgr::GetInstance()->SetMotorSpeed(600);
     // 初始化相机label控件指针数组
     buf_cameralinkstatus_[0] = ui->Label1_1;
     buf_cameralinkstatus_[1] = ui->Label1_2;
@@ -106,6 +117,7 @@ void MainForm::customEvent(QEvent* event)
         case MainFormEvent::EventType_ButtonSelectedResult:
         {
             buttonname = customevent->button_id_;
+            SystemUtils::SetNameForButtonConfigFile(buttonname);
             ui->label_ButtonId->setText(buttonname);
             QImage buttonimage(SystemUtils::GetPathForButtonConfigFile() + buttonname + "/" + buttonname + ".jpg");
             QImage buttonimagescaled = buttonimage.scaled(ui->label_ButtonImage->width(), ui->label_ButtonImage->height());
@@ -144,6 +156,63 @@ void MainForm::customEvent(QEvent* event)
                 QImage image(p_image, 128, 128, 128*3, QImage::Format_RGB888);
                 QImage image_scaled = image.scaled(p_result->plable_image_->width(), p_result->plable_image_->height());
                 p_result->plable_image_->setPixmap(QPixmap::fromImage(image_scaled));
+            }
+            break;
+        }
+        case MainFormEvent::EventType_CarmeraTest:
+        {
+            if((customevent->cameraid_ >=0 ) && (customevent->cameraid_ <= (CAMERA_NUM - 1)))
+            {
+                ButtonCheckResult* p_result = &buf_buttoncheckresult_[customevent->cameraid_];
+                //p_result->total_num++;
+                uchar* p_image = (uchar*)(customevent->checkresult_packet_.data.data() + 12);
+                QImage image(p_image, 128, 128, 128*3, QImage::Format_RGB888);
+                QImage image_scaled = image.scaled(p_result->plable_image_->width(), p_result->plable_image_->height());
+                p_result->plable_image_->setPixmap(QPixmap::fromImage(image_scaled));
+
+                double fps = 0;
+                int time = net_timecal_[customevent->cameraid_].msecsSinceStartOfDay();
+                int time1 = time - fps_buf_[customevent->cameraid_];
+                if(time1 != 0)
+                    fps = 1000.0 / time1;
+                qDebug() << "相机" << customevent->cameraid_ + 1 << "ms:" << time - fps_buf_[customevent->cameraid_];
+                fps_buf_[customevent->cameraid_] = time;
+                net_timecal_[customevent->cameraid_].restart();
+
+                if(customevent->cameraid_ == 0)
+                {
+                    fpsave[0] += fps;
+                    i++;
+                    if(i == TESTCOUNT)
+                    {
+                        //ui->Label1_7->setText(QString("%1").arg(QString::number(fpsave[0] / (TESTCOUNT),'f',2)));
+                        i = 0;
+                        fpsave[0] = 0;
+                    }
+                }
+
+                else if(customevent->cameraid_ == 1)
+                {
+                    fpsave[1] += fps;
+                    j++;
+                    if(j == TESTCOUNT)
+                    {
+                        //ui->Label1_8->setText(QString("%1").arg(QString::number(fpsave[1] / (TESTCOUNT + 1),'f',2)));
+                        j = 0;
+                        fpsave[1] = 0;
+                    }
+                }
+                if(customevent->cameraid_ == 2)
+                {
+                    fpsave[2] += fps;
+                    k++;
+                    if(k == TESTCOUNT)
+                    {
+                        //ui->Label1_9->setText(QString("%1").arg(QString::number(fpsave[2] / (TESTCOUNT + 1),'f',2)));
+                        k = 0;
+                        fpsave[2] = 0;
+                    }
+                }
             }
             break;
         }
@@ -390,6 +459,17 @@ void MainForm::on_Button_clicked()
 }
 
 
+void MainForm::on_Button_test_clicked()
+{
+    CanBusMgr::GetInstance()->SetCanID(0);
 
-
-
+//    QByteArray packet_data(1, 0x04);
+//    emit SignalNetSendPacket(MSG_NET_NORMAL, packet_data);
+//    QJsonAnalysis json("{}", false);
+//    json.set("width", 128);
+//    json.set("height", 128);
+//    json.set("bpp", 24);
+//    json.set("format", 1);
+//    json.set("period", 100);
+//    emit SignalNetSendPacket(MSG_NET_ALG_TEST_CONFIGURE, json.getJsonRawByte());
+}

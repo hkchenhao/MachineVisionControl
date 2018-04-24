@@ -17,6 +17,7 @@ public:
         EventType_CarmeraButtonImage,
         EventType_CarmeraCheckResult,
         EventType_ButtonSelectedResult,
+        EventType_CarmeraTest
     };
     MainFormEvent(MainFormEventType eventtype = EventType_None, CameraIdentifier cameraid = CameraIdentifier_None);
 public:

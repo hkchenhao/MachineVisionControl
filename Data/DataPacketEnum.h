@@ -13,7 +13,7 @@ enum DataPacketEnum
     MSG_NET_STATE = 14,         // 获取温度
     MSG_NET_RESULT = 28,
 
-    MSG_NET_ALG_TEST_CONFIGURE = 35,
+    MSG_NET_ALG_TEST_CONFIGURE = 153,
 
     MSG_NET_SAVE_VIDEO = 22,    // 获取纽扣图像 DSP->ARM
     MSG_NET_SEND_JSON = 194,

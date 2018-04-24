@@ -92,20 +92,6 @@ void NetThread::StartNet()
     MainFormEvent* mainformevent = new MainFormEvent(MainFormEvent::EventType_CarmeraLinkStatus, camera_id_);
     mainformevent->linkstatus_ = true;
     QCoreApplication::postEvent(FormFrame::GetInstance()->p_mainform_, mainformevent);
-
-    // 让相机处于正常模式
-//    QByteArray packet_data(1, 0x04);
-//    DataFactory datafactory(MSG_NET_NORMAL, packet_data);
-//    datafactory.SendDataPacketByNet(net_socket_);
-
-//    QJsonAnalysis json("{}", false);
-//    json.set("width", 128);
-//    json.set("height", 128);
-//    json.set("bpp", 24);
-//    json.set("format", 1);
-//    json.set("period", 20);
-//    DataFactory datafactory1(MSG_NET_ALG_TEST_CONFIGURE, json.getJsonRawByte());
-//    datafactory1.SendDataPacketByNet(net_socket_);
 }
 
 // 关闭线程与网络链接
@@ -235,6 +221,16 @@ void NetThread::HandleNetPacket()
         {
             qDebug() << "相机" << camera_id_ + 1 << "json" << net_packet_.data;
         }
+        case MSG_NET_RESULT:
+        {
+            //qDebug() << "相机" << camera_id_ + 1 << "接收到图像数目:" << temp++;
+            // 向UI线程投递检测结果事件
+            MainFormEvent* mainformevent = new MainFormEvent(MainFormEvent::EventType_CarmeraTest, camera_id_);
+            mainformevent->checkresult_packet_ = net_packet_;
+            QCoreApplication::postEvent(FormFrame::GetInstance()->p_mainform_, mainformevent);
+            break;
+        }
+
         case MSG_NET_ALG_IMAGE:
         {
 //            qDebug() << net_timecal_.elapsed() << "ms";

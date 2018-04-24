@@ -5,6 +5,7 @@
 #include <QMutex>
 #include <QProcess>
 #include <QSettings>
+#include <QTime>
 #include "Data/DataPacketEnum.h"
 #include "Utils/SystemConstants.h"
 
@@ -70,6 +71,7 @@ private slots:
     void on_Button_slxx_clicked();
 
     void on_Button_clicked();
+    void on_Button_test_clicked();
 
 signals:
     void SignalDetectControl(bool isstart);    // 检测开始与暂停信号

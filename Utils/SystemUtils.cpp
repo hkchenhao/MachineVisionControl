@@ -1,5 +1,7 @@
 #include "SystemUtils.h"
 
+QString SystemUtils::buttonname_ = "";
+
 // 根据部分IP子串获取本地IPv4地址
 QHostAddress SystemUtils::GetLocalHostIPByPortion(const QString& str_ip_portion)
 {

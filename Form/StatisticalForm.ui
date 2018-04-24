@@ -47,17 +47,17 @@
     <widget class="QChartView" name="widget" native="true">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>100</y>
-       <width>721</width>
-       <height>311</height>
+       <x>20</x>
+       <y>60</y>
+       <width>811</width>
+       <height>591</height>
       </rect>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
     </widget>
-    <widget class="QLabel" name="lable_67">
+    <widget class="QLabel" name="lable1_1">
      <property name="geometry">
       <rect>
        <x>120</x>
@@ -84,7 +84,10 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox5_dqsj1">
+    <widget class="QCheckBox" name="checkBox_dqsj1">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>290</x>
@@ -124,8 +127,14 @@ QCheckBox::indicator {
        <height>16</height>
       </size>
      </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox4_ccjc_3">
+    <widget class="QCheckBox" name="checkBox_lssj1">
      <property name="geometry">
       <rect>
        <x>740</x>
@@ -166,7 +175,7 @@ QCheckBox::indicator {
       </size>
      </property>
     </widget>
-    <widget class="QLabel" name="lable_68">
+    <widget class="QLabel" name="lable1_2">
      <property name="geometry">
       <rect>
        <x>570</x>
@@ -198,7 +207,7 @@ QCheckBox::indicator {
     <attribute name="title">
      <string>缺陷统计</string>
     </attribute>
-    <widget class="QCheckBox" name="checkBox5_dqsj2">
+    <widget class="QCheckBox" name="checkBox_dqsj2">
      <property name="geometry">
       <rect>
        <x>290</x>
@@ -239,7 +248,7 @@ QCheckBox::indicator {
       </size>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox5_lssj2">
+    <widget class="QCheckBox" name="checkBox_lssj2">
      <property name="geometry">
       <rect>
        <x>740</x>
@@ -280,7 +289,7 @@ QCheckBox::indicator {
       </size>
      </property>
     </widget>
-    <widget class="QLabel" name="lable_69">
+    <widget class="QLabel" name="lable2_1">
      <property name="geometry">
       <rect>
        <x>570</x>
@@ -307,7 +316,7 @@ QCheckBox::indicator {
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="lable_70">
+    <widget class="QLabel" name="lable2_2">
      <property name="geometry">
       <rect>
        <x>120</x>
