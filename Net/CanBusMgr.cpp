@@ -23,6 +23,9 @@ CanBusMgr::CanBusMgr()
     qDebug() << "serial open ok!\r\n";
     isopen_ = true;
     QObject::connect(serialport_, &QSerialPort::readyRead, this, &CanBusMgr::SlotReadCanData);
+
+    QByteArray atstr("AT+AT\r\n");
+    serialport_->write(atstr);
 }
 
 CanBusMgr::~CanBusMgr()
@@ -43,59 +46,14 @@ CanBusMgr* CanBusMgr::GetInstance()
     return instance_;
 }
 
-void CanBusMgr::SerialDelay()
+void CanBusMgr::SendCanData(qint32 id, unsigned char* buf, qint32 len)
 {
-    QTime Timer = QTime::currentTime();
-    QTime NowTimer;
-    do
-    {
-        NowTimer = QTime::currentTime();
-    }
-    while(Timer.msecsTo(NowTimer) <= 100);
-}
-
-void CanBusMgr::SerialFunc1()
-{
-    QByteArray atstr1("AT+CG\r\n");
-    serialport_->write(atstr1);
-}
-
-void CanBusMgr::SerialFunc2()
-{
-    QByteArray atstr2("AT+CAN_FRAMEFORMAT=1,0,561,0\r\n");
-    serialport_->write(atstr2);
-}
-
-void CanBusMgr::SerialFunc3()
-{
-    QByteArray atstr3("AT+CAN_FRAMEFORMAT=?\r\n");
-    serialport_->write(atstr3);
-}
-
-void CanBusMgr::SetCanID(qint32 id)
-{
-    SerialFunc1();
-    SerialFunc2();
-    SerialFunc3();
-//    isgetresstr_ = false;
-//    QByteArray atstr1("AT+CG\r\n");
-//    serialport_->write(atstr1);
-    //while(!isgetresstr_);
-
-//    isgetresstr_ = false;
-//    QByteArray atstr2("AT+CAN_FRAMEFORMAT=1,0,561,0\r\n");
-//    serialport_->write(atstr2);
-//    while(!isgetresstr_);
-
-//    isgetresstr_ = false;
-//    QByteArray atstr3("AT+CAN_FRAMEFORMAT=?\r\n");
-//    serialport_->write(atstr3);
-//    while(!isgetresstr_);
-
-//    QByteArray atstr4("AT+ET\r\n");
-//    serialport_->write(atstr1);
-//    serialport_->write(atstr2);
-//    serialport_->write(atstr3);
+    unsigned char databuf[17] = {'A', 'T', (id >> 3) & 0xFF, (id & 0x07) << 5, 0, 0, len, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    for(qint32 i = 0; i < len; i++)
+        databuf[i+7] = buf[i];
+    databuf[len+7] = '\r';
+    databuf[len+8] = '\n';
+    serialport_->write((char*)databuf, 9 + len);
 }
 
 void CanBusMgr::SetMotorSpeed(qint32 speed)
@@ -127,8 +85,9 @@ void CanBusMgr::SlotReadCanData()
             isgetresstr_ = true;
             qDebug() << "serial get ok";
         }
-//        QString str;
-//        str = dataArray.toHex();//把数据直接转化为16进制的字符串形式
-//        ui->textEdit->setText(str);
+        else
+        {
+            qDebug() << dataArray.toHex();
+        }
     }
 }

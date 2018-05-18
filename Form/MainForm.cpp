@@ -461,7 +461,8 @@ void MainForm::on_Button_clicked()
 
 void MainForm::on_Button_test_clicked()
 {
-    CanBusMgr::GetInstance()->SetCanID(0);
+    unsigned char databuf[8] = {0x01, 0x08, 0x25, 0xF8, 0x86, 0x74, 0x12, 0x0A};
+    CanBusMgr::GetInstance()->SendCanData(0x0247, databuf, 8);
 
 //    QByteArray packet_data(1, 0x04);
 //    emit SignalNetSendPacket(MSG_NET_NORMAL, packet_data);

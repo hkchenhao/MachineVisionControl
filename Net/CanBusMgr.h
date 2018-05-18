@@ -11,15 +11,13 @@ public:
     ~CanBusMgr();
     static CanBusMgr* GetInstance();
     void SetMotorSpeed(qint32 speed);
-    void SetCanID(qint32 id);
+
+    void SendCanData(qint32 id, unsigned char* buf, qint32 len);
+
 private:
     CanBusMgr();
-    void SerialDelay();
-    void SlotReadCanData();
 
-    void SerialFunc1();
-    void SerialFunc2();
-    void SerialFunc3();
+    void SlotReadCanData();
 private:
     static CanBusMgr* instance_;
     bool isopen_;

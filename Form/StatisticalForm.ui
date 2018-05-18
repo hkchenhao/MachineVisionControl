@@ -38,13 +38,13 @@
     <enum>QTabWidget::West</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab1">
     <attribute name="title">
      <string>数量统计</string>
     </attribute>
-    <widget class="QChartView" name="widget" native="true">
+    <widget class="QWidget" name="widget_slxx" native="true">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -56,6 +56,17 @@
      <property name="styleSheet">
       <string notr="true"/>
      </property>
+     <widget class="QWidget" name="gridLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>811</width>
+        <height>581</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_slxx"/>
+     </widget>
     </widget>
     <widget class="QLabel" name="lable1_1">
      <property name="geometry">
@@ -343,6 +354,30 @@ QCheckBox::indicator {
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QWidget" name="widget_qxxx" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>811</width>
+       <height>591</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <widget class="QWidget" name="gridLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>811</width>
+        <height>581</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_qxxx"/>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QLabel" name="label_AppTile">
@@ -433,14 +468,6 @@ QCheckBox::indicator {
    </property>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QChartView</class>
-   <extends>QWidget</extends>
-   <header location="global">QChartView</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
