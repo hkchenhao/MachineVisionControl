@@ -118,7 +118,8 @@ void MachineLearnForm::InitFormWidget()
                 }
             }
             // 图片信息
-            QString path((*p_buttonJsonPath).replace(p_buttonJsonPath->length()-3, 3, "jpg"));
+            QString picpathstr = *p_buttonJsonPath;
+            QString path(picpathstr.replace(p_buttonJsonPath->length()-3, 3, "jpg"));
             QImage buttonimage(path);
             QImage buttonimagescaled = buttonimage.scaled(ui->ButtonImage_zm->width(), ui->ButtonImage_zm->height());
             ui->ButtonImage_zm->setPixmap(QPixmap::fromImage(buttonimagescaled));
@@ -148,6 +149,53 @@ void MachineLearnForm::InitFormWidget()
             ui->lineEdit2_xkjlpc_up->setText(QString("%1").arg(QString::number(buttonsizeup,'f',1)));
             ui->lineEdit2_xkjlpc_down->setText(QString("%1").arg(QString::number(buttonsizedown,'f',1)));
         }
+        // 纽扣控制参数配置
+        jsonparentstr = QString("method");
+        if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
+        {
+            if(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceMethodCs1") == "0") ui->checkBox4_ak->setChecked(false);
+            else ui->checkBox4_ak->setChecked(true);
+            if(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceMethodCs2") == "0") ui->checkBox4_cq->setChecked(false);
+            else ui->checkBox4_cq->setChecked(true);
+            if(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceMethodCs3") == "0") ui->checkBox4_bjy->setChecked(false);
+            else ui->checkBox4_bjy->setChecked(true);
+            if(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceMethodCs4") == "0") ui->checkBox4_sc->setChecked(false);
+            else ui->checkBox4_sc->setChecked(true);
+            if(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceMethodCs5") == "0") ui->checkBox4_xc->setChecked(false);
+            else ui->checkBox4_xc->setChecked(true);
+            if(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceMethodCs6") == "0") ui->checkBox4_lw->setChecked(false);
+            else ui->checkBox4_lw->setChecked(true);
+            if(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceMethodCs7") == "0") ui->checkBox4_fhqx->setChecked(false);
+            else ui->checkBox4_fhqx->setChecked(true);
+        }
+        // 纽扣检测方法配置
+        jsonparentstr = QString("operator");
+        if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
+        {
+            //ui->lineEdit_5->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light1")));
+
+        }
+        // 纽扣检测方法参数
+        jsonparentstr = QString("algParameter");
+        if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
+        {
+            ui->lineEdit_12->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "geometryMethodParameter1")));
+            ui->lineEdit_18->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "geometryMethodParameter2")));
+            ui->lineEdit_13->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "geometryMethodParameter3")));
+            ui->lineEdit_19->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "geometryMethodParameter4")));
+            ui->lineEdit_14->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "geometryMethodParameter5")));
+            ui->lineEdit_20->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "geometryMethodParameter6")));
+            ui->lineEdit_15->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "geometryMethodParameter7")));
+            ui->lineEdit_21->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "geometryMethodParameter8")));
+            ui->lineEdit_28->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "surfaceMethodParameter1")));
+            ui->lineEdit_29->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "surfaceMethodParameter2")));
+            ui->lineEdit_31->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "surfaceMethodParameter3")));
+            ui->lineEdit_30->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "surfaceMethodParameter4")));
+            ui->lineEdit_33->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "surfaceMethodParameter5")));
+            ui->lineEdit_32->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "surfaceMethodParameter6")));
+            ui->lineEdit_35->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "surfaceMethodParameter7")));
+            ui->lineEdit_34->setText(QString::number(p_buttonJsonInfo->getDouble(jsonparentstr + "." + "surfaceMethodParameter8")));
+        }
     }
 }
 
@@ -176,15 +224,24 @@ void MachineLearnForm::SaveButtonJsonInfo(QJsonAnalysis* pjsoninfo)
     pjsoninfo->set(jsonparentstr+"patternB", ButtonPatternStrEnBuf[ui->box_hs_1->currentIndex()]);
     pjsoninfo->set(jsonparentstr+"colorB", ButtonColorStrEnBuf[ui->box_zs_1->currentIndex()]);
 
-    if(isEdit_ == false)
-    {
-
-    }
-    else
-    {
-
-        p_buttonJsonInfo->save(*p_buttonJsonPath);
-    }
+    // 纽扣检测方法参数保存
+    jsonparentstr = "algParameter.";
+    pjsoninfo->set(jsonparentstr+"geometryMethodParameter1", ui->lineEdit_12->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"geometryMethodParameter2", ui->lineEdit_18->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"geometryMethodParameter3", ui->lineEdit_13->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"geometryMethodParameter4", ui->lineEdit_19->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"geometryMethodParameter5", ui->lineEdit_14->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"geometryMethodParameter6", ui->lineEdit_20->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"geometryMethodParameter7", ui->lineEdit_15->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"geometryMethodParameter8", ui->lineEdit_21->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"surfaceMethodParameter1", ui->lineEdit_28->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"surfaceMethodParameter2", ui->lineEdit_29->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"surfaceMethodParameter3", ui->lineEdit_31->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"surfaceMethodParameter4", ui->lineEdit_30->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"surfaceMethodParameter5", ui->lineEdit_33->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"surfaceMethodParameter6", ui->lineEdit_32->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"surfaceMethodParameter7", ui->lineEdit_35->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"surfaceMethodParameter8", ui->lineEdit_34->text().toDouble());
 }
 
 // [slot函数]保存按键
@@ -209,6 +266,7 @@ void MachineLearnForm::on_pushButton_Save_clicked()
         if(pmsgbox->exec() == QMessageBox::No)  { return; }
         // 修改json文件配置信息
         SaveButtonJsonInfo(p_buttonJsonInfo);
+        //p_buttonJsonInfo->save(*p_buttonJsonPath);
         UserTextMsgBox* msgbox = new UserTextMsgBox("纽扣信息修改成功！", 500, 110, this);
         msgbox->show();
     }
@@ -217,7 +275,14 @@ void MachineLearnForm::on_pushButton_Save_clicked()
 // [slot函数]修改按键
 void MachineLearnForm::on_pushButton_Revise_clicked()
 {
-
+    QMessageBox* pmsgbox = new QMessageBox(QMessageBox::Question, "", "是否确定修改纽扣配置信息？",
+                                           QMessageBox::Yes | QMessageBox::No, this);
+    if(pmsgbox->exec() == QMessageBox::No)  { return; }
+    // 修改json文件配置信息
+    SaveButtonJsonInfo(p_buttonJsonInfo);
+    p_buttonJsonInfo->save(*p_buttonJsonPath);
+    UserTextMsgBox* msgbox = new UserTextMsgBox("纽扣信息修改成功！", 500, 110, this);
+    msgbox->show();
 }
 
 // [slot函数]退出按键

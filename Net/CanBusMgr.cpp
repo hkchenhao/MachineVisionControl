@@ -70,7 +70,9 @@ void CanBusMgr::SetMotorSpeed(qint32 speed)
     databuf[5] = (speed >> 8) & 0xFF;
     databuf[6] = (speed >> 16 )& 0xFF;
     databuf[7] = (speed >> 24) & 0xFF;
-    serialport_->write(databuf, 8);
+
+    SendCanData(0x231, (unsigned char*)databuf, 8);
+    //serialport_->write(databuf, 8);
 }
 
 void CanBusMgr::SlotReadCanData()
