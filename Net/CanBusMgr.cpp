@@ -58,21 +58,35 @@ void CanBusMgr::SendCanData(qint32 id, unsigned char* buf, qint32 len)
 
 void CanBusMgr::SetMotorSpeed(qint32 speed)
 {
-//    char databuf[14] = {0x00, 0x00, 0x00, 0x02, 0x31, 0x08,
-//                        0x31, 0x11, 0x41, 0x22, 0x00, 0x00, 0x00, 0x00};
-//    databuf[10] = (speed) & 0xFF;
-//    databuf[11] = (speed >> 8) & 0xFF;
-//    databuf[12] = (speed >> 16 )& 0xFF;
-//    databuf[13] = (speed >> 24) & 0xFF;
-
+//  char databuf[14] = {0x00, 0x00, 0x00, 0x02, 0x31, 0x08, 0x31, 0x11, 0x41, 0x22, 0x00, 0x00, 0x00, 0x00};
     char databuf[8] = {0x31, 0x11, 0x41, 0x22, 0x00, 0x00, 0x00, 0x00};
     databuf[4] = (speed) & 0xFF;
     databuf[5] = (speed >> 8) & 0xFF;
     databuf[6] = (speed >> 16 )& 0xFF;
     databuf[7] = (speed >> 24) & 0xFF;
-
     SendCanData(0x231, (unsigned char*)databuf, 8);
     //serialport_->write(databuf, 8);
+}
+
+void CanBusMgr::SetConveyerBelt(bool state)
+{
+    char databuf[8] = {0x31, 0x11, 0x41, 0x30, 0x00, 0x00, 0x00, 0x00};
+    if(state)
+        databuf[4] = 0x01;
+    else
+        databuf[4] = 0x00;
+    SendCanData(0x231, (unsigned char*)databuf, 8);
+}
+
+void CanBusMgr::SetLightsource(qint32 id, qint32 num)
+{
+    char databuf[8] = {0x41, 0x11, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00};
+    databuf[3] = 0x20 + id;
+    databuf[4] = (num) & 0xFF;
+    databuf[5] = (num >> 8) & 0xFF;
+    databuf[6] = (num >> 16 )& 0xFF;
+    databuf[7] = (num >> 24) & 0xFF;
+    SendCanData(0x241, (unsigned char*)databuf, 8);
 }
 
 void CanBusMgr::SlotReadCanData()

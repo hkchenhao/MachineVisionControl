@@ -125,7 +125,7 @@ void MachineLearnForm::InitFormWidget()
             ui->ButtonImage_zm->setPixmap(QPixmap::fromImage(buttonimagescaled));
             ui->lable_pzwj->setText(buttonJsonName);
         }
-        // 纽扣尺寸信息
+        // 纽扣尺寸规格
         jsonparentstr = QString("taskSize");
         if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
         {
@@ -149,7 +149,24 @@ void MachineLearnForm::InitFormWidget()
             ui->lineEdit2_xkjlpc_up->setText(QString("%1").arg(QString::number(buttonsizeup,'f',1)));
             ui->lineEdit2_xkjlpc_down->setText(QString("%1").arg(QString::number(buttonsizedown,'f',1)));
         }
-        // 纽扣控制参数配置
+        // 纽扣控制参数
+        jsonparentstr = QString("systemParameter");
+        if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
+        {
+            ui->lineEdit->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "lastTime")));
+            ui->lineEdit_2->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "pressure")));
+            ui->lineEdit_3->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "charge")));
+            ui->lineEdit_4->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "transmit")));
+            ui->lineEdit_7->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "turntable")));
+            ui->lineEdit_5->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light1")));
+            ui->lineEdit_6->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light2")));
+            ui->lineEdit_8->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light3")));
+            ui->lineEdit_9->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light4")));
+            ui->lineEdit_11->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light5")));
+            ui->lineEdit_10->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light6")));
+
+        }
+        // 检测项目配置
         jsonparentstr = QString("method");
         if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
         {
@@ -168,14 +185,14 @@ void MachineLearnForm::InitFormWidget()
             if(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceMethodCs7") == "0") ui->checkBox4_fhqx->setChecked(false);
             else ui->checkBox4_fhqx->setChecked(true);
         }
-        // 纽扣检测方法配置
+        // 检测方法配置
         jsonparentstr = QString("operator");
         if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
         {
             //ui->lineEdit_5->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light1")));
 
         }
-        // 纽扣检测方法参数
+        // 检测方法参数
         jsonparentstr = QString("algParameter");
         if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
         {

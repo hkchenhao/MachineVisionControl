@@ -11,12 +11,12 @@ public:
     ~CanBusMgr();
     static CanBusMgr* GetInstance();
     void SetMotorSpeed(qint32 speed);
-
+    void SetConveyerBelt(bool state);
+    void SetLightsource(qint32 id, qint32 num);
     void SendCanData(qint32 id, unsigned char* buf, qint32 len);
 
 private:
     CanBusMgr();
-
     void SlotReadCanData();
 private:
     static CanBusMgr* instance_;

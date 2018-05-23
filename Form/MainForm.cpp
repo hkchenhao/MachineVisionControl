@@ -348,6 +348,9 @@ void MainForm::on_WorkStartButton_clicked()
 //    QString pathname(SystemUtils::GetPathForButtonConfigFile() + buttonname + "/" + buttonname + ".ini");
 //    p_buttonjson = new QJsonAnalysis(pathname, true);
     emit SignalNetSendJson(p_buttonjson->getJsonRawByte());
+    // 开启电机与光源
+    CanBusMgr::GetInstance()->SetMotorSpeed(p_buttonjson->getInt("systemParameter.turntable"));
+    //CanBusMgr::GetInstance()->SetConveyerBelt(true);
     // 禁止选择纽扣配置文件
     ui->ButtonSelectButton->setEnabled(false);
 }
@@ -355,6 +358,10 @@ void MainForm::on_WorkStopButton_clicked()
 {
     emit SignalDetectControl(false);
     //emit SignalNetClose();  // 发送网络关闭连接的信号
+    // 关闭转盘
+    CanBusMgr::GetInstance()->SetMotorSpeed(0);
+    CanBusMgr::GetInstance()->SetConveyerBelt(false);
+
     ui->WorkStartButton->setEnabled(true);
     ui->WorkStartButton->setStyleSheet("");
     ui->WorkStopButton->setEnabled(false);
@@ -461,8 +468,11 @@ void MainForm::on_Button_clicked()
 
 void MainForm::on_Button_test_clicked()
 {
-    unsigned char databuf[8] = {0x01, 0x08, 0x25, 0xF8, 0x86, 0x74, 0x12, 0x0A};
-    CanBusMgr::GetInstance()->SendCanData(0x0247, databuf, 8);
+    CanBusMgr::GetInstance()->SetMotorSpeed(0);
+    CanBusMgr::GetInstance()->SetConveyerBelt(false);
+    CanBusMgr::GetInstance()->SetLightsource(0, 245);
+//    unsigned char databuf[8] = {0x31, 0x11, 0x41, 0x22, 0xFF, 0x00, 0x00, 0x00};
+//    CanBusMgr::GetInstance()->SendCanData(0x0231, databuf, 8);
 
 //    QByteArray packet_data(1, 0x04);
 //    emit SignalNetSendPacket(MSG_NET_NORMAL, packet_data);
