@@ -25,6 +25,8 @@ extern QVector<QString> ButtonPatternStrEnBuf;
 extern QVector<QString> ButtonPatternStrCnBuf;
 extern QVector<QString> ButtonColorStrEnBuf;
 extern QVector<QString> ButtonColorStrCnBuf;
+extern QVector<QString> ButtonReflectTypeStrEnBuf;
+extern QVector<QString> ButtonReflectTypeStrCnBuf;
 
 extern QVector<QString> ButtonSizeStrBuf;
 extern QVector<double> ButtonSizeBuf;
@@ -41,5 +43,25 @@ extern QMap<QString, qint32> ButtonPatternEnMap;
 extern QMap<QString, qint32> ButtonPatternCnMap;
 extern QMap<QString, qint32> ButtonColorEnMap;
 extern QMap<QString, qint32> ButtonColorCnMap;
+extern QMap<QString, qint32> ButtonReflectTypeStrEnMap;
+extern QMap<QString, qint32> ButtonReflectTypeStrCnMap;
+
+extern QVector<QString> GeometryMethodBuf;
+extern QVector<QString> GeometryOperator1Buf;
+extern QVector<QString> GeometryOperator2Buf;
+extern QVector<QString> GeometryOperator3Buf;
+extern QVector<QString> SurfaceMethodBuf;
+extern QVector<QString> SurfaceOperator1Buf;
+extern QVector<QString> SurfaceOperator2Buf;
+extern QVector<QString> SurfaceOperator3Buf;
+
+extern QMap<QString, qint32> GeometryMethodMap;
+extern QMap<QString, qint32> GeometryOperator1Map;
+extern QMap<QString, qint32> GeometryOperator2Map;
+extern QMap<QString, qint32> GeometryOperator3Map;
+extern QMap<QString, qint32> SurfaceMethodMap;
+extern QMap<QString, qint32> SurfaceOperator1Map;
+extern QMap<QString, qint32> SurfaceOperator2Map;
+extern QMap<QString, qint32> SurfaceOperator3Map;
 
 #endif

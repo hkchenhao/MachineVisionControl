@@ -32,6 +32,10 @@ private slots:
     void on_box_xz_0_currentIndexChanged(int index);
     void on_box_xks_0_currentIndexChanged(int index);
     void on_box_tmx_0_currentIndexChanged(int index);
+    void on_checkBox4_ccjc_2_clicked(bool checked);
+    void on_checkBox4_ccjc_3_clicked(bool checked);
+    void on_checkBox4_ccjc_4_clicked(bool checked);
+    void on_checkBox4_ccjc_5_clicked(bool checked);
 
 private:
     void InitFormWidget();

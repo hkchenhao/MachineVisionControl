@@ -1491,6 +1491,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_46">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>470</x>
@@ -1512,6 +1515,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Revise_12">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>680</x>
@@ -1570,6 +1576,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Revise_13">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>680</x>
@@ -1601,6 +1610,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Revise_14">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>680</x>
@@ -1632,6 +1644,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QSlider" name="horizontalSlider">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>170</x>
@@ -1648,6 +1663,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Revise_15">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>550</x>
@@ -1679,6 +1697,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Revise_16">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>610</x>
@@ -1806,6 +1827,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_47">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>470</x>
@@ -1947,6 +1971,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QSlider" name="horizontalSlider_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>170</x>
@@ -1963,6 +1990,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Revise_20">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>550</x>
@@ -1994,6 +2024,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Revise_21">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>610</x>

@@ -57,6 +57,10 @@ void MachineLearnForm::InitFormWidget()
     for(QString& str : ButtonColorStrCnBuf) { buttominfo_zs.append(str); }
     ui->box_zs_0->addItems(buttominfo_zs);
     ui->box_zs_1->addItems(buttominfo_zs);
+    QStringList buttominfo_fgx;
+    for(QString& str : ButtonReflectTypeStrCnBuf) { buttominfo_fgx.append(str); }
+    ui->box_fgx_0->addItems(buttominfo_fgx);
+    ui->box_fgx_1->addItems(buttominfo_fgx);
     // 如果是纽扣编辑界面
     if(isEdit_ == true)
     {
@@ -102,19 +106,29 @@ void MachineLearnForm::InitFormWidget()
             {
                 ui->box_zs_0->setCurrentIndex(it.value());
             }
-            // 反面花色与主色信息
+            it = ButtonReflectTypeStrEnMap.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "reflectF"));
+            if(it != ButtonReflectTypeStrEnMap.end())
+            {
+                ui->box_fgx_0->setCurrentIndex(it.value());
+            }
+            // 反面花色/主色/反光性信息
             jsonparentstr = QString("infoBack");
             if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
             {
-                it = ButtonPatternEnMap.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "patternF"));
+                it = ButtonPatternEnMap.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "patternB"));
                 if(it != ButtonPatternEnMap.end())
                 {
                     ui->box_hs_1->setCurrentIndex(it.value());
                 }
-                it = ButtonColorEnMap.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "colorF"));
+                it = ButtonColorEnMap.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "colorB"));
                 if(it != ButtonColorEnMap.end())
                 {
                     ui->box_zs_1->setCurrentIndex(it.value());
+                }
+                it = ButtonReflectTypeStrEnMap.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "reflectB"));
+                if(it != ButtonReflectTypeStrEnMap.end())
+                {
+                    ui->box_fgx_1->setCurrentIndex(it.value());
                 }
             }
             // 图片信息
@@ -164,7 +178,6 @@ void MachineLearnForm::InitFormWidget()
             ui->lineEdit_9->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light4")));
             ui->lineEdit_11->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light5")));
             ui->lineEdit_10->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light6")));
-
         }
         // 检测项目配置
         jsonparentstr = QString("method");
@@ -189,8 +202,54 @@ void MachineLearnForm::InitFormWidget()
         jsonparentstr = QString("operator");
         if(!p_buttonJsonInfo->getJsonObject(jsonparentstr).isEmpty())
         {
-            //ui->lineEdit_5->setText(QString::number(p_buttonJsonInfo->getInt(jsonparentstr + "." + "light1")));
-
+            // 几何检测综合方法
+            if(p_buttonJsonInfo->getString(jsonparentstr + "." + "geometryOperatorEnable") == "0")
+            {
+                ui->checkBox4_ccjc_2->setChecked(true);
+                ui->checkBox4_ccjc_3->setChecked(false);
+                it = GeometryMethodMap.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "geometryMethod"));
+                if(it != GeometryMethodMap.end())
+                    ui->box_cz_2->setCurrentIndex(it.value());
+            }
+            // 几何检测自定义方法
+            else
+            {
+                ui->checkBox4_ccjc_2->setChecked(false);
+                ui->checkBox4_ccjc_3->setChecked(true);
+                it = GeometryOperator1Map.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "geometryOperator1"));
+                if(it != GeometryOperator1Map.end())
+                    ui->box_cz_3->setCurrentIndex(it.value());
+                it = GeometryOperator2Map.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "geometryOperator2"));
+                if(it != GeometryOperator2Map.end())
+                    ui->box_cz_4->setCurrentIndex(it.value());
+                it = GeometryOperator3Map.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "geometryOperator3"));
+                if(it != GeometryOperator3Map.end())
+                    ui->box_cz_5->setCurrentIndex(it.value());
+            }
+            // 表面检测综合方法
+            if(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceOperatorEnable") == "0")
+            {
+                ui->checkBox4_ccjc_4->setChecked(true);
+                ui->checkBox4_ccjc_5->setChecked(false);
+                it = SurfaceMethodMap.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceMethod"));
+                if(it != SurfaceMethodMap.end())
+                    ui->box_cz_6->setCurrentIndex(it.value());
+            }
+            // 表面检测自定义方法
+            else
+            {
+                ui->checkBox4_ccjc_4->setChecked(false);
+                ui->checkBox4_ccjc_5->setChecked(true);
+                it = SurfaceOperator1Map.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceOperator1"));
+                if(it != SurfaceOperator1Map.end())
+                    ui->box_cz_7->setCurrentIndex(it.value());
+                it = SurfaceOperator2Map.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceOperator2"));
+                if(it != SurfaceOperator1Map.end())
+                    ui->box_cz_8->setCurrentIndex(it.value());
+                it = SurfaceOperator3Map.find(p_buttonJsonInfo->getString(jsonparentstr + "." + "surfaceOperator3"));
+                if(it != SurfaceOperator1Map.end())
+                    ui->box_cz_9->setCurrentIndex(it.value());
+            }
         }
         // 检测方法参数
         jsonparentstr = QString("algParameter");
@@ -220,9 +279,9 @@ void MachineLearnForm::InitFormWidget()
 void MachineLearnForm::SaveButtonJsonInfo(QJsonAnalysis* pjsoninfo)
 {
     QString jsonparentstr;
-    // JSON时间信息
+    // 时间信息保存
     pjsoninfo->set("time", QDate::currentDate().toString("yyyy-MM-dd"));
-    // JSON纽扣正面基本信息
+    // 纽扣基本信息保存
     jsonparentstr = "infoFront.";
     pjsoninfo->set(jsonparentstr+"materialF", ButtonMaterialStrEnBuf[ui->box_cz_0->currentIndex()]);
     pjsoninfo->set(jsonparentstr+"sizeF", ui->line_cc->text());
@@ -231,7 +290,7 @@ void MachineLearnForm::SaveButtonJsonInfo(QJsonAnalysis* pjsoninfo)
     pjsoninfo->set(jsonparentstr+"lightF", ButtonLightStrEnBuf[ui->box_tmx_0->currentIndex()]);
     pjsoninfo->set(jsonparentstr+"patternF", ButtonPatternStrEnBuf[ui->box_hs_0->currentIndex()]);
     pjsoninfo->set(jsonparentstr+"colorF", ButtonColorStrEnBuf[ui->box_zs_0->currentIndex()]);
-    // JSON纽扣反面基本信息
+    pjsoninfo->set(jsonparentstr+"reflectF", ButtonColorStrEnBuf[ui->box_fgx_0->currentIndex()]);
     jsonparentstr = "infoBack.";
     pjsoninfo->set(jsonparentstr+"materialB", ButtonMaterialStrEnBuf[ui->box_cz_1->currentIndex()]);
     pjsoninfo->set(jsonparentstr+"sizeB", ui->line_cc->text());
@@ -240,8 +299,70 @@ void MachineLearnForm::SaveButtonJsonInfo(QJsonAnalysis* pjsoninfo)
     pjsoninfo->set(jsonparentstr+"lightB", ButtonLightStrEnBuf[ui->box_tmx_1->currentIndex()]);
     pjsoninfo->set(jsonparentstr+"patternB", ButtonPatternStrEnBuf[ui->box_hs_1->currentIndex()]);
     pjsoninfo->set(jsonparentstr+"colorB", ButtonColorStrEnBuf[ui->box_zs_1->currentIndex()]);
-
-    // 纽扣检测方法参数保存
+    pjsoninfo->set(jsonparentstr+"reflectB", ButtonColorStrEnBuf[ui->box_fgx_1->currentIndex()]);
+    // 尺寸参数信息保存
+    jsonparentstr = "taskSize.";
+    pjsoninfo->set(jsonparentstr+"outDia", ui->lineEdit2_wj->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"outDiaDevUp", ui->lineEdit2_wjpc_up->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"outDiaDevDown", ui->lineEdit2_wjpc_down->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"holeDia", ui->lineEdit2_xkj->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"holeDiaDevUp", ui->lineEdit2_xkjpc_up->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"holeDiaDevDown", ui->lineEdit2_xkjpc_down->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"holeDist", ui->lineEdit2_xkjl->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"holeDistDevUp", ui->lineEdit2_xkjlpc_up->text().toDouble());
+    pjsoninfo->set(jsonparentstr+"holeDistDevDown", ui->lineEdit2_xkjlpc_down->text().toDouble());
+    // 纽扣控制参数保存
+    jsonparentstr = "systemParameter.";
+    pjsoninfo->set(jsonparentstr+"lastTime", ui->lineEdit->text().toInt());
+    pjsoninfo->set(jsonparentstr+"pressure", ui->lineEdit_2->text().toInt());
+    pjsoninfo->set(jsonparentstr+"charge", ui->lineEdit_3->text().toInt());
+    pjsoninfo->set(jsonparentstr+"transmit", ui->lineEdit_4->text().toInt());
+    pjsoninfo->set(jsonparentstr+"turntable", ui->lineEdit_7->text().toInt());
+    pjsoninfo->set(jsonparentstr+"light1", ui->lineEdit_5->text().toInt());
+    pjsoninfo->set(jsonparentstr+"light2", ui->lineEdit_6->text().toInt());
+    pjsoninfo->set(jsonparentstr+"light3", ui->lineEdit_8->text().toInt());
+    pjsoninfo->set(jsonparentstr+"light4", ui->lineEdit_9->text().toInt());
+    pjsoninfo->set(jsonparentstr+"light5", ui->lineEdit_11->text().toInt());
+    pjsoninfo->set(jsonparentstr+"light6", ui->lineEdit_10->text().toInt());
+    // 检测项目配置保存
+    jsonparentstr ="method.";
+    if(ui->checkBox4_ak->isChecked()) pjsoninfo->set(jsonparentstr+"surfaceMethodCs1", "1");
+    else pjsoninfo->set(jsonparentstr+"surfaceMethodCs1", "0");
+    if(ui->checkBox4_cq->isChecked()) pjsoninfo->set(jsonparentstr+"surfaceMethodCs2", "1");
+    else pjsoninfo->set(jsonparentstr+"surfaceMethodCs1", "0");
+    if(ui->checkBox4_bjy->isChecked()) pjsoninfo->set(jsonparentstr+"surfaceMethodCs3", "1");
+    else pjsoninfo->set(jsonparentstr+"surfaceMethodCs1", "0");
+    if(ui->checkBox4_sc->isChecked()) pjsoninfo->set(jsonparentstr+"surfaceMethodCs4", "1");
+    else pjsoninfo->set(jsonparentstr+"surfaceMethodCs1", "0");
+    if(ui->checkBox4_xc->isChecked()) pjsoninfo->set(jsonparentstr+"surfaceMethodCs5", "1");
+    else pjsoninfo->set(jsonparentstr+"surfaceMethodCs1", "0");
+    if(ui->checkBox4_lw->isChecked()) pjsoninfo->set(jsonparentstr+"surfaceMethodCs6", "1");
+    else pjsoninfo->set(jsonparentstr+"surfaceMethodCs1", "0");
+    if(ui->checkBox4_fhqx->isChecked()) pjsoninfo->set(jsonparentstr+"surfaceMethodCs7", "1");
+    else pjsoninfo->set(jsonparentstr+"surfaceMethodCs1", "0");
+    // 检测方法配置保存
+    jsonparentstr = "operator.";
+    pjsoninfo->set(jsonparentstr+"geometryMethod", GeometryMethodBuf[ui->box_cz_2->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"geometryOperator1", GeometryOperator1Buf[ui->box_cz_3->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"geometryOperator2", GeometryOperator2Buf[ui->box_cz_4->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"geometryOperator3", GeometryOperator3Buf[ui->box_cz_5->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"surfaceMethod", SurfaceMethodBuf[ui->box_cz_6->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"surfaceOperator1", SurfaceOperator1Buf[ui->box_cz_7->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"surfaceOperator2", SurfaceOperator2Buf[ui->box_cz_8->currentIndex()]);
+    pjsoninfo->set(jsonparentstr+"surfaceOperator3", SurfaceOperator3Buf[ui->box_cz_9->currentIndex()]);
+    if((ui->checkBox4_ccjc_2->isChecked() == false) && (ui->checkBox4_ccjc_3->isChecked() == true))
+        pjsoninfo->set(jsonparentstr+"geometryOperatorEnable", "1");
+    else if((ui->checkBox4_ccjc_2->isChecked() == true) && (ui->checkBox4_ccjc_3->isChecked() == false))
+        pjsoninfo->set(jsonparentstr+"geometryOperatorEnable", "0");
+    else
+        pjsoninfo->set(jsonparentstr+"geometryOperatorEnable", "-1");
+    if((ui->checkBox4_ccjc_4->isChecked() == false) && (ui->checkBox4_ccjc_5->isChecked() == true))
+        pjsoninfo->set(jsonparentstr+"surfaceOperatorEnable", "1");
+    else if((ui->checkBox4_ccjc_4->isChecked() == true) && (ui->checkBox4_ccjc_5->isChecked() == false))
+        pjsoninfo->set(jsonparentstr+"surfaceOperatorEnable", "0");
+    else
+        pjsoninfo->set(jsonparentstr+"surfaceOperatorEnable", "-1");
+    // 检测方法参数保存
     jsonparentstr = "algParameter.";
     pjsoninfo->set(jsonparentstr+"geometryMethodParameter1", ui->lineEdit_12->text().toDouble());
     pjsoninfo->set(jsonparentstr+"geometryMethodParameter2", ui->lineEdit_18->text().toDouble());
@@ -331,4 +452,55 @@ void MachineLearnForm::on_box_cz_0_currentIndexChanged(int index) {ui->box_cz_1-
 void MachineLearnForm::on_box_xz_0_currentIndexChanged(int index) {ui->box_xz_1->setCurrentIndex(index);}
 void MachineLearnForm::on_box_xks_0_currentIndexChanged(int index) {ui->box_xks_1->setCurrentIndex(index);}
 void MachineLearnForm::on_box_tmx_0_currentIndexChanged(int index) {ui->box_tmx_1->setCurrentIndex(index);}
-
+void MachineLearnForm::on_checkBox4_ccjc_2_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->checkBox4_ccjc_3->setChecked(false);
+        ui->checkBox4_ccjc_3->setEnabled(true);
+        ui->checkBox4_ccjc_2->setEnabled(false);
+        ui->box_cz_3->setEnabled(false);
+        ui->box_cz_4->setEnabled(false);
+        ui->box_cz_5->setEnabled(false);
+        ui->box_cz_2->setEnabled(true);
+    }
+}
+void MachineLearnForm::on_checkBox4_ccjc_3_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->checkBox4_ccjc_2->setChecked(false);
+        ui->checkBox4_ccjc_2->setEnabled(true);
+        ui->checkBox4_ccjc_3->setEnabled(false);
+        ui->box_cz_3->setEnabled(true);
+        ui->box_cz_4->setEnabled(true);
+        ui->box_cz_5->setEnabled(true);
+        ui->box_cz_2->setEnabled(false);
+    }
+}
+void MachineLearnForm::on_checkBox4_ccjc_4_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->checkBox4_ccjc_5->setChecked(false);
+        ui->checkBox4_ccjc_5->setEnabled(true);
+        ui->checkBox4_ccjc_4->setEnabled(false);
+        ui->box_cz_7->setEnabled(false);
+        ui->box_cz_8->setEnabled(false);
+        ui->box_cz_9->setEnabled(false);
+        ui->box_cz_6->setEnabled(true);
+    }
+}
+void MachineLearnForm::on_checkBox4_ccjc_5_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->checkBox4_ccjc_4->setChecked(false);
+        ui->checkBox4_ccjc_4->setEnabled(true);
+        ui->checkBox4_ccjc_5->setEnabled(false);
+        ui->box_cz_7->setEnabled(true);
+        ui->box_cz_8->setEnabled(true);
+        ui->box_cz_9->setEnabled(true);
+        ui->box_cz_6->setEnabled(false);
+    }
+}
