@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ExpandableListView
+        android:id="@+id/ex_listview_machine_learn"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:groupIndicator="@null" />
+
+    <TextView
+        android:id="@+id/view_boundary"
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="vertical">
+        <!--碎片窗口-->
+        <FrameLayout
+            android:id="@+id/fr_layout_machine_learn"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5" >
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:background="#ddd">
+            <TextView
+                style="@style/tv_title_style"
+                android:text="ROI提取:"
+                android:layout_gravity="center"/>
+
+            <Spinner
+                android:id="@+id/sp_operator1"
+                style="@style/sp_content_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

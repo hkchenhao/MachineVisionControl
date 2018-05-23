@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?><!--Created by heqian 8.3-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/pic_bg">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25px"
+        android:layout_marginTop="15px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择相机:"
+            android:textSize="40sp" />
+
+        <Spinner
+            android:id="@+id/sp_cam_choose"
+            style="@style/sp_content_style"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="20px"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="2px"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:background="@color/gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="控制窗口"
+            android:textSize="20px" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="2px"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:background="@color/gray" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10px"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="    正面正品    "
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="180sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right"
+                    android:text="学习目标数:"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/text_learning_all_1"
+                    android:layout_width="60sp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="180sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right"
+                    android:text="已完成:"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/text_learning_count_1"
+                    android:layout_width="50sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:text="0"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_control_learning_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100sp"
+            android:layout_marginRight="10sp"
+            android:text="开始"
+            android:textSize="35sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10px"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="    正面次品    "
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="180sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right"
+                    android:text="学习目标数:"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/text_learning_all_2"
+                    android:layout_width="60sp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="180sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right"
+                    android:text="已完成:"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/text_learning_count_2"
+                    android:layout_width="50sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:text="0"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_control_learning_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100sp"
+            android:layout_marginRight="10sp"
+            android:text="开始"
+            android:textSize="35sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10px"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="    反面正品    "
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="180sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right"
+                    android:text="学习目标数:"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/text_learning_all_3"
+                    android:layout_width="60sp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="180sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right"
+                    android:text="已完成:"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/text_learning_count_3"
+                    android:layout_width="50sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:text="0"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/bt_control_learning_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100sp"
+            android:layout_marginRight="10sp"
+            android:text="开始"
+            android:textSize="35sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20px"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="    反面次品    "
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="180sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right"
+                    android:text="学习目标数:"
+                    android:textSize="30sp" />
+
+                <EditText
+                    android:id="@+id/text_learning_all_4"
+                    android:layout_width="60sp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="180sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30sp"
+                    android:gravity="right"
+                    android:text="已完成:"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/text_learning_count_4"
+                    android:layout_width="50sp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="right"
+                    android:text="0"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/bt_control_learning_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100sp"
+            android:layout_marginRight="10sp"
+            android:text="开始"
+            android:textSize="35sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="550px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="说明:本界面为纽扣表面算法训练界面，在完成纽扣基本信息配置后，请确保有技术员权限并按照以下步骤正确操作："
+        android:textSize="15px" />
+    <TextView
+        android:layout_width="550px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="        1.操作之前，请检查玻璃转盘是否有异物，准备好训练纽扣。"
+        android:textSize="15px" />
+    <TextView
+        android:layout_width="550px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="        2.选择训练相机（表面检测相机为相机2与相机3），点击开始训练按钮。"
+        android:textSize="15px" />
+    <TextView
+        android:layout_width="550px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="        3.在控制窗口中设置训练目标数目（输入数量5-255，默认30）。"
+        android:textSize="15px" />
+
+    <TextView
+        android:layout_width="550px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="        4.放入训练纽扣，点击控制窗口中开始按钮。"
+        android:textSize="15px" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/page_margin"
+        android:layout_marginRight="@dimen/page_margin"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_start_self_learning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始训练"
+            android:textSize="30dp" />
+    </LinearLayout>
+
+</LinearLayout>

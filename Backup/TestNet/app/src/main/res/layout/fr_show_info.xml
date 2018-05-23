@@ -1,0 +1,122 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:hy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="75dp"
+            android:background="#dddddd"
+            android:gravity="center_horizontal"
+            android:text="训练结果信息及显示"
+            android:textSize="30sp" />
+
+        <com.hanyu.hust.testnet.ui.view.TitleDivide
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            hy:text="几何工艺信息"
+            hy:textSize="@dimen/pannel_menu" />
+
+        <TextView
+            android:id="@+id/tv_show_generalinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/bg_pannel_info"
+            android:text="外径:     平均孔距:      \n中心距:    线孔直径:      学习数目:"
+            android:textSize="@dimen/pannel_content" />
+
+        <com.hanyu.hust.testnet.ui.view.TitleDivide
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            hy:text="检出结果"
+            hy:textSize="@dimen/pannel_menu" />
+
+        <TextView
+            android:id="@+id/tv_show_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/bg_pannel_info"
+            android:text="  检出总数:\n  良品:       非良品:\n  良品率:       非良品率:"
+            android:textSize="@dimen/pannel_content" />
+
+        <com.hanyu.hust.testnet.ui.view.TitleDivide
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            hy:text="检出门限"
+            hy:textSize="@dimen/pannel_menu" />
+
+        <TextView
+            android:id="@+id/tv_show_threshold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/bg_pannel_info"
+            android:text="  几何尺寸门限:\n  表面缺陷门限:\n  色差门限:\n  异物门限:"
+            android:textSize="@dimen/pannel_content" />
+
+        <com.hanyu.hust.testnet.ui.view.TitleDivide
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            hy:text="平均检测时间"
+            hy:textSize="@dimen/pannel_menu" />
+
+        <TextView
+            android:id="@+id/tv_check_speed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/bg_pannel_info"
+            android:text="  平均检测时间:\n  最长检测时间:\n  最短检测时间:"
+            android:textSize="@dimen/pannel_content" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/machine_learn_bottom_margin"
+        android:background="#dddddd" >
+
+        <Button
+            android:id="@+id/bt_return"
+            android:layout_width="@dimen/machine_learn_icon_width"
+            android:layout_height="@dimen/machine_learn_icon_height"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/pannel_right_margin"
+            android:background="@mipmap/ic_return" />
+
+        <Button
+            android:id="@+id/bt_right"
+            android:layout_width="@dimen/machine_learn_icon_width"
+            android:layout_height="@dimen/machine_learn_icon_height"
+            android:layout_marginRight="@dimen/pannel_right_margin"
+            android:layout_toLeftOf="@id/bt_return"
+            android:background="@mipmap/ic_right" />
+
+        <Button
+            android:id="@+id/bt_left"
+            android:layout_width="@dimen/machine_learn_icon_width"
+            android:layout_height="@dimen/machine_learn_icon_height"
+            android:layout_marginRight="@dimen/pannel_right_margin"
+            android:layout_toLeftOf="@id/bt_right"
+            android:background="@mipmap/ic_left" />
+
+        <Button
+            android:id="@+id/bt_save"
+            android:layout_width="@dimen/machine_learn_icon_width"
+            android:layout_height="@dimen/machine_learn_icon_height"
+            android:layout_marginRight="@dimen/pannel_right_margin"
+            android:layout_toLeftOf="@id/bt_left"
+            android:background="@mipmap/ic_save" />
+    </RelativeLayout>
+
+</LinearLayout>

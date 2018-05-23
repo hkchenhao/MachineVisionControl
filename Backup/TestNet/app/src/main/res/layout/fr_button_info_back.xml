@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="50dp"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_roi"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/pic_bg" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:text="反面" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout style="@style/ll_fragment_style">
+
+            <TextView
+                style="@style/tv_title_style"
+                android:text="材质:" />
+
+            <Spinner
+                android:id="@+id/sp_material"
+                style="@style/sp_content_style"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_fragment_style">
+
+            <TextView
+                style="@style/tv_title_style"
+                android:text="尺寸:" />
+
+            <EditText
+                android:id="@+id/et_size"
+                style="@style/et_threshold_style"
+                android:layout_width="250dp"
+                android:gravity="left" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_fragment_style">
+
+            <TextView
+                style="@style/tv_title_style"
+                android:text="形状:" />
+
+            <Spinner
+                android:id="@+id/sp_shape"
+                style="@style/sp_content_style"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_fragment_style">
+
+            <TextView
+                style="@style/tv_title_style"
+                android:text="线孔数:" />
+
+            <Spinner
+                android:id="@+id/sp_hole_num"
+                style="@style/sp_content_style"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+
+
+        <LinearLayout style="@style/ll_fragment_style">
+
+            <TextView
+                style="@style/tv_title_style"
+                android:text="花色:" />
+
+            <Spinner
+                android:id="@+id/sp_word"
+                style="@style/sp_content_style"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_fragment_style">
+
+            <TextView
+                style="@style/tv_title_style"
+                android:text="主色:" />
+
+            <Spinner
+                android:id="@+id/sp_color"
+                style="@style/sp_content_style"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_fragment_style">
+
+            <TextView
+                style="@style/tv_title_style"
+                android:text="透明性:" />
+
+            <Spinner
+                android:id="@+id/sp_light"
+                style="@style/sp_content_style"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_fragment_style">
+
+            <TextView
+                style="@style/tv_title_style"
+                android:text="反光性:" />
+
+            <Spinner
+                android:id="@+id/sp_reflect"
+                style="@style/sp_content_style"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

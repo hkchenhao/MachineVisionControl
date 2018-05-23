@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.hanyu.hust.testnet.ui.FileManager" >
+
+    <TextView
+        android:id="@+id/file_manager_tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="30sp"
+        android:visibility="gone" />
+
+    <include
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2"
+        layout="@layout/listview_option" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1" >
+        <Spinner
+            android:layout_gravity="center"
+            android:id="@+id/sp_data_choose"
+            android:layout_width = "wrap_content"
+            android:layout_height ="wrap_content"
+            android:textSize = "30sp"
+        >
+
+        </Spinner>
+        <com.hanyu.hust.testnet.ui.view.BasePannelLayout
+            android:id="@+id/control_pannel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             />
+    </LinearLayout>
+
+
+</LinearLayout>

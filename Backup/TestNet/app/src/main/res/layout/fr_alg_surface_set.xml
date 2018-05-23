@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="50dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp">
+
+        <TextView
+            android:layout_width="593dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="表面缺陷检测方法配置"
+            android:textSize="40sp" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="ROI提取:" />
+
+        <Spinner
+            android:id="@+id/sp_operator1"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="正反面检测:" />
+
+        <Spinner
+            android:id="@+id/sp_operator2"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/tv_title_style"
+            android:text="缺陷检测:" />
+
+        <Spinner
+            android:id="@+id/sp_operator3"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算子4:" />
+
+        <Spinner
+            android:id="@+id/sp_operator4"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算子5:" />
+
+        <Spinner
+            android:id="@+id/sp_operator5"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算子6:" />
+
+        <Spinner
+            android:id="@+id/sp_alg5"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算子7:" />
+
+        <Spinner
+            android:id="@+id/sp_alg6"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算子8:" />
+
+        <Spinner
+            android:id="@+id/sp_alg7"
+            style="@style/sp_content_style"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

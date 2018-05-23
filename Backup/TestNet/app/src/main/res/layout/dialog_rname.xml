@@ -1,0 +1,59 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dip"
+    android:gravity="center_horizontal"
+    android:padding="20dip"
+    android:stretchColumns="1" >
+
+    <TableRow>
+        <TextView
+            android:layout_width="150dip"
+            android:layout_height="100dip"
+            android:layout_marginRight="10dip"
+            android:text="钮扣ID:"
+            android:textSize="@dimen/pannel_menu" />
+        
+        <EditText
+            android:id="@+id/et_id"
+            android:layout_height="60dip"
+            android:background="@drawable/bg_edit_text"
+            android:hint="输入钮扣名" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="150dip"
+            android:layout_height="100dip"
+            android:layout_marginRight="10dip"
+            android:text="厂家:"
+            android:textSize="@dimen/pannel_menu" />
+
+        <EditText
+            android:id="@+id/et_manufature"
+            android:layout_height="60dip"
+            android:background="@drawable/bg_edit_text"
+            android:hint="输入厂家" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/bt_rname_dialog_ok"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="确定"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/bt_rname_dialog_cancel"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="取消"
+            android:textSize="30sp" />
+    </TableRow>
+
+</TableLayout>

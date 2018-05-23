@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginLeft="100dp"
+    android:layout_marginTop="50dp"
+    android:orientation="vertical">
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="几何尺寸:" />
+
+        <Spinner
+            android:id="@+id/sp_alg_geometry"
+            style="@style/sp_content_style"
+            android:spinnerMode="dialog" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="表面缺陷:" />
+
+        <Spinner
+            android:id="@+id/sp_alg_surface"
+            style="@style/sp_content_style"
+            android:spinnerMode="dialog" />
+    </LinearLayout>
+
+
+</LinearLayout>

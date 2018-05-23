@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ExpandableListView
+        android:id="@+id/ex_listview_machine_learn"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:groupIndicator="@null" />
+
+    <TextView
+        android:id="@+id/view_boundary"
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="vertical">
+            <TextView
+                android:id="@+id/title_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ddd"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp" />
+            <!--碎片窗口-->
+            <FrameLayout
+                android:id="@+id/fr_layout_machine_learn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </FrameLayout>
+    </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/status_bar"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:background="#cdcdcd"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textview_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:text="状态窗口"
+                android:textColor="#3F48CC"
+                android:textSize="30sp" />
+            <!--状态窗口-->
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textview_state"
+                android:textSize="@dimen/pannel_content" />
+            <!--操作布局-->
+            <RelativeLayout
+                android:id="@+id/fr_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/machine_learn_bottom_margin"
+                android:layout_alignParentBottom="true"
+                android:background="#dddddd">
+                <Button
+                    android:id="@+id/bt_MachineLearn_return"
+                    android:layout_width="@dimen/machine_learn_icon_width"
+                    android:layout_height="@dimen/machine_learn_icon_height"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/pannel_right_margin"
+                    android:background="@mipmap/ic_return" />
+
+                <Button
+                    android:id="@+id/bt_MachineLearn_save"
+                    android:layout_width="@dimen/machine_learn_icon_width"
+                    android:layout_height="@dimen/machine_learn_icon_height"
+                    android:layout_marginRight="@dimen/pannel_right_margin"
+                    android:layout_toLeftOf="@id/bt_MachineLearn_return"
+                    android:background="@mipmap/ic_save" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btn_margin"
+        android:layout_marginTop="@dimen/btn_margin">
+
+        <Button
+            android:id="@+id/btn_display_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更改显示模式" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btn_margin"
+        android:layout_marginTop="@dimen/btn_margin">
+
+        <Button
+            android:id="@+id/btn_create_btn_pulse1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相机1空拍" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_create_btn_pulse2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相机2空拍" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_create_btn_pulse3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相机3空拍" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_create_btn_pulse_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所有空拍" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btn_margin"
+        android:layout_marginTop="@dimen/btn_margin">
+
+        <Button
+            android:id="@+id/btn_camera1_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相机1清零" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_camera2_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相机2清零" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_camera3_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="相机3清零" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_camera_all_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所有清零" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btn_margin"
+        android:layout_marginTop="@dimen/btn_margin">
+
+        <Button
+            android:id="@+id/btnTrigger1_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="触发1已连接" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnTrigger2_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="触发2已连接" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnTrigger3_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="触发3已连接" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/motorCtrlCard_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电机控制卡已连接" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/lightSrcDrv_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="光源控制器已连接" />
+    </LinearLayout>
+
+</LinearLayout>

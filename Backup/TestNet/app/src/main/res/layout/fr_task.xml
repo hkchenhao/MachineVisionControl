@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="50dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/ll_fragment_style"
+        android:gravity="center_horizontal">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="相机选择:" />
+
+        <Spinner
+            android:id="@+id/sp_camera_sel"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算法1:" />
+
+        <Spinner
+            android:id="@+id/sp_alg0"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算法2:" />
+
+        <Spinner
+            android:id="@+id/sp_alg1"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算法3:" />
+
+        <Spinner
+            android:id="@+id/sp_alg2"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算法4:" />
+
+        <Spinner
+            android:id="@+id/sp_alg3"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算法5:" />
+
+        <Spinner
+            android:id="@+id/sp_alg4"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算法6:" />
+
+        <Spinner
+            android:id="@+id/sp_alg5"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算法7:" />
+
+        <Spinner
+            android:id="@+id/sp_alg6"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_fragment_style">
+
+        <TextView
+            style="@style/tv_title_style"
+            android:text="算法8:" />
+
+        <Spinner
+            android:id="@+id/sp_alg7"
+            style="@style/sp_content_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <!--<LinearLayout style="@style/ll_fragment_style">-->
+
+    <!--<TextView-->
+    <!--style="@style/tv_title_style"-->
+    <!--android:text="几何尺寸:" />-->
+
+    <!--<Spinner-->
+    <!--android:id="@+id/sp_geometry"-->
+    <!--style="@style/sp_content_style"-->
+    <!--android:spinnerMode="dialog" />-->
+
+    <!--<EditText style="@style/et_threshold_style" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout style="@style/ll_fragment_style">-->
+
+    <!--<TextView-->
+    <!--style="@style/tv_title_style"-->
+    <!--android:text="表面缺陷:" />-->
+
+    <!--<Spinner-->
+    <!--android:id="@+id/sp_surface"-->
+    <!--style="@style/sp_content_style"-->
+    <!--android:spinnerMode="dialog" />-->
+
+    <!--<EditText style="@style/et_threshold_style" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout style="@style/ll_fragment_style">-->
+
+    <!--<TextView-->
+    <!--style="@style/tv_title_style"-->
+    <!--android:text="异物:" />-->
+
+    <!--<Spinner-->
+    <!--android:id="@+id/sp_impurity"-->
+    <!--style="@style/sp_content_style"-->
+    <!--android:spinnerMode="dialog" />-->
+
+    <!--<EditText style="@style/et_threshold_style" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout style="@style/ll_fragment_style">-->
+
+    <!--<TextView-->
+    <!--style="@style/tv_title_style"-->
+    <!--android:text="色差:" />-->
+
+    <!--<Spinner-->
+    <!--android:id="@+id/sp_color_diff"-->
+    <!--style="@style/sp_content_style"-->
+    <!--android:spinnerMode="dialog" />-->
+
+    <!--<EditText style="@style/et_threshold_style" />-->
+    <!--</LinearLayout>-->
+</LinearLayout>
