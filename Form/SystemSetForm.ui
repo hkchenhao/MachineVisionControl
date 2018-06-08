@@ -16,9 +16,9 @@
   <widget class="QPushButton" name="pushButton_Esc">
    <property name="geometry">
     <rect>
-     <x>880</x>
+     <x>870</x>
      <y>710</y>
-     <width>131</width>
+     <width>140</width>
      <height>51</height>
     </rect>
    </property>
@@ -2154,6 +2154,9 @@ QGroupBox::title
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_48">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>470</x>
@@ -2172,6 +2175,9 @@ QGroupBox::title
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_Revise_22">
@@ -2465,6 +2471,9 @@ QGroupBox::title
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="lable_140">
@@ -2764,6 +2773,9 @@ QGroupBox::title
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QSlider" name="horizontalSlider_5">
       <property name="geometry">
@@ -2953,6 +2965,9 @@ QGroupBox::title
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QSlider" name="horizontalSlider_6">
@@ -3144,6 +3159,9 @@ QGroupBox::title
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QSlider" name="horizontalSlider_7">
       <property name="geometry">
@@ -3333,6 +3351,9 @@ QGroupBox::title
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QSlider" name="horizontalSlider_8">
@@ -3524,6 +3545,9 @@ QGroupBox::title
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QSlider" name="horizontalSlider_9">
       <property name="geometry">
@@ -3714,6 +3738,9 @@ QGroupBox::title
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QSlider" name="horizontalSlider_10">
       <property name="geometry">
@@ -3903,6 +3930,9 @@ QGroupBox::title
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QSlider" name="horizontalSlider_11">
@@ -4207,7 +4237,7 @@ QGroupBox::title
        <rect>
         <x>140</x>
         <y>90</y>
-        <width>61</width>
+        <width>101</width>
         <height>41</height>
        </rect>
       </property>
@@ -4217,7 +4247,7 @@ QGroupBox::title
        </font>
       </property>
       <property name="text">
-       <string>25</string>
+       <string>0</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -4311,7 +4341,7 @@ QGroupBox::title
      <widget class="QLabel" name="lable_153">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>140</y>
         <width>41</width>
         <height>41</height>
@@ -4338,7 +4368,7 @@ QGroupBox::title
      <widget class="QLabel" name="lable_154">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>240</x>
         <y>90</y>
         <width>41</width>
         <height>41</height>
@@ -4367,7 +4397,7 @@ QGroupBox::title
        <rect>
         <x>140</x>
         <y>140</y>
-        <width>61</width>
+        <width>101</width>
         <height>41</height>
        </rect>
       </property>
@@ -4377,7 +4407,7 @@ QGroupBox::title
        </font>
       </property>
       <property name="text">
-       <string>25</string>
+       <string>0</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -4398,7 +4428,7 @@ QGroupBox::title
        </font>
       </property>
       <property name="text">
-       <string>0.110619</string>
+       <string>0</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -5118,9 +5148,9 @@ QGroupBox::title
   <widget class="QPushButton" name="pushButton_Save">
    <property name="geometry">
     <rect>
-     <x>730</x>
+     <x>720</x>
      <y>710</y>
-     <width>141</width>
+     <width>140</width>
      <height>51</height>
     </rect>
    </property>
@@ -5149,9 +5179,9 @@ QGroupBox::title
   <widget class="QPushButton" name="pushButton_Aply">
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>570</x>
      <y>710</y>
-     <width>141</width>
+     <width>140</width>
      <height>51</height>
     </rect>
    </property>
@@ -5180,9 +5210,9 @@ QGroupBox::title
   <widget class="QLabel" name="lable_zttsxx">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>60</x>
      <y>700</y>
-     <width>311</width>
+     <width>251</width>
      <height>61</height>
     </rect>
    </property>
@@ -5204,18 +5234,52 @@ QGroupBox::title
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>状态提示信息</string>
+    <string>提示</string>
    </property>
    <property name="alignment">
-    <set>Qt::AlignCenter</set>
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_Revise_10">
+  <widget class="QPushButton" name="pushButton_Update">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>420</x>
      <y>710</y>
-     <width>141</width>
+     <width>140</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>30</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yahei Mono</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>更新</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_Revise">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>710</y>
+     <width>140</width>
      <height>51</height>
     </rect>
    </property>
@@ -5247,7 +5311,8 @@ QGroupBox::title
   <zorder>pushButton_Save</zorder>
   <zorder>pushButton_Aply</zorder>
   <zorder>lable_zttsxx</zorder>
-  <zorder>pushButton_Revise_10</zorder>
+  <zorder>pushButton_Update</zorder>
+  <zorder>pushButton_Revise</zorder>
  </widget>
  <resources/>
  <connections/>
